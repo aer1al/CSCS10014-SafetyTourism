@@ -1,4 +1,4 @@
-import requests
+import requests, json
 from math import radians, sin, cos, sqrt, atan2
 
 def haversine(lat1, lon1, lat2, lon2):
@@ -61,4 +61,4 @@ def get_natural_disasters(user_lat, user_lon, max_distance_km=1000): # <-- ĐÃ 
 # Giờ nó sẽ bắt được các sự kiện ở Indonesia/Trung Quốc
 print("--- Đang kiểm tra tại Vũng Tàu (10.34, 107.08) với bán kính 500km ---")
 disaster_alerts_vn = get_natural_disasters(user_lat=10.34, user_lon=107.08)
-print(disaster_alerts_vn)
+print(json.dumps(disaster_alerts_vn))
