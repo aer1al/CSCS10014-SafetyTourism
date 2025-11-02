@@ -4,6 +4,8 @@ import os
 import requests
 from dotenv import load_dotenv
 from datetime import datetime
+from disasters import get_natural_disasters
+from locations import get_nearby_places
 
 # Load environment variables
 load_dotenv()
@@ -16,16 +18,7 @@ OPENWEATHER_API_KEY = os.getenv('OPENWEATHER_API_KEY')
 WORLDPOP_API_KEY = os.getenv('WORLDPOP_API_KEY')
 
 # Mock data for development (replace with real API calls)
-MOCK_DATA = {
-    'disasters': [
-        {'lat': 35.6895, 'lng': 139.6917, 'name': 'Earthquake Alert', 'description': 'Magnitude 4.5'},
-        {'lat': 14.6042, 'lng': 120.9822, 'name': 'Flood Warning', 'description': 'Heavy rainfall expected'}
-    ],
-    'hospitals': [
-        {'lat': 35.6892, 'lng': 139.6910, 'name': 'Central Hospital', 'description': 'Emergency Care Available'},
-        {'lat': 14.6037, 'lng': 120.9818, 'name': 'Medical Center', 'description': '24/7 Emergency Services'}
-    ]
-}
+MOCK_DATA = {}
 
 @app.route('/api/weather')
 def get_weather():
@@ -60,8 +53,19 @@ def get_weather():
 
 @app.route('/api/disaster')
 def get_disasters():
-    # In a real application, this would fetch from a disaster monitoring API
-    return jsonify(MOCK_DATA['disasters'])
+    # 1. Lấy lat/lon từ frontend
+    lat = request.args.get('lat', type=float)
+    lon = request.args.get('lon', type=float)
+    
+    if lat is None or lon is None:
+        return jsonify({"error": "Thiếu tham số 'lat' hoặc 'lon'."}), 400
+
+    # 2. Gọi hàm "hàng thật" của bạn từ file disasters.py
+    # Dùng 200km cho thực tế
+    real_disaster_data = get_natural_disasters(lat, lon, max_distance_km=200)
+
+    # 3. Trả kết quả thật về
+    return jsonify(real_disaster_data)
 
 @app.route('/api/crowd')
 def get_crowds():
@@ -77,24 +81,33 @@ def get_crowds():
         'details': 'Estimated 1000+ people in area'
     }])
 
+# --- NÂNG CẤP /api/shelter ---
 @app.route('/api/shelter')
 def get_shelters():
-    lat = request.args.get('lat', '35.6895')
-    lon = request.args.get('lon', '139.6917')
+    lat = request.args.get('lat', type=float)
+    lon = request.args.get('lon', type=float)
+    if lat is None or lon is None:
+        return jsonify({"error": "Thiếu 'lat' hoặc 'lon'"}), 400
+        
+    # Gọi hàm "hàng thật" từ locations.py
+    data = get_nearby_places(lat, lon, "shelter") 
     
-    # In a real application, this would use OpenStreetMap's Overpass API
-    return jsonify([{
-        'lat': float(lat),
-        'lng': float(lon),
-        'name': 'Emergency Shelter',
-        'description': 'Public School Building',
-        'details': 'Capacity: 500 people'
-    }])
+    # Trả về JSON mà hàm của bạn đã tạo (có 'status', 'count', 'places')
+    return jsonify(data)
 
+# --- NÂNG CẤP /api/hospital ---
 @app.route('/api/hospital')
 def get_hospitals():
-    # In a real application, this would fetch from a medical facilities database
-    return jsonify(MOCK_DATA['hospitals'])
+    lat = request.args.get('lat', type=float)
+    lon = request.args.get('lon', type=float)
+    if lat is None or lon is None:
+        return jsonify({"error": "Thiếu 'lat' hoặc 'lon'"}), 400
+        
+    # Gọi hàm "hàng thật" từ locations.py
+    data = get_nearby_places(lat, lon, "hospital")
+    
+    # Trả về JSON mà hàm của bạn đã tạo
+    return jsonify(data)
 
 @app.route('/api/emergency', methods=['POST'])
 def handle_emergency():
