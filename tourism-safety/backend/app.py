@@ -4,6 +4,7 @@ import os
 import requests
 from dotenv import load_dotenv
 from datetime import datetime
+from data import add_user, check_login, find_user, add_search_history, update_user_info, check_login_by_email
 
 # Load environment variables
 load_dotenv()
