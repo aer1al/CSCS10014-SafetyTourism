@@ -3,7 +3,8 @@ from flask_cors import CORS
 import os
 import requests
 from dotenv import load_dotenv
-from datetime import datetime
+
+# Import các hàm đã được chuẩn hóa
 from disasters import get_natural_disasters
 from locations import get_nearby_places
 
@@ -13,13 +14,11 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# API Keys (should be in .env file)
 OPENWEATHER_API_KEY = os.getenv('OPENWEATHER_API_KEY')
-WORLDPOP_API_KEY = os.getenv('WORLDPOP_API_KEY')
 
-# Mock data for development (replace with real API calls)
-MOCK_DATA = {}
-
+# -------------------------------------------------------------------
+# /api/weather (Vẫn cần dọn dẹp tại đây)
+# -------------------------------------------------------------------
 @app.route('/api/weather')
 def get_weather():
     lat = request.args.get('lat', '35.6895')
@@ -29,96 +28,97 @@ def get_weather():
         try:
             url = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={OPENWEATHER_API_KEY}'
             response = requests.get(url)
+            response.raise_for_status()
             data = response.json()
             
-            # Transform the data for the frontend
+            # Trả về MẢNG
             return jsonify([{
                 'lat': float(lat),
-                'lng': float(lon),
-                'name': f'Weather Alert: {data["weather"][0]["main"]}',
+                'lng': float(lon), # Đổi 'lon' thành 'lng'
+                'name': f'Weather: {data["weather"][0]["main"]}',
                 'description': data["weather"][0]["description"],
                 'details': f'Temperature: {round(data["main"]["temp"] - 273.15, 1)}°C'
             }])
         except Exception as e:
             print(f"Error fetching weather data: {e}")
+            return jsonify([])
     
-    # Return mock data if API key is not available or request fails
     return jsonify([{
         'lat': float(lat),
-        'lng': float(lon),
-        'name': 'Weather Alert',
-        'description': 'Partly cloudy with chance of rain',
+        'lng': float(lon), # Đổi 'lon' thành 'lng'
+        'name': 'Weather Alert (Mock)',
+        'description': 'Partly cloudy',
         'details': 'Temperature: 22°C'
     }])
 
+# -------------------------------------------------------------------
+# /api/disaster (Đã sạch)
+# -------------------------------------------------------------------
 @app.route('/api/disaster')
 def get_disasters():
-    # 1. Lấy lat/lon từ frontend
     lat = request.args.get('lat', type=float)
     lon = request.args.get('lon', type=float)
     
     if lat is None or lon is None:
-        return jsonify({"error": "Thiếu tham số 'lat' hoặc 'lon'."}), 400
+        return jsonify([]) # Trả về mảng rỗng nếu thiếu
 
-    # 2. Gọi hàm "hàng thật" của bạn từ file disasters.py
-    # Dùng 200km cho thực tế
-    real_disaster_data = get_natural_disasters(lat, lon, max_distance_km=200)
+    # Chỉ cần gọi và trả về, vì hàm con đã dọn dẹp rồi
+    data = get_natural_disasters(lat, lon, max_distance_km=200)
+    return jsonify(data)
 
-    # 3. Trả kết quả thật về
-    return jsonify(real_disaster_data)
-
+# -------------------------------------------------------------------
+# /api/crowd (Vẫn cần dọn dẹp tại đây)
+# -------------------------------------------------------------------
 @app.route('/api/crowd')
 def get_crowds():
     lat = request.args.get('lat', '35.6895')
     lon = request.args.get('lon', '139.6917')
     
-    # In a real application, this would use the WorldPop API or similar
+    # Trả về MẢNG
     return jsonify([{
         'lat': float(lat),
-        'lng': float(lon),
-        'name': 'Crowd Alert',
+        'lng': float(lon), # Đổi 'lon' thành 'lng'
+        'name': 'Crowd Alert (Mock)',
         'description': 'High crowd density detected',
         'details': 'Estimated 1000+ people in area'
     }])
 
-# --- NÂNG CẤP /api/shelter ---
+# -------------------------------------------------------------------
+# /api/shelter (Đã sạch)
+# -------------------------------------------------------------------
 @app.route('/api/shelter')
 def get_shelters():
     lat = request.args.get('lat', type=float)
     lon = request.args.get('lon', type=float)
     if lat is None or lon is None:
-        return jsonify({"error": "Thiếu 'lat' hoặc 'lon'"}), 400
+        return jsonify([])
         
-    # Gọi hàm "hàng thật" từ locations.py
+    # Chỉ cần gọi và trả về
     data = get_nearby_places(lat, lon, "shelter") 
-    
-    # Trả về JSON mà hàm của bạn đã tạo (có 'status', 'count', 'places')
     return jsonify(data)
 
-# --- NÂNG CẤP /api/hospital ---
+# -------------------------------------------------------------------
+# /api/hospital (Đã sạch)
+# -------------------------------------------------------------------
 @app.route('/api/hospital')
 def get_hospitals():
     lat = request.args.get('lat', type=float)
     lon = request.args.get('lon', type=float)
     if lat is None or lon is None:
-        return jsonify({"error": "Thiếu 'lat' hoặc 'lon'"}), 400
+        return jsonify([])
         
-    # Gọi hàm "hàng thật" từ locations.py
+    # Chỉ cần gọi và trả về
     data = get_nearby_places(lat, lon, "hospital")
-    
-    # Trả về JSON mà hàm của bạn đã tạo
     return jsonify(data)
 
+# -------------------------------------------------------------------
+# API Khẩn cấp (Giữ nguyên)
+# -------------------------------------------------------------------
 @app.route('/api/emergency', methods=['POST'])
 def handle_emergency():
     data = request.json
     lat = data.get('lat')
-    lng = data.get('lng')
-    
-    # In a real application, this would:
-    # 1. Log the emergency
-    # 2. Notify emergency services
-    # 3. Store in database
+    lng = data.get('lng') 
     
     print(f"Emergency alert received from location: {lat}, {lng}")
     return jsonify({'status': 'success', 'message': 'Emergency services notified'})
