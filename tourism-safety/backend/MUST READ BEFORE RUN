@@ -1,0 +1,8 @@
+-Trước khi chạy project hãy tạo file : .env (cứ tạo y hệt vậy k cần đổi tên)
+-Nội dung file:
+
+SECRET_KEY='secret_key_of_project_is_CHIGGA'
+# File này là mã mật, không chia sẻ công khai, mong mọi người đừng xóa!
+
+-Dùng để bảo mật thông tin users
+-K thể up lên git đc nên phải tạo bằng VS
