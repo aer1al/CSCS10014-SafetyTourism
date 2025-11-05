@@ -1,0 +1,10 @@
+[
+    {
+        "id": 1,
+        "username": "123",
+        "password": "scrypt:32768:8:1$mxv93unEv7ae7owP$bc211c525b40be6027b1860c55f041967f3304e65f6878999aa4db7b2a7ff0ba67a1c86a5f5b14decbbaa9c7c52574bd111cf5d3e8c8af95c601a18210d28bc1",
+        "email": "123@gmail.com",
+        "address": "",
+        "favorite_locations": []
+    }
+]

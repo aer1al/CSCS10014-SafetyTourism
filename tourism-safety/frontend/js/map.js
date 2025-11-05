@@ -7,6 +7,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
+// ----- THÊM 2 BIẾN NÀY ĐỂ LƯU VỊ TRÍ -----
+let userLat = 0.0;
+let userLon = 0.0;
+
 // Layer groups for different markers
 const layers = {
     disasters: L.layerGroup().addTo(map),
@@ -16,36 +20,16 @@ const layers = {
     hospitals: L.layerGroup().addTo(map)
 };
 
-// Custom icons for different markers
-const icons = {
-    disaster: L.divIcon({
-        className: 'custom-icon disaster',
-        html: '<i class="fas fa-exclamation-triangle"></i>',
-        iconSize: [30, 30]
-    }),
-    storm: L.divIcon({
-        className: 'custom-icon storm',
-        html: '<i class="fas fa-cloud-showers-heavy"></i>',
-        iconSize: [30, 30]
-    }),
-    crowd: L.divIcon({
-        className: 'custom-icon crowd',
-        html: '<i class="fas fa-users"></i>',
-        iconSize: [30, 30]
-    }),
-    shelter: L.divIcon({
-        className: 'custom-icon shelter',
-        html: '<i class="fas fa-house-damage"></i>',
-        iconSize: [30, 30]
-    }),
-    hospital: L.divIcon({
-        className: 'custom-icon hospital',
-        html: '<i class="fas fa-hospital"></i>',
-        iconSize: [30, 30]
-    })
+// ----- BẢNG MÀU CHO CÁC CHẤM TRÒN (ĐỂ GIỐNG LEGEND) -----
+const markerColors = {
+    disaster: '#ff4444',
+    storm: '#5bc0de',
+    crowd: '#ff8800',
+    shelter: '#00C851',
+    hospital: '#CC0000'
 };
 
-// Handle layer visibility toggles
+// Handle layer visibility toggles (Giữ nguyên)
 document.querySelectorAll('.filter-item input[type="checkbox"]').forEach(checkbox => {
     checkbox.addEventListener('change', function() {
         const layerName = this.dataset.layer;
@@ -59,81 +43,123 @@ document.querySelectorAll('.filter-item input[type="checkbox"]').forEach(checkbo
     });
 });
 
-// Function to fetch data from backend
-async function fetchData(endpoint) {
+// ----- SỬA HÀM NÀY ĐỂ GỬI lat/lon LÊN BACKEND -----
+async function fetchData(endpoint, lat, lon) {
     try {
-        const response = await fetch(`/api/${endpoint}`);
+        // Thêm http://127.0.0.1:5500 vào
+        const response = await fetch(`http://127.0.0.1:5000/api/${endpoint}?lat=${lat}&lon=${lon}`); 
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         return data;
     } catch (error) {
         console.error(`Error fetching ${endpoint} data:`, error);
-        return [];
+        return []; 
     }
 }
 
-// Function to add markers to map
-function addMarkers(data, layerName, icon) {
+// ----- HÀM NÀY BÂY GIỜ RẤT SẠCH (Vì backend đã dọn dẹp) -----
+function addMarkers(data, layerName, iconKey) {
     layers[layerName].clearLayers();
     
+    const color = markerColors[iconKey] || '#808080'; // Lấy màu
+
+    // Backend ĐÃ ĐẢM BẢO data là một mảng
+    if (!Array.isArray(data)) {
+         console.error(`Lỗi: Dữ liệu cho '${layerName}' không phải là mảng:`, data);
+         return;
+    }
+
     data.forEach(item => {
-        const marker = L.marker([item.lat, item.lng], { icon: icons[icon] })
-            .bindPopup(`
-                <h3>${item.name}</h3>
-                <p>${item.description}</p>
-                ${item.details ? `<p>${item.details}</p>` : ''}
-            `);
+        // Backend ĐÃ ĐẢM BẢO key là 'lat' và 'lng'
+        if (item.lat === undefined || item.lng === undefined) {
+            console.warn("Bỏ qua item vì thiếu lat/lng:", item);
+            return;
+        }
+
+        // Tạo Chấm tròn (CircleMarker)
+        const marker = L.circleMarker([item.lat, item.lng], {
+            radius: 8,
+            fillColor: color,
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        })
+        .bindPopup(`
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            ${item.details ? `<p>${item.details}</p>` : ''}
+        `);
         
         layers[layerName].addLayer(marker);
     });
 }
 
-// Function to update map data
-async function updateMapData() {
+// ----- SỬA HÀM NÀY ĐỂ TRUYỀN lat/lon VÀO -----
+async function updateMapData(lat, lon) {
     // Fetch and update disasters
-    const disasters = await fetchData('disaster');
+    const disasters = await fetchData('disaster', lat, lon);
     addMarkers(disasters, 'disasters', 'disaster');
 
     // Fetch and update weather/storms
-    const storms = await fetchData('weather');
+    const storms = await fetchData('weather', lat, lon);
     addMarkers(storms, 'storms', 'storm');
 
     // Fetch and update crowd density
-    const crowds = await fetchData('crowd');
+    const crowds = await fetchData('crowd', lat, lon);
     addMarkers(crowds, 'crowds', 'crowd');
 
     // Fetch and update shelters
-    const shelters = await fetchData('shelter');
+    const shelters = await fetchData('shelter', lat, lon);
     addMarkers(shelters, 'shelters', 'shelter');
 
     // Fetch and update hospitals
-    const hospitals = await fetchData('hospital');
+    const hospitals = await fetchData('hospital', lat, lon);
     addMarkers(hospitals, 'hospitals', 'hospital');
 }
 
-// Get user's location
+// ----- SỬA HÀM NÀY ĐỂ GỌI updateMapData SAU KHI CÓ VỊ TRÍ -----
 function getUserLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             const { latitude, longitude } = position.coords;
-            map.setView([latitude, longitude], 13);
+            
+            // Lưu vị trí vào biến toàn cục
+            userLat = latitude;
+            userLon = longitude; // Lưu ý: ở đây JS dùng 'longitude'
+
+            map.setView([userLat, userLon], 13);
+
+            // GỌI HÀM UPDATE VỚI TỌA ĐỘ MỚI
+            updateMapData(userLat, userLon); // Gửi userLon (backend nhận là 'lon')
+            // Cập nhật mỗi 5 phút
+            setInterval(() => updateMapData(userLat, userLon), 300000);
+
         }, error => {
             console.error('Error getting location:', error);
+            // Nếu lỗi, vẫn gọi update (backend sẽ dùng tọa độ 0,0 hoặc mặc định)
+            updateMapData(userLat, userLon); 
         });
+    } else {
+         // Nếu trình duyệt không hỗ trợ
+        updateMapData(userLat, userLon);
     }
 }
 
-// Handle emergency call button
+// Giữ nguyên code 2 nút 'callRescue' và 'sendGPS'
 document.getElementById('callRescue').addEventListener('click', () => {
-    window.location.href = 'tel:112'; // Emergency number
+    window.location.href = 'tel:112';
 });
 
-// Handle send GPS button
 document.getElementById('sendGPS').addEventListener('click', async () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async position => {
             const { latitude, longitude } = position.coords;
             try {
-                const response = await fetch('/api/emergency', {
+                // SỬA Ở ĐÂY: Thêm 'http://127.0.0.1:5000'
+                const response = await fetch('http://127.0.0.1:5000/api/emergency', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -157,9 +183,11 @@ document.getElementById('sendGPS').addEventListener('click', async () => {
     }
 });
 
+
 // Initialize map with user location
 getUserLocation();
 
-// Update map data initially and every 5 minutes
-updateMapData();
-setInterval(updateMapData, 300000);
+// ----- XÓA 2 DÒNG NÀY ĐI -----
+// (Vì chúng ta đã chuyển nó vào trong hàm getUserLocation)
+// updateMapData();
+// setInterval(updateMapData, 300000);
