@@ -169,3 +169,50 @@ def standardize_traffic_score(duration, distance):
     test_6 = []
     score_6 = standardize_disaster_score(test_6)
     print(f"Điểm của {test_6}: {score_6}") # Mong đợi: 0.0
+
+def standardize_crowd_score(poi_count: int, current_hour: int, is_weekend: bool) -> float:
+    """
+    Chuyển đổi số lượng POI thành Crowd Score.
+    Input:
+        - poi_count (int): Số lượng địa điểm đông đúc xung quanh.
+        - current_hour (int): Giờ hiện tại (0-23).
+        - is_weekend (bool): Có phải cuối tuần không.
+    Output:
+        - float: Điểm từ 0.0 (Vắng) đến 1.0 (Chen chúc).
+    """
+    
+    # 1. BASE SCORE (Dựa trên mật độ địa điểm)
+    # Giả định: 50 địa điểm trong bán kính 500m là rất đông (Trung tâm Q1)
+    if poi_count == 0:
+        base_score = 0.0
+    elif poi_count < 5:
+        base_score = 0.2  # Thưa thớt
+    elif poi_count < 15:
+        base_score = 0.4  # Trung bình
+    elif poi_count < 30:
+        base_score = 0.6  # Đông
+    elif poi_count < 50:
+        base_score = 0.8  # Rất đông
+    else:
+        base_score = 1.0  # Cực đông
+        
+    # 2. TIME FACTOR (Điều chỉnh theo thời gian)
+    multiplier = 1.0
+    
+    # Giờ cao điểm ăn uống/du lịch (11h-13h và 17h-21h)
+    if (11 <= current_hour <= 13) or (17 <= current_hour <= 21):
+        multiplier += 0.2
+    elif (0 <= current_hour <= 5): # Đêm khuya
+        multiplier -= 0.3
+        
+    # Cuối tuần thường đông hơn
+    if is_weekend:
+        multiplier += 0.1
+        
+    # Tính điểm cuối
+    final_score = base_score * multiplier
+    
+    # Clamping (Kẹp giá trị trong khoảng 0.0 - 1.0)
+    final_score = max(0.0, min(final_score, 1.0))
+    
+    return round(final_score, 2)

@@ -1,4 +1,5 @@
 import requests
+import time
 
 def get_center_coordinates(address: str):
     """
@@ -19,7 +20,7 @@ def get_center_coordinates(address: str):
         data = response.json()
 
         if not data:
-            print("❌ Không tìm thấy địa điểm:", address)
+            print("Không tìm thấy địa điểm:", address)
             return None
 
         lat = float(data[0]["lat"])
@@ -27,5 +28,5 @@ def get_center_coordinates(address: str):
         return (lat, lon)
 
     except requests.RequestException as e:
-        print("⚠️ Lỗi khi gọi Nominatim API:", e)
+        print("Lỗi khi gọi Nominatim API:", e)
         return None
