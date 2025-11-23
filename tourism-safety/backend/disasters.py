@@ -1,69 +1,56 @@
 import requests
 import json
-from math import radians, sin, cos, sqrt, atan2
+import os
+from utils import haversine # Import hàm chung
 
-def haversine(lat1, lon1, lat2, lon2):
-    R = 6371  # Bán kính Trái Đất (km)
-    dLat = radians(lat2 - lat1)
-    dLon = radians(lon2 - lon1)
-    lat1 = radians(lat1)
-    lat2 = radians(lat2)
-    a = sin(dLat / 2)**2 + cos(lat1) * cos(lat2) * sin(dLon / 2)**2
-    c = 2 * atan2(sqrt(a), sqrt(1 - a))
-    return R * c
+DEMO_MODE = True # <--- CÔNG TẮC DEMO
 
-def get_natural_disasters(user_lat, user_lon, max_distance_km=2000): # <-- Giảm bán kính
-    """
-    [PHIÊN BẢN ĐÃ CHUẨN HÓA]
-    Trả về một MẢNG ĐƠN GIẢN các sự kiện, sẵn sàng cho frontend.
-    Trả về [] (mảng rỗng) nếu có lỗi hoặc không tìm thấy.
-    """
-    api_url = "https://eonet.gsfc.nasa.gov/api/v3/events?status=open"
-    
-    try:
-        response = requests.get(api_url, timeout=10) # Thêm timeout
-        response.raise_for_status()
-        data = response.json()
+def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
+    # 1. Chọn nguồn dữ liệu
+    raw_events = []
+    if DEMO_MODE:
+        try:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            file_path = os.path.join(script_dir, 'mock_disasters.json')
+            with open(file_path, 'r', encoding='utf-8') as f:
+                raw_events = json.load(f)
+        except Exception as e:
+            print(f"Lỗi đọc Mock: {e}")
+            return []
+    else:
+        # API NASA thật
+        bbox = "102.14,8.18,109.46,23.39"
+        url = f"https://eonet.gsfc.nasa.gov/api/v3/events?status=open&bbox={bbox}"
+        try:
+            resp = requests.get(url, timeout=10)
+            if resp.status_code == 200: raw_events = resp.json().get("events", [])
+        except: return []
+
+    # 2. Xử lý & Lọc
+    formatted_list = []
+    for event in raw_events:
+        geo = event.get("geometry", [])
+        if not geo: continue
         
-        # Mảng này sẽ được trả về trực tiếp
-        formatted_list = [] 
+        latest = geo[-1]
+        coords = latest.get("coordinates")
+        etype = latest.get("type")
         
-        for event in data.get("events", []):
-            geometry = event.get("geometry", [])
-            if not geometry:
-                continue
-                
-            event_coords = geometry[-1].get("coordinates")
-            event_type = geometry[-1].get("type")
-            
-            if event_type == "Point":
-                event_lon, event_lat = event_coords
-                distance = haversine(user_lat, user_lon, event_lat, event_lon)
-                
-                if distance <= max_distance_km:
-                    
-                    # Tạo object đúng chuẩn frontend
-                    event_info = {
-                        'lat': event_lat,
-                        'lng': event_lon, # <-- Đổi 'longitude' thành 'lng'
-                        'name': event.get("title", "Sự kiện không tên"), # 'name'
-                        'description': ", ".join([cat.get("title") for cat in event.get("categories", [])]), # 'description'
-                        'details': f"Cách bạn {round(distance, 2)} km" # 'details'
-                    }
-                    formatted_list.append(event_info)
-                    
-        # Trả về mảng đã dọn dẹp
-        return formatted_list
+        e_lat, e_lon = None, None
+        if etype == "Point":
+            e_lon, e_lat = coords
+        elif etype == "Polygon":
+            if coords and coords[0] and coords[0][0]:
+                e_lon, e_lat = coords[0][0]
 
-    except requests.exceptions.RequestException as e:
-        print(f"Lỗi khi gọi API NASA EONET: {e}")
-        # Trả về mảng rỗng nếu có lỗi
-        return []
-
-# ----- TEST THỬ VỚI TỌA ĐỘ VŨNG TÀU -----
-if __name__ == "__main__":
-    print("--- Đang kiểm tra tại Vũng Tàu (10.34, 107.08) ---")
-    # Hàm này giờ trả về mảng đơn giản
-    disaster_list = get_natural_disasters(user_lat=10.34, user_lon=107.08)
-    print(f"Tìm thấy {len(disaster_list)} sự kiện.")
-    print(json.dumps(disaster_list, indent=2))
+        if e_lat and e_lon:
+            dist = haversine(user_lat, user_lon, e_lat, e_lon)
+            if dist <= max_distance_km:
+                cats = event.get("categories", [])
+                formatted_list.append({
+                    'lat': e_lat, 'lng': e_lon,
+                    'name': event.get("title"),
+                    'type': etype,
+                    'categories_raw': [c.get("id") for c in cats] # Dữ liệu cho Backend
+                })
+    return formatted_list
