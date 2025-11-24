@@ -1,4 +1,6 @@
 # file: weather.py
+import json
+import os
 import requests
 
 def get_current_weather(lat, lon):
@@ -89,8 +91,21 @@ def wmo_code_to_string(code):
     # Mặc định an toàn
     return "Clear"
 
-# --- TEST NHANH (Chạy trực tiếp file này để test) ---
-if __name__ == "__main__":
-    # Test tọa độ Chợ Bến Thành
-    w, s = get_current_weather(10.7721, 106.6983)
-    print(f"Thời tiết HCM: {w}, Gió: {s} m/s")
+
+
+def get_mock_weather_zones():
+    """
+    Đọc dữ liệu các vùng thời tiết giả lập từ file JSON.
+    Trả về: List các dict chứa thông tin vùng mưa/bão.
+    """
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(script_dir, 'mock_weather.json')
+        
+        with open(file_path, 'r', encoding='utf-8') as f:
+            zones = json.load(f)
+            print(f"✅ Đã load {len(zones)} vùng thời tiết giả lập (Mock).")
+            return zones
+    except Exception as e:
+        print(f"❌ Lỗi đọc mock_weather.json: {e}")
+        return []

@@ -1,4 +1,6 @@
 import math
+import os
+import json
 from utils import haversine
 from utils import get_min_distance_to_segment
 
@@ -151,11 +153,86 @@ def get_weather_base_score(weather_main: str, wind_speed: float) -> float:
     # Kẹp điểm trong khoảng [0.0, 1.0]
     return min(score, 1.0)
 
+# file: standardization.py (Thêm đoạn này vào cuối file)
+
+# ... (Các hàm cũ giữ nguyên) ...
+
+# --- WEATHER GEOMETRY LOGIC (GIỐNG DISASTER) ---
+def calculate_weather_impact_geometry(edge_data, u_node, v_node, weather_zones):
+    """
+    Input: 
+        - edge_data: Dữ liệu cạnh (để lấy geometry đường cong)
+        - u_node, v_node: Tọa độ 2 đầu
+        - weather_zones: Danh sách vùng mưa (từ mock_weather.json)
+    Output: 
+        - float: Điểm rủi ro thời tiết (0.0 - 1.0) cho cạnh này.
+    """
+    from utils import get_min_distance_to_segment
+    
+    max_impact = 0.0
+    
+    # 1. Lấy các điểm tạo nên con đường (Xử lý đường cong)
+    points = []
+    if 'geometry' in edge_data:
+        points = list(edge_data['geometry'].coords) 
+        # Lưu ý: geometry thường là (Lon, Lat). Cần check lại thư viện OSMnx đang dùng.
+        # Thông thường OSMnx trả về (x=Lon, y=Lat).
+    else:
+        points = [(u_node['x'], u_node['y']), (v_node['x'], v_node['y'])]
+
+    # 2. Duyệt qua từng vùng thời tiết
+    for zone in weather_zones:
+        zone_lat = zone['lat']
+        zone_lng = zone['lng']
+        zone_radius = zone.get('radius', 5.0)
+        
+        # Lấy thông tin thời tiết của vùng này để tính điểm
+        # (Gọi lại hàm tính điểm cơ bản đã có)
+        base_score = get_weather_base_score(zone['condition'], zone['wind_speed'])
+        
+        if base_score == 0: continue # Vùng nắng đẹp thì bỏ qua, không cần check cắt
+        
+        # 3. Check khoảng cách (Cắt ngang)
+        min_dist = float('inf')
+        
+        for i in range(len(points) - 1):
+            # Điểm trong geometry là (Lon, Lat) -> Cần đảo lại thành (Lat, Lon) cho hàm utils
+            p1_lon, p1_lat = points[i]
+            p2_lon, p2_lat = points[i+1]
+            
+            dist = get_min_distance_to_segment(zone_lat, zone_lng, 
+                                             p1_lat, p1_lon, 
+                                             p2_lat, p2_lon)
+            if dist < min_dist:
+                min_dist = dist
+        
+        # 4. Nếu cắt vùng mưa -> Gán điểm
+        if min_dist <= zone_radius:
+            if base_score > max_impact:
+                max_impact = base_score
+                
+    return max_impact
 # file: standardization.py
 
-# ... (Phần load JSON giữ nguyên) ...
+CROWD_ZONES = []
+
+try:
+    # Lấy đường dẫn thư mục chứa file code hiện tại
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(script_dir, 'crowd_zones.json')
+    
+    # Mở và đọc file
+    with open(file_path, 'r', encoding='utf-8') as f:
+        CROWD_ZONES = json.load(f)
+    print(f"✅ Đã nạp thành công {len(CROWD_ZONES)} địa điểm nóng từ crowd_zones.json")
+
+except Exception as e:
+    print(f"⚠️ Cảnh báo: Không đọc được crowd_zones.json. Lỗi: {e}")
+    # Nếu lỗi thì dùng danh sách rỗng để code không bị crash
+    CROWD_ZONES = []
 
 def calculate_crowd_score(lat, lon, current_hour):
+    
     """
     Tính điểm đám đông dựa trên:
     1. Khoảng cách tới điểm nóng.
@@ -217,3 +294,29 @@ def calculate_crowd_score(lat, lon, current_hour):
     final_score = time_factor * hotspot_weight
     
     return round(final_score, 2)
+
+# file: standardization.py (Thêm vào cuối file)
+
+# ... (Các hàm crowd, disaster, weather cũ giữ nguyên) ...
+
+def calculate_traffic_score(current_hour: float, is_weekend: bool) -> float:
+    """
+    Tính điểm kẹt xe dựa trên khung giờ.
+    Output: 0.1 (Vắng) -> 1.0 (Kẹt cứng).
+    Dùng để giảm tốc độ di chuyển khi tính ETA.
+    """
+    score = 0.1 # Mặc định đêm khuya
+
+    if not is_weekend: # --- NGÀY THƯỜNG ---
+        if 6.5 <= current_hour < 9.0: score = 0.8    # Cao điểm sáng (Kẹt)
+        elif 9.0 <= current_hour < 11.0: score = 0.4 # Làm việc
+        elif 11.0 <= current_hour < 13.5: score = 0.5 # Nghỉ trưa
+        elif 13.5 <= current_hour < 16.0: score = 0.4 # Chiều
+        elif 16.0 <= current_hour < 19.5: score = 1.0 # Tan tầm (Kẹt cứng)
+        elif 19.5 <= current_hour < 22.0: score = 0.6 # Đi chơi tối
+    else: 
+        # --- CUỐI TUẦN ---
+        if 9.0 <= current_hour < 12.0: score = 0.5   # Sáng T7/CN
+        elif 16.0 <= current_hour < 21.0: score = 0.7 # Tối cuối tuần
+        
+    return score

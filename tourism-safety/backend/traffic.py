@@ -2,33 +2,33 @@
 import osmnx as ox
 import os
 
-# Tên file để lưu cache (đỡ phải tải lại mỗi lần chạy)
-MAP_FILENAME = "vietnam_d1_map.graphml"
+# Đổi tên file cache để không bị nhầm với file Quận 1 cũ
+MAP_FILENAME = "hcm_city_map.graphml"
 
-def load_graph_data(place_name="District 1, Ho Chi Minh City, Vietnam"):
+def load_graph_data(place_name="Ho Chi Minh City, Vietnam"):
     """
-    Hàm này chỉ làm 1 việc: Trả về đồ thị G (Graph).
-    - Nếu có file .graphml rồi -> Load lên (mất 0.5 giây).
-    - Nếu chưa có -> Tải từ OSM về (mất 10-20 giây) rồi lưu lại.
+    Hàm này tải và trả về đồ thị G (Graph) cho toàn bộ TP.HCM.
     """
     
-    # Kiểm tra xem file đã tồn tại chưa
+    # 1. Kiểm tra xem file cache đã có chưa
     if os.path.exists(MAP_FILENAME):
-        print(f"📂 Đang tải bản đồ từ file {MAP_FILENAME} (Offline)...")
-        # Load graph từ file
+        print(f"📂 [CACHE] Đang tải bản đồ TP.HCM từ file '{MAP_FILENAME}'...")
+        # Load graph từ file (nhanh hơn tải mới)
         G = ox.load_graphml(MAP_FILENAME)
     else:
-        print(f"🌍 Đang tải bản đồ '{place_name}' từ Internet (lần đầu)...")
-        # Tải graph dành cho xe lái (drive)
-        G = ox.graph_from_place(place_name, network_type='drive')
+        print(f"🌍 [DOWNLOAD] Đang tải bản đồ '{place_name}' từ OSM (Sẽ hơi lâu)...")
+        print("   -> Vui lòng chờ 1-2 phút...")
         
-        # Lưu lại để lần sau dùng
-        print("💾 Đang lưu bản đồ xuống đĩa cứng...")
+        # Tải graph dành cho xe lái (drive)
+        # simplify=True giúp giảm bớt các node thừa để nhẹ hơn
+        G = ox.graph_from_place(place_name, network_type='drive', simplify=True)
+        
+        # Lưu lại xuống đĩa cứng để lần sau dùng ngay
+        print("💾 [SAVE] Đang lưu bản đồ xuống đĩa cứng...")
         ox.save_graphml(G, filepath=MAP_FILENAME)
         
-    print(f"✅ Đã nạp xong bản đồ: {len(G.nodes)} nút, {len(G.edges)} cạnh.")
+    print(f"✅ Đã nạp xong bản đồ TP.HCM: {len(G.nodes)} nút, {len(G.edges)} cạnh.")
     return G
 
-# Biến toàn cục để các file khác import vào dùng ngay
-# Khi start server, dòng này sẽ chạy 1 lần duy nhất
+# Biến toàn cục chứa bản đồ (Load ngay khi import file này)
 SYSTEM_GRAPH = load_graph_data()

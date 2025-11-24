@@ -1,99 +1,152 @@
-# file: core_logic.py
 import networkx as nx
 import osmnx as ox
-from traffic import SYSTEM_GRAPH as G  # Lấy bản đồ sạch về
-from utils import haversine
+from datetime import datetime
 
-# --- HÀM 1: ÁP TRỌNG SỐ (WEIGHTING) ---
-def apply_risk_weights(graph, disaster_zones=[], crowd_zones=[]):
+# Import các module vệ tinh
+from traffic import SYSTEM_GRAPH as G
+from weather import get_mock_weather_zones
+from disasters import get_natural_disasters
+import standardization 
+
+# Tốc độ trung bình giả định (km/h) trong thành phố
+BASE_SPEED_KMH = 30.0 
+
+def get_optimal_routes(start_coords, end_coords, preference="balanced"):
     """
-    Duyệt qua từng con đường (cạnh) trên bản đồ và tính lại 'độ khó đi'.
-    Input: Đồ thị gốc, Danh sách vùng rủi ro.
-    Output: Đồ thị đã được gán trọng số (Fast, Safe, Balanced).
+    Hàm tìm đường thông minh Safety Tourism.
     """
-    print("⚡ Đang tính toán trọng số rủi ro cho toàn bộ bản đồ...")
+    print(f"🚀 Bắt đầu tìm đường: {preference}...")
     
-    # Duyệt qua tất cả các cạnh (u, v) trong đồ thị
-    # u, v là ID của 2 giao lộ. data chứa thông tin độ dài, tên đường...
-    for u, v, data in graph.edges(data=True):
-        
-        # 1. Lấy độ dài gốc (mét)
-        length = data.get('length', 10) # Mặc định 10m nếu lỗi
-        
-        # 2. Kiểm tra xem đoạn đường này có nằm trong vùng rủi ro không
-        # (Để tối ưu, ta lấy tọa độ điểm đầu u để check)
-        node_u = graph.nodes[u]
-        lat = node_u['y']
-        lon = node_u['x']
-        
-        is_risky = check_if_point_in_risk_zone(lat, lon, disaster_zones)
-        
-        # 3. Tạo 3 loại trọng số (Weight)
-        
-        # A. FASTEST: Chỉ quan tâm độ dài (Kệ rủi ro)
-        data['weight_fast'] = length
-        
-        # B. SAFEST: Sợ rủi ro (Nếu rủi ro -> Đường dài gấp 50 lần)
-        if is_risky:
-            data['weight_safe'] = length * 50 
-        else:
-            data['weight_safe'] = length
-            
-        # C. BALANCED: Cân bằng (Nếu rủi ro -> Đường dài gấp 3 lần)
-        if is_risky:
-            data['weight_balanced'] = length * 3
-        else:
-            data['weight_balanced'] = length
-            
-    return graph # Trả về đồ thị đã "khôn" hơn
+    # ==========================================
+    # 1. GATHER DATA (Thu thập dữ liệu)
+    # ==========================================
+    now = datetime.now()
+    curr_hour = now.hour + (now.minute / 60)
+    is_weekend = now.weekday() >= 5
+    
+    # Lấy dữ liệu vùng rủi ro (Hình học)
+    disaster_zones = get_natural_disasters(start_coords[0], start_coords[1])
+    weather_zones = get_mock_weather_zones() # Mock Weather Zones
+    
+    # Lấy điểm kẹt xe chung (Dùng cho ETA)
+    traffic_score = standardization.calculate_traffic_score(curr_hour, is_weekend)
+    
+    print(f"   - Giờ: {curr_hour:.1f} | Traffic Score: {traffic_score}")
+    print(f"   - Disaster Zones: {len(disaster_zones)} | Weather Zones: {len(weather_zones)}")
 
-def check_if_point_in_risk_zone(lat, lon, disaster_list):
-    """Hàm phụ: Check xem tọa độ có gần thiên tai nào không"""
-    # Logic đơn giản: Quét danh sách thiên tai
-    for d in disaster_list:
-        # Giả sử d có toạ độ d['lat'], d['lng']
-        # Nếu khoảng cách < 500m thì coi như dính
-        if haversine(lat, lon, d['lat'], d['lng']) < 0.5:
-            return True
-    return False
+    # ==========================================
+    # 2. DUYỆT CẠNH & TÍNH TOÁN (LOOP)
+    # ==========================================
+    
+    # Cấu hình hệ số ưu tiên (Weights) cho thuật toán Dijkstra
+    w_disaster = 1000.0 # Cực sợ chết -> Né tuyệt đối
+    w_weather = 50.0    # Sợ ướt -> Né mạnh
+    w_crowd = 5.0       # Sợ đông -> Né vừa vừa
+    
+    if preference == "fastest":
+        # Nếu cần nhanh, giảm sợ hãi xuống để chấp nhận đi đường ngắn
+        w_weather = 10.0
+        w_crowd = 0.0
+    
+    for u, v, data in G.edges(data=True):
+        length_m = data.get('length', 10)
+        
+        # Lấy thông tin Node đầu/cuối
+        node_u = G.nodes[u]
+        node_v = G.nodes[v]
+        
+        # --- A. TÍNH SAFETY SCORE (Disaster + Weather) ---
+        # Gọi hàm check cắt ngang vùng hình học
+        s_disaster = standardization.calculate_disaster_impact_advanced(
+            data, node_u, node_v, disaster_zones
+        )
+        s_weather = standardization.calculate_weather_impact_geometry(
+            data, node_u, node_v, weather_zones
+        )
+        
+        # --- B. TÍNH CROWD SCORE ---
+        # Lấy trung điểm cạnh để check điểm nóng
+        mid_lat = (node_u['y'] + node_v['y']) / 2
+        mid_lon = (node_u['x'] + node_v['x']) / 2
+        s_crowd = standardization.calculate_crowd_score(mid_lat, mid_lon, curr_hour)
+        
+        # --- C. TÍNH TRỌNG SỐ DIJKSTRA (Routing Weight) ---
+        # Mục tiêu: Tìm đường đi.
+        # Công thức: Length * (1 + Phạt)
+        
+        penalty = (w_disaster * s_disaster) + \
+                  (w_weather * s_weather) + \
+                  (w_crowd * s_crowd)
+                  
+        dijkstra_weight = length_m * (1 + penalty)
+        
+        # Gán vào cạnh để thuật toán dùng
+        data['final_weight'] = dijkstra_weight
+        
+        # --- D. TÍNH ETA (Estimated Time) ---
+        # Mục tiêu: Hiển thị cho user biết đi mất bao lâu.
+        # Logic: Tốc độ giảm đi nếu Traffic cao hoặc Weather xấu
+        
+        # 1. Giảm tốc do kẹt xe (Traffic Score 1.0 -> Tốc độ giảm 60%)
+        speed_factor_traffic = 1.0 - (traffic_score * 0.6) 
+        
+        # 2. Giảm tốc do mưa (Weather Score 1.0 -> Tốc độ giảm thêm 20%)
+        # (Lưu ý: s_weather ở đây là điểm cắt ngang vùng mưa)
+        speed_factor_weather = 1.0 - (s_weather * 0.2)
+        
+        # Tốc độ thực tế (m/s)
+        real_speed_kmh = BASE_SPEED_KMH * speed_factor_traffic * speed_factor_weather
+        real_speed_ms = max(real_speed_kmh / 3.6, 1.0) # Tối thiểu 1m/s
+        
+        eta_seconds = length_m / real_speed_ms
+        data['eta_seconds'] = eta_seconds
 
-# --- HÀM 2: CHẠY DIJKSTRA (ROUTING) ---
-def find_optimal_route(start_coords, end_coords, mode='fastest'):
-    """
-    Chạy thuật toán Dijkstra trên đồ thị đã gán trọng số.
-    mode: 'fastest', 'safest', 'balanced'
-    """
-    # 1. Tìm nút (Node) trên bản đồ gần nhất với tọa độ người dùng nhập
-    # (Vì người dùng nhập tọa độ bất kỳ, ta phải map nó vào ngã tư gần nhất)
-    orig_node = ox.distance.nearest_nodes(G, start_coords[1], start_coords[0]) # Lưu ý: (X=Lon, Y=Lat)
+    # ==========================================
+    # 3. CHẠY THUẬT TOÁN (ROUTING)
+    # ==========================================
+    orig_node = ox.distance.nearest_nodes(G, start_coords[1], start_coords[0])
     dest_node = ox.distance.nearest_nodes(G, end_coords[1], end_coords[0])
     
-    # 2. Chọn loại trọng số dựa trên mode
-    weight_key = 'weight_fast'
-    if mode == 'safest': weight_key = 'weight_safe'
-    if mode == 'balanced': weight_key = 'weight_balanced'
-    
     try:
-        # 3. CHẠY DIJKSTRA (Dòng quan trọng nhất)
-        route_nodes = nx.shortest_path(G, orig_node, dest_node, weight=weight_key)
+        # Tìm đường ngắn nhất theo trọng số đã tính
+        route_nodes = nx.shortest_path(G, orig_node, dest_node, weight='final_weight')
         
-        # 4. Chuyển đổi list ID nút thành toạ độ để vẽ lên bản đồ
-        route_geometry = []
+        # Tính tổng kết quả trả về
         total_dist = 0
+        total_eta = 0
+        route_coords = []
         
-        for node_id in route_nodes:
-            node = G.nodes[node_id]
-            route_geometry.append([node['y'], node['x']]) # [Lat, Lon] cho Google Maps
+        for i in range(len(route_nodes) - 1):
+            u = route_nodes[i]
+            v = route_nodes[i+1]
+            # Lấy dữ liệu cạnh đã tính toán
+            edge_data = G.get_edge_data(u, v)[0]
             
-        # Tính tổng độ dài (ước lượng)
-        dist = nx.path_weight(G, route_nodes, weight='length')
+            total_dist += edge_data.get('length', 0)
+            total_eta += edge_data.get('eta_seconds', 0)
+            
+            # Lấy tọa độ điểm u để vẽ
+            route_coords.append([G.nodes[u]['y'], G.nodes[u]['x']])
+            
+        # Thêm điểm cuối cùng
+        last_node = route_nodes[-1]
+        route_coords.append([G.nodes[last_node]['y'], G.nodes[last_node]['x']])
         
         return {
-            "status": "OK",
-            "mode": mode,
-            "distance_m": dist,
-            "geometry": route_geometry
+            "status": "success",
+            "preference": preference,
+            "distance_km": round(total_dist / 1000, 2),
+            "duration_min": round(total_eta / 60, 0),
+            "geometry": route_coords,
+            "risk_info": {
+                "traffic_level": "High" if traffic_score > 0.7 else "Normal",
+                "weather_warning": len(weather_zones) > 0,
+                "disaster_warning": len(disaster_zones) > 0
+            }
         }
         
     except nx.NetworkXNoPath:
-        return {"status": "No Path Found"}
+        return {"status": "error", "message": "Không tìm thấy đường đi an toàn."}
+    except Exception as e:
+        print(f"Lỗi Core Logic: {e}")
+        return {"status": "error", "message": str(e)}

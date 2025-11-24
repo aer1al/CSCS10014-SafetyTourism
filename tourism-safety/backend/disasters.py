@@ -47,10 +47,17 @@ def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
             dist = haversine(user_lat, user_lon, e_lat, e_lon)
             if dist <= max_distance_km:
                 cats = event.get("categories", [])
+                
+                # [FIX] Thêm dòng này: Lấy radius từ Mock, nếu không có (API thật) thì gán 10km
+                # Nếu là Polygon của NASA, có thể gán mặc định to hơn (ví dụ 20km)
+                default_radius = 20.0 if etype == 'Polygon' else 10.0
+                event_radius = event.get("radius", default_radius)
+
                 formatted_list.append({
                     'lat': e_lat, 'lng': e_lon,
                     'name': event.get("title"),
                     'type': etype,
-                    'categories_raw': [c.get("id") for c in cats] # Dữ liệu cho Backend
+                    'radius': event_radius,  # <--- QUAN TRỌNG: Thêm cái này vào output
+                    'categories_raw': [c.get("id") for c in cats] 
                 })
     return formatted_list
