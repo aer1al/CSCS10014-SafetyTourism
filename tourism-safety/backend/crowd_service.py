@@ -1,70 +1,73 @@
+# file: fetch_crowd_data.py
 import requests
 import json
 
-def get_crowd_density(lat: float, lon: float, radius_meters: int = 500) -> int:
-    """
-    Fetches the number of 'high-traffic' POIs around a coordinate using Overpass API.
-    Used to estimate crowd density based on venue concentration.
-
-    Target Amenities:
-    - Food & Drink: restaurant, cafe, pub, bar, fast_food, marketplace
-    - Tourism: attraction, museum, view_point, theme_park, zoo
-    - Transport: bus_station, train_station
-
-    Args:
-        lat (float): Latitude
-        lon (float): Longitude
-        radius (int): Search radius in meters (default 500m)
-        
-    Returns:
-        int: Total count of relevant POIs (restaurants, attractions, markets, etc.)
-    """
+def fetch_hcm_hotspots():
+    print("⏳ Đang tải toàn bộ điểm nóng ở TP.HCM từ OpenStreetMap...")
+    
     overpass_url = "http://overpass-api.de/api/interpreter"
     
-    # regex query for multiple values to keep the query compact
-    amenity_regex = "restaurant|cafe|pub|bar|fast_food|marketplace|bus_station"
-    tourism_regex = "attraction|museum|viewpoint|theme_park|zoo"
+    # Bounding Box của TP.HCM (Nam, Tây, Bắc, Đông)
+    bbox = "10.37,106.33,11.16,107.02"
     
-    overpass_query = f"""
-    [out:json][timeout:5];
+    # Query: Lấy tất cả Mall, Market, Attraction, Pedestrian
+    # [out:json];
+    # (
+    #   node["amenity"="marketplace"](10.37,106.33,11.16,107.02);
+    #   way["amenity"="marketplace"](10.37,106.33,11.16,107.02);
+    #   node["tourism"="attraction"](10.37,106.33,11.16,107.02);
+    #   node["shop"="mall"](10.37,106.33,11.16,107.02);
+    # );
+    # out center;
+    
+    query = f"""
+    [out:json][timeout:25];
     (
-      node["amenity"~"{amenity_regex}"](around:{radius_meters},{lat},{lon});
-      way["amenity"~"{amenity_regex}"](around:{radius_meters},{lat},{lon});
-      node["tourism"~"{tourism_regex}"](around:{radius_meters},{lat},{lon});
-      way["tourism"~"{tourism_regex}"](around:{radius_meters},{lat},{lon});
+      node["amenity"="marketplace"]({bbox});
+      way["amenity"="marketplace"]({bbox});
+      node["highway"="pedestrian"]({bbox});
+      node["tourism"="attraction"]({bbox});
+      node["shop"="mall"]({bbox});
     );
-    out count;
+    out center;
     """
     
     try:
-        response = requests.get(overpass_url, params={'data': overpass_query}, timeout=8)
-        response.raise_for_status()
+        response = requests.get(overpass_url, params={'data': query})
         data = response.json()
         
-        # Overpass 'out count' returns a slightly different structure
-        # We look for the 'elements' array where tags contain the count info
-        # usually in the format: {"type": "count", "id": 0, "tags": {"nodes": "X", ...}}
+        hotspots = []
+        for el in data.get('elements', []):
+            # Lấy tọa độ (nếu là way thì lấy center)
+            lat = el.get('lat') or el.get('center', {}).get('lat')
+            lon = el.get('lon') or el.get('center', {}).get('lon')
+            
+            tags = el.get('tags', {})
+            name = tags.get('name', 'Unknown Spot')
+            
+            # Phân loại để tính giờ cao điểm
+            h_type = "tourism"
+            if tags.get('amenity') == 'marketplace': h_type = 'market'
+            elif tags.get('shop') == 'mall': h_type = 'mall'
+            elif tags.get('highway') == 'pedestrian': h_type = 'nightlife'
+            
+            if lat and lon:
+                hotspots.append({
+                    "name": name,
+                    "lat": lat,
+                    "lng": lon,
+                    "type": h_type,
+                    "radius": 0.3 # Mặc định bán kính ảnh hưởng 300m
+                })
+                
+        # Lưu vào file
+        with open('crowd_zones.json', 'w', encoding='utf-8') as f:
+            json.dump(hotspots, f, ensure_ascii=False, indent=2)
+            
+        print(f"✅ Đã lưu {len(hotspots)} điểm nóng vào 'crowd_zones.json'")
         
-        total_poi = 0
-        if 'elements' in data:
-            for el in data['elements']:
-                if 'tags' in el:
-                    # Sum up nodes, ways, and relations found
-                    total_poi += int(el['tags'].get('nodes', 0))
-                    total_poi += int(el['tags'].get('ways', 0))
-                    total_poi += int(el['tags'].get('relations', 0))
-                    
-        return total_poi
+    except Exception as e:
+        print(f"❌ Lỗi: {e}")
 
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching crowd data from Overpass: {e}")
-        return 0
-    except (KeyError, ValueError, json.JSONDecodeError) as e:
-        print(f"Error parsing crowd data: {e}")
-        return 0
-
-# Test
 if __name__ == "__main__":
-    # Test with a busy location (e.g., Ben Thanh Market area)
-    count = get_crowd_density(10.7725, 106.6980)
-    print(f"POIs found near Ben Thanh: {count}")
+    fetch_hcm_hotspots()
