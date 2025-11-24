@@ -1,53 +1,34 @@
-import requests
-import json
+# file: traffic.py
+import osmnx as ox
+import os
 
-# THAY KEY CỦA BẠN VÀO ĐÂY
-ORS_API_KEY = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6IjlhM2M0MjY3ZmU1MzRkYjlhZDIyZjBiMzBkOTYzYzMxIiwiaCI6Im11cm11cjY0In0=" 
+# Tên file để lưu cache (đỡ phải tải lại mỗi lần chạy)
+MAP_FILENAME = "vietnam_d1_map.graphml"
 
-def get_routes_from_mapbox(start_lat, start_lng, end_lat, end_lng):
+def load_graph_data(place_name="District 1, Ho Chi Minh City, Vietnam"):
     """
-    Gọi OpenRouteService lấy 3 tuyến đường phân biệt.
+    Hàm này chỉ làm 1 việc: Trả về đồ thị G (Graph).
+    - Nếu có file .graphml rồi -> Load lên (mất 0.5 giây).
+    - Nếu chưa có -> Tải từ OSM về (mất 10-20 giây) rồi lưu lại.
     """
-    url = "https://api.openrouteservice.org/v2/directions/driving-car/geojson"
     
-    headers = {
-        'Authorization': ORS_API_KEY,
-        'Content-Type': 'application/json; charset=utf-8'
-    }
-    
-    body = {
-        "coordinates": [
-            [start_lng, start_lat],
-            [end_lng, end_lat]
-        ],
-        "alternative_routes": {
-            "target_count": 3,      # Xin 3 đường
-            "weight_factor": 2.0,   # Chấp nhận đường chậm gấp 2 lần (để tìm QL cũ)
-            "share_factor": 0.6     # Ép các đường phải khác nhau ít nhất 40%
-        },
-        "preference": "recommended"
-    }
-    
-    try:
-        response = requests.post(url, json=body, headers=headers, timeout=15)
-        data = response.json()
-        features = data.get("features", [])
+    # Kiểm tra xem file đã tồn tại chưa
+    if os.path.exists(MAP_FILENAME):
+        print(f"📂 Đang tải bản đồ từ file {MAP_FILENAME} (Offline)...")
+        # Load graph từ file
+        G = ox.load_graphml(MAP_FILENAME)
+    else:
+        print(f"🌍 Đang tải bản đồ '{place_name}' từ Internet (lần đầu)...")
+        # Tải graph dành cho xe lái (drive)
+        G = ox.graph_from_place(place_name, network_type='drive')
         
-        cleaned_routes = []
-        for i, feature in enumerate(features):
-            props = feature["properties"]
-            summary = props.get("summary", {}).get("value", f"Tuyến đường #{i+1}")
+        # Lưu lại để lần sau dùng
+        print("💾 Đang lưu bản đồ xuống đĩa cứng...")
+        ox.save_graphml(G, filepath=MAP_FILENAME)
+        
+    print(f"✅ Đã nạp xong bản đồ: {len(G.nodes)} nút, {len(G.edges)} cạnh.")
+    return G
 
-            cleaned_routes.append({
-                "id": i,
-                "duration": props["summary"]["duration"],
-                "distance": props["summary"]["distance"],
-                "geometry": feature["geometry"]["coordinates"],
-                "summary": summary
-            })
-            
-        return cleaned_routes
-
-    except Exception as e:
-        print(f"Lỗi API ORS: {e}")
-        return []
+# Biến toàn cục để các file khác import vào dùng ngay
+# Khi start server, dòng này sẽ chạy 1 lần duy nhất
+SYSTEM_GRAPH = load_graph_data()
