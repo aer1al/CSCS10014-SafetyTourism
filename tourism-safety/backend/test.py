@@ -1,68 +1,54 @@
-import time
 from core_logic import get_optimal_routes
 
-# --- CẤU HÌNH ĐIỂM TEST (Xuyên qua tâm bão giả lập ở Q1) ---
-# Điểm đi: Đại học Luật TP.HCM (Quận 4) - Phía Nam vùng bão
-START_POINT = (10.761683, 106.709089) 
+# ==========================================
+# CẤU HÌNH TEST CASE 1
+# ==========================================
+# Kịch bản: Đi xuyên qua tâm bão giả lập (W_STORM_Q1) tại Quận 1.
+# Vùng bão mock data: lat 10.776, lng 106.700 (Gần Nhà Thờ Đức Bà)
 
-# Điểm đến: Hồ Con Rùa (Quận 3) - Phía Bắc vùng bão
-END_POINT = (10.782862, 106.695869)
+# Điểm đi: Bitexco Financial Tower (Q1)
+START_POINT = (10.7715, 106.7044) 
+
+# Điểm đến: Hồ Con Rùa (Q3 - Gần Q1)
+END_POINT = (10.7826, 106.6959)   
 
 def run_test():
-    print("=======================================================")
-    print("🚦 BẮT ĐẦU TEST HỆ THỐNG SAFETY TOURISM (MOCK DATA)")
-    print("=======================================================")
-    print(f"📍 Điểm đi: {START_POINT}")
-    print(f"📍 Điểm đến: {END_POINT}")
-    print("⚠️  Kịch bản: Lộ trình đi xuyên qua vùng 'Mưa Giông Q1' (Mock Weather)")
-    print("-------------------------------------------------------\n")
+    print("\n" + "="*60)
+    print("🧪 TEST CASE 1: KIỂM TRA ĐI QUA VÙNG BÃO (QUẬN 1)")
+    print("="*60)
+    print(f"📍 Điểm đi (Start): {START_POINT}")
+    print(f"🏁 Điểm đến (End)  : {END_POINT}")
+    print("-" * 60)
 
-    # --- TEST 1: CHẾ ĐỘ NHANH NHẤT (FASTEST) ---
-    # Kỳ vọng: Đi đường ngắn nhất, chấp nhận lao vào bão/ngập.
-    t0 = time.time()
-    result_fast = get_optimal_routes(START_POINT, END_POINT, preference="fastest")
-    t1 = time.time()
-    
-    if result_fast and result_fast['status'] == 'success':
-        print(f"✅ [FASTEST MODE] Tìm thấy đường sau {t1-t0:.2f}s")
-        print(f"   - Quãng đường: {result_fast['distance_km']} km")
-        print(f"   - Thời gian (ETA): {result_fast['duration_min']} phút")
-        print(f"   - Cảnh báo: {result_fast['risk_info']}")
-    else:
-        print("❌ [FASTEST] Lỗi tìm đường!")
+    try:
+        # Gọi hàm Core Logic
+        result = get_optimal_routes(START_POINT, END_POINT)
 
-    print("\n-------------------------------------------------------")
-
-    # --- TEST 2: CHẾ ĐỘ AN TOÀN NHẤT (SAFEST) ---
-    # Kỳ vọng: Né vùng bão Q1, đường sẽ dài hơn nhưng an toàn hơn.
-    t0 = time.time()
-    result_safe = get_optimal_routes(START_POINT, END_POINT, preference="safest")
-    t1 = time.time()
-
-    if result_safe and result_safe['status'] == 'success':
-        print(f"✅ [SAFEST MODE] Tìm thấy đường sau {t1-t0:.2f}s")
-        print(f"   - Quãng đường: {result_safe['distance_km']} km")
-        print(f"   - Thời gian (ETA): {result_safe['duration_min']} phút")
-        print(f"   - Cảnh báo: {result_safe['risk_info']}")
-    else:
-        print("❌ [SAFEST] Lỗi tìm đường!")
-
-    # --- SO SÁNH KẾT QUẢ ---
-    print("\n=======================================================")
-    print("📊 KẾT QUẢ SO SÁNH:")
-    if result_fast and result_safe:
-        diff_dist = result_safe['distance_km'] - result_fast['distance_km']
-        diff_time = result_safe['duration_min'] - result_fast['duration_min']
-        
-        if diff_dist > 0:
-            print(f"👉 Đường AN TOÀN dài hơn đường NHANH: +{diff_dist:.2f} km")
-            print(f"👉 Lý do: Thuật toán đã đi vòng để né vùng Mock Weather/Disaster!")
-        elif diff_dist == 0:
-            print(f"👉 Hai đường giống nhau. (Có thể vùng Mock chưa chặn hết lối đi hoặc Rủi ro chưa đủ lớn)")
-        else:
-            print("👉 Kì lạ: Đường an toàn lại ngắn hơn?")
+        # In kết quả
+        if result['status'] == 'success':
+            print(f"✅ TÌM ĐƯỜNG THÀNH CÔNG!")
+            print(f"   -----------------------")
+            print(f"   📏 Quãng đường      : {result['distance_km']} km")
+            print(f"   ⏱️ Thời gian dự kiến: {result['duration_min']} phút")
+            print(f"   ⚠️ Thông tin rủi ro : {result['risk_info']}")
             
-    print("=======================================================")
+            # Phân tích nhanh kết quả
+            risks = result['risk_info']
+            if risks['weather_warning'] or risks['disaster_warning']:
+                print(f"\n   => 💡 KẾT LUẬN: Thuật toán ĐÃ NHẬN DIỆN được nguy hiểm trên đường đi.")
+                if risks['weather_warning']: print("      - Có cảnh báo Mưa/Bão (Weather) 🌧️")
+                if risks['disaster_warning']: print("      - Có cảnh báo Thiên tai (Disaster) 🌋")
+            else:
+                print(f"\n   => 💡 KẾT LUẬN: Đường đi sạch, hoặc đã né thành công vùng nguy hiểm.")
+                
+            print(f"   - Số lượng điểm toạ độ trả về: {len(result['geometry'])}")
+        else:
+            print(f"❌ TÌM ĐƯỜNG THẤT BẠI: {result['message']}")
+
+    except Exception as e:
+        print(f"🔥 LỖI KHI CHẠY TEST: {e}")
+    
+    print("="*60 + "\n")
 
 if __name__ == "__main__":
     run_test()

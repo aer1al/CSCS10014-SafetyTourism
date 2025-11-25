@@ -1,3 +1,5 @@
+--- Web Framework & Auth (Của bạn cũ) ---
+
 flask==3.0.0
 flask-cors==4.0.0
 requests==2.31.0
@@ -6,3 +8,14 @@ flask-sqlalchemy==3.1.1
 flask-login==0.6.3
 geopy==2.4.1
 python-jose==3.3.0
+
+--- Map & Routing Engine (Mới thêm) ---
+
+osmnx>=1.9.0
+networkx>=3.1
+scikit-learn      # Bắt buộc để dùng hàm nearest_nodes của osmnx
+pandas
+geopandas
+shapely>=2.0
+tqdm              # Thanh tiến trình (Progress bar)
+numpy
