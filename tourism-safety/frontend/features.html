@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="css/features.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.8.0/dist/geosearch.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header (Giữ nguyên) -->
     <header>
         <nav class="navbar">
             <div class="logo">Safety Tourism</div>
@@ -31,10 +33,19 @@
 
     <!-- Map Section -->
     <div class="map-container">
-        <!-- Sidebar -->
+        
+        <!-- SIDEBAR (CẬP NHẬT THÊM MỤC ROUTES) -->
         <div class="sidebar">
             <h2>Filters</h2>
             <div class="filter-group">
+                <!-- [MỚI] Checkbox bật tắt Tuyến đường mẫu -->
+                <label class="filter-item">
+                    <!-- data-layer="routes" phải khớp với tên layer trong map.js -->
+                    <input type="checkbox" data-layer="routes" checked>
+                    <i class="fas fa-route" style="color: blue;"></i>
+                    Safe Routes
+                </label>
+
                 <label class="filter-item">
                     <input type="checkbox" data-layer="disasters" checked>
                     <i class="fas fa-exclamation-triangle"></i>
@@ -64,6 +75,12 @@
 
             <div class="legend">
                 <h3>Legend</h3>
+                <!-- [MỚI] Chú thích cho đường đi -->
+                <div class="legend-item">
+                    <span class="legend-icon route" style="background-color: blue; height: 4px; border-radius: 0;"></span>
+                    Safe Routes (Blue)
+                </div>
+                
                 <div class="legend-item">
                     <span class="legend-icon disaster"></span>
                     Disaster Area
@@ -87,23 +104,21 @@
             </div>
         </div>
 
-        <!-- Map -->
+        <!-- Map Content -->
         <div class="map-content">
             <div id="map"></div>
             <div class="map-buttons">
                 <button id="callRescue" class="action-button">
-                    <i class="fas fa-phone"></i>
-                    Call Rescue
+                    <i class="fas fa-phone"></i> Call Rescue
                 </button>
                 <button id="sendGPS" class="action-button">
-                    <i class="fas fa-location-arrow"></i>
-                    Send GPS
+                    <i class="fas fa-location-arrow"></i> Send GPS
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer (Giữ nguyên) -->
     <footer>
         <div class="footer-content">
             <div class="social-links">
@@ -116,6 +131,8 @@
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-geosearch@3.8.0/dist/geosearch.umd.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <script src="js/map.js"></script>
     <script src="js/main.js"></script>
 </body>
