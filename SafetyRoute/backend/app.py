@@ -4,21 +4,26 @@ import json
 import os
 import sys
 
-# Import core logic
+# --- IMPORT CORE LOGIC ---
 import core_logic
 
-# ⚠️ QUAN TRỌNG: Import các hàm lấy dữ liệu vệ tinh
-# (Lỗi 500 thường do thiếu 2 dòng này)
+# --- IMPORT DỮ LIỆU VỆ TINH ---
 from weather import get_mock_weather_zones
 from disasters import get_natural_disasters
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app) # Cho phép Frontend gọi API thoải mái
 
+# 1. HEALTH CHECK
 @app.route('/', methods=['GET'])
 def health_check():
-    return jsonify({"status": "Safety Tourism API is running 🚀"}), 200
+    return jsonify({
+        "status": "ok", 
+        "message": "Safety Tourism API is running 🚀",
+        "version": "Final Release"
+    }), 200
 
+# 2. API TÌM ĐƯỜNG (GỌI AI)
 @app.route('/api/find-routes', methods=['POST'])
 def find_routes_api():
     try:
@@ -26,48 +31,44 @@ def find_routes_api():
         start_coords = data.get('start')
         end_coords = data.get('end')
         
+        # Validate dữ liệu đầu vào
         if not start_coords or not end_coords:
-            return jsonify({"status": "error", "message": "Missing start or end coordinates"}), 400
+            return jsonify({"status": "error", "message": "Thiếu tọa độ start/end"}), 400
+            
+        print(f"📩 [API] Tìm đường: {start_coords} -> {end_coords}")
 
-        print(f"📩 Nhận request tìm đường: {start_coords} -> {end_coords}")
-
-        # Gọi hàm Core Logic
+        # Gọi Core Logic (Hàm này đã tích hợp AI Risk + AI Traffic)
         result = core_logic.get_optimal_routes(start_coords, end_coords)
         
         return jsonify(result)
 
     except Exception as e:
-        print(f"🔥 Server Error (Find Route): {e}", file=sys.stderr)
+        print(f"🔥 Lỗi Server (Find Route): {e}", file=sys.stderr)
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# --- API MỚI: LẤY DỮ LIỆU BẢN ĐỒ ---
+# 3. API LẤY DỮ LIỆU BẢN ĐỒ (ĐỂ VẼ VÒNG TRÒN ĐỎ/VÀNG)
 @app.route('/api/map-data', methods=['GET'])
 def get_map_layers():
-    print("🌍 Đang xử lý request /api/map-data...")
+    print("🌍 [API] Đang tải dữ liệu lớp bản đồ...")
     try:
-        # 1. Lấy dữ liệu Thiên tai (Quét bán kính 50km quanh trung tâm Q1)
-        disasters = get_natural_disasters(10.7769, 106.7009, max_distance_km=50) 
+        # A. Lấy Thiên Tai (Quét bán kính 50km quanh Chợ Bến Thành)
+        disasters = get_natural_disasters(10.7721, 106.6983, max_distance_km=50) 
         
-        # 2. Lấy dữ liệu Thời tiết (Mock)
+        # B. Lấy Thời Tiết (Mock Data)
         weather = get_mock_weather_zones()
         
-        # 3. Lấy dữ liệu Đám đông (Đọc từ file json)
+        # C. Lấy Điểm Nóng (Crowd Data từ file JSON)
         crowd = []
         try:
             script_dir = os.path.dirname(os.path.abspath(__file__))
             file_path = os.path.join(script_dir, 'crowd_zones.json')
-            
             if os.path.exists(file_path):
                 with open(file_path, 'r', encoding='utf-8') as f:
                     crowd = json.load(f)
-            else:
-                print("⚠️ Không tìm thấy file crowd_zones.json, trả về rỗng.")
         except Exception as e:
             print(f"⚠️ Lỗi đọc crowd_zones.json: {e}")
-            pass 
 
-        # Log kiểm tra xem có dữ liệu không
-        print(f"✅ Kết quả: {len(disasters)} thiên tai, {len(weather)} vùng thời tiết, {len(crowd)} điểm nóng.")
+        print(f"✅ Trả về: {len(disasters)} thiên tai, {len(weather)} vùng mưa, {len(crowd)} điểm nóng.")
 
         return jsonify({
             "status": "success",
@@ -79,13 +80,12 @@ def get_map_layers():
         })
 
     except Exception as e:
-        # In lỗi chi tiết ra Terminal Python để debug
-        import traceback
-        traceback.print_exc()
-        print(f"🔥 CRITICAL ERROR (/api/map-data): {e}", file=sys.stderr)
+        print(f"🔥 Lỗi Server (Map Data): {e}", file=sys.stderr)
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
-    print("🌍 Server đang chạy tại http://localhost:5000")
-    # host='0.0.0.0' để cho phép truy cập từ thiết bị khác
+    print("🚀 Server đang khởi động...")
+    print("👉 App chạy tại: http://localhost:5000")
+    
+    # debug=True giúp tự reload khi sửa code
     app.run(debug=True, port=5000, host='0.0.0.0')

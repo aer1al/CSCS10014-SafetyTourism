@@ -60,6 +60,35 @@
       </div>
     </div>
 
+    <div class="layer-control-bar">
+      
+      <label class="modern-toggle weather-toggle">
+        <input type="checkbox" id="chk-weather" checked />
+        <span class="toggle-content">
+          🌧️ Thời tiết
+        </span>
+      </label>
+
+      <div class="divider"></div>
+
+      <label class="modern-toggle disaster-toggle">
+        <input type="checkbox" id="chk-disaster" checked />
+        <span class="toggle-content">
+          🌋 Thiên tai
+        </span>
+      </label>
+
+      <div class="divider"></div>
+
+      <label class="modern-toggle crowd-toggle">
+        <input type="checkbox" id="chk-crowd" checked />
+        <span class="toggle-content">
+          👥 Điểm nóng
+        </span>
+      </label>
+
+    </div>
+
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -69,5 +98,7 @@
     <script src="js/search.js"></script>
 
     <script src="js/find_route.js"></script>
+
+    <script src="js/layers.js"></script> 
   </body>
 </html>

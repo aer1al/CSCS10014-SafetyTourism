@@ -3,9 +3,9 @@ import osmnx as ox
 import os
 
 # Đổi tên file cache để không bị nhầm với file Quận 1 cũ
-MAP_FILENAME = "vietnam_d1_map.graphml" # Đổi tên file lại
+MAP_FILENAME = "hcm_city_map.graphml" # Đổi tên file lại
 
-def load_graph_data(place_name="vietnam_d1_map.graphml"):
+def load_graph_data(place_name="Ho Chi Minh City, Vietnam"):
     """
     Hàm này tải và trả về đồ thị G (Graph) cho toàn bộ TP.HCM.
     """

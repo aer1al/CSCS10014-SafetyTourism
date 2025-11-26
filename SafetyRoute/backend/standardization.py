@@ -1,8 +1,26 @@
 import math
 import os
+import numpy as np
+import pickle
 import json
 from utils import haversine
 from utils import get_min_distance_to_segment
+
+import warnings # <--- Thêm thư viện này
+
+# Tắt cảnh báo phiền phức của Sklearn
+warnings.filterwarnings("ignore", category=UserWarning)
+
+# --- AI LOADER ---
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'traffic_model.pkl')
+traffic_model = None
+
+try:
+    with open(MODEL_PATH, 'rb') as f:
+        traffic_model = pickle.load(f)
+    print("🤖 Đã load thành công AI Model dự báo kẹt xe!")
+except Exception as e:
+    print(f"⚠️ Không tìm thấy file model AI ({e}). Sẽ dùng logic If-Else cũ.")
 
 def standardize_disaster_score(raw_categories):
     """
@@ -153,11 +171,6 @@ def get_weather_base_score(weather_main: str, wind_speed: float) -> float:
     # Kẹp điểm trong khoảng [0.0, 1.0]
     return min(score, 1.0)
 
-# file: standardization.py (Thêm đoạn này vào cuối file)
-
-# ... (Các hàm cũ giữ nguyên) ...
-
-# --- WEATHER GEOMETRY LOGIC (GIỐNG DISASTER) ---
 def calculate_weather_impact_geometry(edge_data, u_node, v_node, weather_zones):
     """
     Input: 
@@ -212,7 +225,6 @@ def calculate_weather_impact_geometry(edge_data, u_node, v_node, weather_zones):
                 max_impact = base_score
                 
     return max_impact
-# file: standardization.py
 
 CROWD_ZONES = []
 
@@ -295,28 +307,76 @@ def calculate_crowd_score(lat, lon, current_hour):
     
     return round(final_score, 2)
 
-# file: standardization.py (Thêm vào cuối file)
-
-# ... (Các hàm crowd, disaster, weather cũ giữ nguyên) ...
-
-def calculate_traffic_score(current_hour: float, is_weekend: bool) -> float:
+def calculate_traffic_score(current_hour: float, is_weekend: bool, weather_score: float = 0.0) -> float:
     """
-    Tính điểm kẹt xe dựa trên khung giờ.
-    Output: 0.1 (Vắng) -> 1.0 (Kẹt cứng).
-    Dùng để giảm tốc độ di chuyển khi tính ETA.
+    Tính điểm kẹt xe (Bản Clean - Không Spam Console)
     """
-    score = 0.1 # Mặc định đêm khuya
+    
+    # 1. Ưu tiên dùng AI
+    if traffic_model:
+        try:
+            input_data = [[current_hour, int(is_weekend), weather_score]]
+            pred = traffic_model.predict(input_data)[0]
+            return float(max(0.0, min(1.0, pred)))
+        except:
+            pass # Nếu lỗi thì xuống fallback bên dưới
 
-    if not is_weekend: # --- NGÀY THƯỜNG ---
-        if 6.5 <= current_hour < 9.0: score = 0.8    # Cao điểm sáng (Kẹt)
-        elif 9.0 <= current_hour < 11.0: score = 0.4 # Làm việc
-        elif 11.0 <= current_hour < 13.5: score = 0.5 # Nghỉ trưa
-        elif 13.5 <= current_hour < 16.0: score = 0.4 # Chiều
-        elif 16.0 <= current_hour < 19.5: score = 1.0 # Tan tầm (Kẹt cứng)
-        elif 19.5 <= current_hour < 22.0: score = 0.6 # Đi chơi tối
+    # 2. Fallback (Logic cũ)
+    score = 0.1 
+    if not is_weekend: 
+        if 6.5 <= current_hour < 9.0: score = 0.8    
+        elif 9.0 <= current_hour < 11.0: score = 0.4
+        elif 11.0 <= current_hour < 13.5: score = 0.5
+        elif 13.5 <= current_hour < 16.0: score = 0.4
+        elif 16.0 <= current_hour < 19.5: score = 1.0 
+        elif 19.5 <= current_hour < 22.0: score = 0.6
     else: 
-        # --- CUỐI TUẦN ---
-        if 9.0 <= current_hour < 12.0: score = 0.5   # Sáng T7/CN
-        elif 16.0 <= current_hour < 21.0: score = 0.7 # Tối cuối tuần
+        if 9.0 <= current_hour < 12.0: score = 0.5
+        elif 16.0 <= current_hour < 21.0: score = 0.7
         
     return score
+
+def calculate_segment_speed(edge_data, current_hour, is_weekend, weather_score):
+    """
+    Tính tốc độ di chuyển thực tế (km/h) trên MỘT đoạn đường cụ thể.
+    Kết hợp: Loại đường + Giờ giấc + Thời tiết + AI Traffic.
+    """
+    
+    # 1. Xác định tốc độ cơ bản dựa trên loại đường (OSM tag: 'highway')
+    # Mặc định 30km/h nếu không rõ
+    max_speed = 30.0 
+    
+    # OSM thường lưu maxspeed là string ('50') hoặc list ['50', '40']
+    raw_maxspeed = edge_data.get('maxspeed', 30)
+    if isinstance(raw_maxspeed, list):
+        raw_maxspeed = raw_maxspeed[0]
+    
+    try:
+        max_speed = float(raw_maxspeed)
+    except:
+        pass # Giữ nguyên mặc định nếu lỗi parse
+
+    # Nếu không có maxspeed, đoán theo loại đường (heuristic)
+    highway_type = edge_data.get('highway', 'residential')
+    if isinstance(highway_type, list): highway_type = highway_type[0]
+    
+    if max_speed == 30.0: # Nếu chưa có dữ liệu chuẩn thì đoán
+        if highway_type in ['trunk', 'primary', 'secondary']: max_speed = 50.0
+        elif highway_type in ['tertiary']: max_speed = 40.0
+        else: max_speed = 30.0 # Hẻm, đường nhỏ
+
+    # 2. Tính hệ số giảm tốc (Traffic Factor)
+    # Gọi hàm tính traffic score (AI hoặc Rule-based) mà ta đã viết
+    # Traffic score: 0.0 (Vắng) -> 1.0 (Kẹt cứng)
+    tf_score = calculate_traffic_score(current_hour, is_weekend, weather_score)
+    
+    # 3. Công thức giảm tốc độ thực tế
+    # Ví dụ: Mưa to + Giờ cao điểm (Score=0.9) -> Tốc độ chỉ còn 20% max_speed
+    # Score=0.0 -> Tốc độ đạt 90-100% max_speed
+    
+    efficiency = 1.0 - (tf_score * 0.8) # Không bao giờ giảm về 0, tối thiểu còn 20%
+    
+    real_speed_kmh = max_speed * efficiency
+    
+    # Đảm bảo không quá chậm (tối thiểu 5km/h để không bị chia cho 0)
+    return max(5.0, real_speed_kmh)

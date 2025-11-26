@@ -54,7 +54,13 @@ document.getElementById("searchBtn").addEventListener("click", async () => {
     // 3. VẼ ĐƯỜNG ĐI LÊN BẢN ĐỒ
     drawRouteOnMap(data.geometry, [startLat, startLon], [endLat, endLon]);
 
-    // 4. HIỂN THỊ KẾT QUẢ RA SIDEBAR
+    // 🔥 [MỚI] 4. VẼ CÁC LỚP BẢN ĐỒ LIÊN QUAN (Đã lọc từ Backend)
+    if (data.map_data) {
+        console.log("🗺️ Cập nhật bản đồ với dữ liệu vùng quét...");
+        drawLayers(data.map_data); // Gọi hàm từ layers.js
+    }
+
+    // 5. HIỂN THỊ KẾT QUẢ RA SIDEBAR
     displayRouteInfo(data, statusArea);
   } catch (error) {
     console.error("Lỗi:", error);
@@ -161,6 +167,79 @@ function displayRouteInfo(data, container) {
   const crowdText = risks.crowd_level === "High" ? "Đông đúc" : "Vắng vẻ";
 
   // 3. Render ra HTML
+  container.innerHTML = `
+    <div class="result-card">
+        <div class="route-stats">
+            <div class="stat">
+                <span class="value">${data.distance_km}</span>
+                <span class="label">KM</span>
+            </div>
+            <div class="divider-vertical"></div>
+            <div class="stat">
+                <span class="value">${data.duration_min}</span>
+                <span class="label">PHÚT</span>
+            </div>
+        </div>
+        
+        <div class="risk-section">
+            ${warningHtml}
+        </div>
+        
+        <div class="status-grid">
+            <div class="status-item">
+                <span class="status-label">🚦 Giao thông</span>
+                <span class="status-badge ${trafficClass}">${trafficText}</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">👥 Điểm nóng</span>
+                <span class="status-badge ${crowdClass}">${crowdText}</span>
+            </div>
+        </div>
+    </div>
+  `;
+}
+
+// js/find_route.js
+
+// ... (Các phần trên giữ nguyên) ...
+
+// --- HÀM PHỤ TRỢ: HIỂN THỊ THÔNG TIN (FIXED) ---
+function displayRouteInfo(data, container) {
+  const summary = data.summary || {};
+  const risks = data.risk_summary || {};
+
+  // 1. Xác định màu sắc và icon dựa trên kết quả từ Backend
+  let badgeClass = "safe-badge"; // Mặc định xanh
+  let icon = "✅";
+
+  if (summary.safety_color === "red") {
+    badgeClass = "danger-badge";
+    icon = "⛔";
+  } else if (summary.safety_color === "yellow") {
+    badgeClass = "warning-badge";
+    icon = "⚠️";
+  }
+
+  // 2. Tạo HTML hiển thị cảnh báo (Lấy trực tiếp text từ Backend)
+  const warningHtml = `
+      <div class="${badgeClass}">
+        <div style="font-size: 16px; margin-bottom: 4px;">
+            ${icon} <strong>${summary.safety_label}</strong>
+        </div>
+        <div style="font-size: 13px; opacity: 0.9;">
+            ${summary.description}
+        </div>
+      </div>`;
+
+  // 3. Xử lý Badge Giao thông & Đám đông
+  const trafficClass = risks.traffic_level === "High" ? "bad" : "good";
+  const trafficText =
+    risks.traffic_level === "High" ? "Kẹt xe" : "Thông thoáng";
+
+  const crowdClass = risks.crowd_level === "High" ? "bad" : "good";
+  const crowdText = risks.crowd_level === "High" ? "Đông đúc" : "Vắng vẻ";
+
+  // 4. Render ra HTML
   container.innerHTML = `
     <div class="result-card">
         <div class="route-stats">

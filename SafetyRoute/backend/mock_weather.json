@@ -1,29 +1,29 @@
 [
   {
-    "id": "W_STORM_Q1",
-    "description": "Mưa giông lớn tại trung tâm Q1",
+    "id": "W_STORM_NOTRE_DAME",
+    "description": "Mưa giông tâm bão tại Nhà Thờ Đức Bà",
     "condition": "Thunderstorm",
-    "wind_speed": 20.0,
-    "lat": 10.776,
-    "lng": 106.7,
-    "radius": 3.0
+    "wind_speed": 25.0,
+    "lat": 10.7797,
+    "lng": 106.6990,
+    "radius": 0.6
   },
   {
-    "id": "W_RAIN_THUDUC",
-    "description": "Mưa rào khu vực Thủ Đức",
+    "id": "W_RAIN_HANG_XANH",
+    "description": "Mưa rào khu vực Ngã Tư Hàng Xanh",
     "condition": "Rain",
-    "wind_speed": 8.0,
-    "lat": 10.85,
-    "lng": 106.76,
-    "radius": 4.0
+    "wind_speed": 12.0,
+    "lat": 10.8015,
+    "lng": 106.7115,
+    "radius": 1.0
   },
   {
-    "id": "W_FOG_NHABE",
-    "description": "Sương mù dày đặc Nhà Bè",
+    "id": "W_FOG_PHU_MY_HUNG",
+    "description": "Sương mù nhẹ Quận 7",
     "condition": "Fog",
-    "wind_speed": 2.0,
-    "lat": 10.65,
-    "lng": 106.74,
-    "radius": 5.0
+    "wind_speed": 3.0,
+    "lat": 10.7295,
+    "lng": 106.7093,
+    "radius": 2.0
   }
 ]

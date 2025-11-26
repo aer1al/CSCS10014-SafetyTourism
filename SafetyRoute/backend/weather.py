@@ -91,8 +91,6 @@ def wmo_code_to_string(code):
     # Mặc định an toàn
     return "Clear"
 
-
-
 def get_mock_weather_zones():
     """
     Đọc dữ liệu các vùng thời tiết giả lập từ file JSON.
