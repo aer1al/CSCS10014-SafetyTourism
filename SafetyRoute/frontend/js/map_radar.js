@@ -1,54 +1,55 @@
-// --- 1. KHỞI TẠO BẢN ĐỒ ---
-// Zoom 10 để thấy toàn bộ TP.HCM
-// --- 1. KHỞI TẠO BẢN ĐỒ ---
-// Zoom 10 để thấy toàn bộ TP.HCM
+// js/map_radar.js
+
 const map = L.map("map").setView([10.7769, 106.7009], 10);
-window.map = map; // Expose cho các file JS khác dùng chung
+window.map = map;
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: "© OpenStreetMap contributors",
-}).addTo(map);
+// --- DÙNG CARTO POSITRON (Giao diện sáng, tối giản) ---
+L.tileLayer(
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+  {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: "abcd",
+    maxZoom: 20,
+  }
+).addTo(map);
 
-// --- 2. XỬ LÝ SIDEBAR TOGGLE ---
+// Khởi tạo biến toàn cục để file khác gọi được
+window.radarLayer = null;
+
+// --- XỬ LÝ SIDEBAR ---
 const sidebar = document.getElementById("sidebar");
 const toggleBtn = document.getElementById("toggleBtn");
 
 function toggleSidebar() {
   sidebar.classList.toggle("collapsed");
-
-  // Đổi icon mũi tên
-  if (sidebar.classList.contains("collapsed")) {
-    toggleBtn.innerHTML = "▶";
-  } else {
-    toggleBtn.innerHTML = "◀";
-  }
-
-  // QUAN TRỌNG: Cập nhật lại kích thước bản đồ sau khi Sidebar thay đổi
-  // Nếu không có dòng này, bản đồ sẽ không biết nó vừa được mở rộng ra
-  setTimeout(() => {
-    map.invalidateSize();
-  }, 300); // 300ms khớp với thời gian transition trong CSS
+  toggleBtn.innerHTML = sidebar.classList.contains("collapsed") ? "▶" : "◀";
+  setTimeout(() => map.invalidateSize(), 300);
 }
 
-// Gắn sự kiện click cho nút toggle (vì trong file JS rời không dùng onclick="" trong HTML được)
-if (toggleBtn) {
-  toggleBtn.addEventListener("click", toggleSidebar);
-}
+if (toggleBtn) toggleBtn.addEventListener("click", toggleSidebar);
 
-// --- 3. TÍCH HỢP RAIN RADAR ---
+// --- TÍCH HỢP RADAR ---
 function addRadarLayer(ts) {
   const radarUrl = `https://tilecache.rainviewer.com/v2/radar/${ts}/256/{z}/{x}/{y}/2/1_1.png`;
-  L.tileLayer(radarUrl, {
+
+  // 1. GÁN VÀO BIẾN (Chưa thêm vào map vội)
+  window.radarLayer = L.tileLayer(radarUrl, {
     tileSize: 256,
     opacity: 0.7,
     zIndex: 100,
     maxNativeZoom: 10,
     maxZoom: 18,
-  }).addTo(map);
-  console.log(
-    "Đã thêm lớp Radar lúc:",
-    new Date(ts * 1000).toLocaleTimeString()
-  );
+  });
+
+  // 2. KIỂM TRA CHECKBOX RỒI MỚI VẼ
+  const weatherChk = document.getElementById("chk-weather");
+  if (weatherChk && weatherChk.checked) {
+    window.radarLayer.addTo(map);
+    console.log("✅ Checkbox đang bật -> Đã vẽ Radar.");
+  } else {
+    console.log("⏸️ Checkbox đang tắt -> Radar đã tải nhưng chưa vẽ.");
+  }
 }
 
 // Gọi API RainViewer
@@ -56,7 +57,6 @@ fetch("https://api.rainviewer.com/public/weather-maps.json")
   .then((response) => response.json())
   .then((data) => {
     if (data.radar && data.radar.past && data.radar.past.length > 0) {
-      // Lấy khung hình quá khứ gần nhất (mới nhất)
       const lastPastFrame = data.radar.past[data.radar.past.length - 1];
       addRadarLayer(lastPastFrame.time);
     }
