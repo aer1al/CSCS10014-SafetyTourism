@@ -5,3 +5,185 @@
   background: #f0f0f0; /* Màu nền chờ khi map chưa load */
   z-index: 1;
 }
+
+/* --- LAYER CONTROL BAR (THANH ĐIỀU KHIỂN) --- */
+.layer-control-bar {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+
+  /* Hiệu ứng kính mờ (Glassmorphism) */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 16px;
+  padding: 6px;
+
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.05);
+
+  transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng hover cho cả thanh */
+.layer-control-bar:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* --- TỪNG NÚT BẤM (TOGGLE ITEM) --- */
+.modern-toggle {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.modern-toggle input {
+  display: none; /* Ẩn checkbox thật đi */
+}
+
+.toggle-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 12px;
+
+  color: #64748b; /* Màu chữ xám mặc định */
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hiệu ứng hover từng nút */
+.modern-toggle:hover .toggle-content {
+  background-color: rgba(0, 0, 0, 0.04);
+  color: #334155;
+}
+
+/* --- TRẠNG THÁI ACTIVE (KHI ĐƯỢC CHỌN) --- */
+
+/* 1. Thời tiết (Xanh) */
+.weather-toggle input:checked ~ .toggle-content {
+  background-color: #bbdefb; /* Nền xanh đậm hơn */
+  color: #0d47a1; /* Chữ xanh navy */
+  font-weight: 700; /* Chữ đậm lên */
+}
+
+/* 2. Thiên tai (Đỏ Tươi) */
+.disaster-toggle input:checked ~ .toggle-content {
+  background-color: #ffcdd2; /* Nền đỏ đậm hơn */
+  color: #b71c1c; /* Chữ đỏ thẫm */
+  font-weight: 700;
+}
+
+/* 3. Điểm nóng (Cam Rực) */
+.crowd-toggle input:checked ~ .toggle-content {
+  background-color: #ffe0b2; /* Nền cam đậm hơn */
+  color: #e65100; /* Chữ cam cháy */
+  font-weight: 700;
+}
+
+/* --- DẤU GẠCH NGĂN CÁCH (DIVIDER) --- */
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: #cbd5e1;
+  margin: 0 4px;
+}
+
+/* --- 1. HIỆU ỨNG (CHO CROWD) --- */
+.crowd-marker {
+  width: 100%;
+  height: 100%;
+
+  /* Màu cam đậm (Thay cho vàng chói) */
+  background-color: #e67e22;
+
+  /* Viền trắng dày tạo độ tương phản cao với bản đồ */
+  border: 2px solid #ffffff;
+
+  border-radius: 50%;
+
+  /* Đổ bóng nhẹ để tạo cảm giác nổi khối 3D */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+  /* Animation nhẹ nhàng: Phập phồng rất chậm */
+  animation: gentle-pulse 3s infinite;
+}
+
+@keyframes gentle-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 5px 10px rgba(230, 126, 34, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Các class khác giữ nguyên */
+.custom-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* --- 2. HIỆU ỨNG PULSE RADAR (CHO DISASTER) --- */
+.pulse-icon-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tâm bão (Điểm đỏ đậm) */
+.pulse-core {
+  width: 14px;
+  height: 14px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 5px #c0392b;
+}
+
+/* Vòng sóng lan tỏa */
+.pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #e74c3c;
+  opacity: 0;
+  animation: radar-wave 2.5s infinite linear;
+}
+
+/* Tạo thêm 1 vòng sóng nữa chạy chậm hơn để hiệu ứng dày hơn */
+.pulse-ring:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+@keyframes radar-wave {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  } /* Lan rộng ra gấp 4 lần */
+}
