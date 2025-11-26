@@ -82,9 +82,29 @@ function drawRouteOnMap(geometry, startCoords, endCoords) {
     lineJoin: "round",
   }).addTo(map);
 
-  // Thêm Marker điểm đầu/cuối
-  startMarker = L.marker(startCoords).addTo(map).bindPopup("<b>Điểm đi</b>");
-  endMarker = L.marker(endCoords).addTo(map).bindPopup("<b>Điểm đến</b>");
+  // 1. Tạo Marker Điểm Bắt Đầu (Start)
+  const startIcon = L.divIcon({
+    className: "custom-div-icon", // Reset style
+    html: `<div class="start-marker">🚀</div>`, // Dùng icon tên lửa hoặc mũi tên
+    iconSize: [36, 36], // Kích thước Marker
+    iconAnchor: [18, 42], // Canh chỉnh để mũi nhọn trỏ đúng vị trí
+    popupAnchor: [0, -40], // Popup hiện phía trên
+  });
+  startMarker = L.marker(startCoords, { icon: startIcon })
+    .addTo(map)
+    .bindPopup("<b>Điểm bắt đầu</b>");
+
+  // 2. Tạo Marker Điểm Kết Thúc (End)
+  const endIcon = L.divIcon({
+    className: "custom-div-icon",
+    html: `<div class="end-marker">🏁</div>`, // Dùng icon cờ đích
+    iconSize: [36, 36],
+    iconAnchor: [18, 42],
+    popupAnchor: [0, -40],
+  });
+  endMarker = L.marker(endCoords, { icon: endIcon })
+    .addTo(map)
+    .bindPopup("<b>Điểm đến</b>");
 
   // Zoom bản đồ vừa vặn với đường đi
   map.fitBounds(currentRouteLayer.getBounds(), { padding: [50, 50] });
@@ -92,50 +112,82 @@ function drawRouteOnMap(geometry, startCoords, endCoords) {
 
 // --- HÀM PHỤ TRỢ: HIỂN THỊ THÔNG TIN ---
 function displayRouteInfo(data, container) {
-  const risks = data.risk_summary;
+  const risks = data.risk_summary || {};
   const details = data.hit_details || { disasters: [], weathers: [] };
 
-  let riskHtml = "";
-  let isSafe = true;
+  // 1. Xử lý HTML cho Cảnh báo (Weather + Disaster)
+  let warningHtml = "";
 
-  // Logic hiển thị cảnh báo
-  if (risks.disaster_warning) {
-    isSafe = false;
-    riskHtml += `<div class="warning-item">🌋 Cảnh báo thiên tai: ${details.disasters.join(
-      ", "
-    )}</div>`;
+  // A. Cảnh báo Thiên tai (Màu Đỏ)
+  if (risks.disaster_warning && details.disasters.length > 0) {
+    warningHtml += `
+      <div class="warning-item disaster">
+        <div class="warning-icon">🌋</div>
+        <div class="warning-content">
+            <strong>Cảnh báo Thiên tai:</strong><br>
+            ${details.disasters.join(", ")}
+        </div>
+      </div>`;
   }
 
-  if (risks.weather_warning) {
-    isSafe = false;
-    riskHtml += `<div class="warning-item">🌧️ Cảnh báo thời tiết: ${details.weathers.join(
-      ", "
-    )}</div>`;
+  // B. Cảnh báo Thời tiết (Màu Vàng)
+  if (risks.weather_warning && details.weathers.length > 0) {
+    warningHtml += `
+      <div class="warning-item weather">
+        <div class="warning-icon">⛈️</div>
+        <div class="warning-content">
+            <strong>Cảnh báo Thời tiết:</strong><br>
+            ${details.weathers.join(", ")}
+        </div>
+      </div>`;
   }
 
-  if (isSafe) {
-    riskHtml = `<div class="safe-badge">✅ Lộ trình an toàn</div>`;
+  // C. Nếu không có cảnh báo nào -> Hiện badge an toàn
+  if (warningHtml === "") {
+    warningHtml = `
+      <div class="safe-badge">
+        ✅ Lộ trình an toàn, không có rủi ro lớn.
+      </div>`;
   }
 
+  // 2. Xử lý Badge cho Giao thông & Đám đông
+  // Giao thông
+  const trafficClass = risks.traffic_level === "High" ? "bad" : "good";
+  const trafficText =
+    risks.traffic_level === "High" ? "Kẹt xe" : "Thông thoáng";
+
+  // Đám đông
+  const crowdClass = risks.crowd_level === "High" ? "bad" : "good";
+  const crowdText = risks.crowd_level === "High" ? "Đông đúc" : "Vắng vẻ";
+
+  // 3. Render ra HTML
   container.innerHTML = `
     <div class="result-card">
         <div class="route-stats">
             <div class="stat">
                 <span class="value">${data.distance_km}</span>
-                <span class="label">km</span>
+                <span class="label">KM</span>
             </div>
+            <div class="divider-vertical"></div>
             <div class="stat">
                 <span class="value">${data.duration_min}</span>
-                <span class="label">phút</span>
+                <span class="label">PHÚT</span>
             </div>
         </div>
         
         <div class="risk-section">
-            ${riskHtml}
+            ${warningHtml}
         </div>
         
-        <div class="traffic-info">
-            🚦 Mật độ giao thông: <b>${risks.traffic_level || "Bình thường"}</b>
+        <div class="status-grid">
+            <div class="status-item">
+                <span class="status-label">🚦 Giao thông</span>
+                <span class="status-badge ${trafficClass}">${trafficText}</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">👥 Điểm nóng</span>
+                <span class="status-badge ${crowdClass}">${crowdText}</span>
+            </div>
         </div>
     </div>
   `;
