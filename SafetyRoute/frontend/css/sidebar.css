@@ -201,26 +201,43 @@
 /* Thống kê (Km / Phút) */
 .route-stats {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Chia đều 2 bên */
+  align-items: center;
   margin-bottom: 15px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .stat {
-  text-align: center;
+  flex: 1; /* QUAN TRỌNG: Ép mỗi bên chiếm đúng 50% diện tích */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Căn giữa trục dọc */
+  text-align: center; /* Căn giữa văn bản */
+}
+
+/* Các phần khác giữ nguyên */
+.divider-vertical {
+  width: 1px;
+  height: 40px; /* Cao hơn chút cho đẹp */
+  background: #eee;
+  margin: 0; /* Bỏ margin vì stat đã căn giữa rồi */
 }
 
 .stat .value {
-  display: block;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 32px; /* To hơn xíu nữa cho rõ */
+  font-weight: 800;
   color: #007bff;
+  display: block;
+  margin-bottom: 4px; /* Cách chữ KM/PHÚT ra xíu */
+  line-height: 1;
 }
 
 .stat .label {
   font-size: 12px;
-  color: #666;
+  color: #999;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
@@ -264,4 +281,185 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.result-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  animation: slideIn 0.3s ease;
+}
+
+/* 1. Stats (Km/Min) */
+.route-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.divider-vertical {
+  width: 1px;
+  height: 30px;
+  background: #eee;
+  margin: 0 20px;
+}
+.stat .value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #007bff;
+  display: block;
+  line-height: 1;
+}
+.stat .label {
+  font-size: 11px;
+  color: #888;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* 2. Warnings (Cảnh báo) */
+.warning-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.warning-icon {
+  font-size: 18px;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+/* Style cho từng loại cảnh báo */
+.warning-item.weather {
+  background: #fff8e1; /* Vàng nhạt */
+  color: #f57f17;
+  border: 1px solid #ffe082;
+}
+.warning-item.disaster {
+  background: #ffebee; /* Đỏ nhạt */
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+.safe-badge {
+  text-align: center;
+  padding: 10px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 3. Status Grid (Giao thông & Đám đông) */
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+.status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 8px;
+  border-radius: 8px;
+}
+.status-label {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 4px;
+}
+.status-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* Màu sắc badge trạng thái */
+.status-badge.good {
+  background: #e0f2f1;
+  color: #00695c; /* Xanh ngọc */
+}
+.status-badge.bad {
+  background: #ffebee;
+  color: #c62828; /* Đỏ */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- MODERN MARKER STYLES --- */
+
+/* 1. Marker Điểm Bắt Đầu (Xanh Lá) */
+.start-marker {
+  background: linear-gradient(
+    135deg,
+    #2ecc71 0%,
+    #27ae60 100%
+  ); /* Gradient xanh lá */
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 8px rgba(46, 204, 113, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+/* Tạo mũi nhọn bên dưới bằng CSS */
+.start-marker::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 6px 0 6px;
+  border-style: solid;
+  border-color: #27ae60 transparent transparent transparent;
+}
+
+/* 2. Marker Điểm Kết Thúc (Đỏ Cam) */
+.end-marker {
+  background: linear-gradient(
+    135deg,
+    #e74c3c 0%,
+    #c0392b 100%
+  ); /* Gradient đỏ cam */
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: white;
+}
+.end-marker::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 6px 0 6px;
+  border-style: solid;
+  border-color: #c0392b transparent transparent transparent;
 }
