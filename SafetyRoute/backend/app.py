@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
+import requests
 import os
 import sys
 
@@ -83,9 +84,34 @@ def get_map_layers():
         print(f"🔥 Lỗi Server (Map Data): {e}", file=sys.stderr)
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/api/chat', methods=['POST'])
+def chat_with_ai():
+    try:
+        data = request.json
+        user_message = data.get('message')
+        route_info = data.get('route_data') # Có thể là None
+
+        if not user_message:
+            return jsonify({"reply": "Bạn im lặng quá..."})
+
+        # --- LOGIC MỚI THÔNG MINH HƠN ---
+        if route_info:
+            # Trường hợp 1: Đã có bản đồ -> Tư vấn rủi ro (GraphRAG)
+            ai_reply = chatbot.generate_safety_advice(user_message, route_info)
+        else:
+            # Trường hợp 2: Chưa có bản đồ -> Chat xã giao / Hướng dẫn
+            ai_reply = chatbot.generate_general_chat(user_message)
+        
+        return jsonify({"reply": ai_reply})
+
+    except Exception as e:
+        print(f"🔥 Lỗi Chatbot: {e}")
+        return jsonify({"reply": "Lỗi não bộ AI."}), 500
+
 if __name__ == '__main__':
     print("🚀 Server đang khởi động...")
     print("👉 App chạy tại: http://localhost:5000")
     
     # debug=True giúp tự reload khi sửa code
+
     app.run(debug=True, port=5000, host='0.0.0.0')
