@@ -5,32 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Safety Route - AI Map</title>
 
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/sidebar.css" />
     <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/chat.css" />
   </head>
+  
   <body>
     <div class="sidebar" id="sidebar">
       <button class="toggle-btn" id="toggleBtn">◀</button>
 
       <div class="sidebar-content">
         <div class="search-container">
-          <h3>🚩 Lộ trình An toàn</h3>
+          <h3>🚩 Safety Route</h3>
 
           <div class="input-group">
             <label for="startPoint">Điểm bắt đầu</label>
             <div class="autocomplete-wrapper">
-              <input
-                type="text"
-                id="startPoint"
-                placeholder="Nhập vị trí của bạn..."
-                autocomplete="off"
-              />
+              <input type="text" id="startPoint" placeholder="Nhập vị trí của bạn..." autocomplete="off" />
               <ul id="start-results" class="results-list"></ul>
             </div>
           </div>
@@ -38,12 +32,7 @@
           <div class="input-group">
             <label for="endPoint">Điểm đến</label>
             <div class="autocomplete-wrapper">
-              <input
-                type="text"
-                id="endPoint"
-                placeholder="Nhập nơi muốn đến..."
-                autocomplete="off"
-              />
+              <input type="text" id="endPoint" placeholder="Nhập nơi muốn đến..." autocomplete="off" />
               <ul id="end-results" class="results-list"></ul>
             </div>
           </div>
@@ -53,19 +42,18 @@
           </button>
         </div>
 
-        <div
-          id="status-area"
-          style="margin-top: 20px; font-size: 0.9em; color: #666"
-        ></div>
+        <div id="status-area" style="margin-top: 20px; font-size: 0.9em; color: #666"></div>
       </div>
     </div>
 
+    <div id="map"></div>
+
     <div class="layer-control-bar">
-      
       <label class="modern-toggle weather-toggle">
         <input type="checkbox" id="chk-weather" checked />
         <span class="toggle-content">
-          🌧️ Thời tiết
+          <span class="icon" style="font-size: 16px">⛈️</span>
+          <span class="label">Thời tiết</span>
         </span>
       </label>
 
@@ -74,31 +62,65 @@
       <label class="modern-toggle disaster-toggle">
         <input type="checkbox" id="chk-disaster" checked />
         <span class="toggle-content">
-          🌋 Thiên tai
+          <span class="icon" style="font-size: 16px">⚡</span>
+          <span class="label">Thiên tai</span>
         </span>
       </label>
 
       <div class="divider"></div>
 
       <label class="modern-toggle crowd-toggle">
-        <input type="checkbox" id="chk-crowd" checked />
+        <input type="checkbox" id="chk-crowd" />
         <span class="toggle-content">
-          👥 Điểm nóng
+          <span class="icon" style="font-size: 16px">👥</span>
+          <span class="label">Điểm nóng</span>
         </span>
       </label>
-
     </div>
 
-    <div id="map"></div>
+    <div class="chat-toggle-btn" id="chat-toggle-btn">
+        <div class="chat-icon">
+            🤖
+        </div>
+        <span class="tooltip">Hỏi AI về lộ trình</span>
+    </div>
+
+    <div class="chat-widget" id="chat-widget">
+        <div class="chat-header">
+            <div class="header-info">
+                <div class="avatar-bot">🤖</div>
+                <div class="title-container">
+                    <h3>Safety Assistant</h3>
+                    <span class="status-badge"><span class="dot"></span> Online</span>
+                </div>
+            </div>
+            <button id="close-chat" class="close-btn">✕</button>
+        </div>
+        
+        <div class="chat-body" id="chat-messages">
+            <div class="message bot">
+                <div class="msg-content">
+                    Xin chào! 👋 <br>
+                    Tôi đã sẵn sàng phân tích dữ liệu rủi ro. Hãy tìm đường trước, sau đó hỏi tôi nhé!
+                </div>
+                <div class="msg-time">Vừa xong</div>
+            </div>
+        </div>
+        
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Đường này có an toàn không?..." autocomplete="off">
+            <button id="send-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
     <script src="js/map_radar.js"></script>
-
     <script src="js/search.js"></script>
-
     <script src="js/find_route.js"></script>
-
-    <script src="js/layers.js"></script> 
+    <script src="js/layers.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   </body>
 </html>
