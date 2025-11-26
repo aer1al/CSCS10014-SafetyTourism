@@ -1,0 +1,7 @@
+/* --- MAP CONTAINER --- */
+#map {
+  flex: 1; /* Tự động chiếm hết không gian còn lại */
+  height: 100%;
+  background: #f0f0f0; /* Màu nền chờ khi map chưa load */
+  z-index: 1;
+}

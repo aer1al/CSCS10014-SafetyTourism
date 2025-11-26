@@ -1,0 +1,29 @@
+[
+  {
+    "id": "W_STORM_Q1",
+    "description": "Mưa giông lớn tại trung tâm Q1",
+    "condition": "Thunderstorm",
+    "wind_speed": 20.0,
+    "lat": 10.776,
+    "lng": 106.7,
+    "radius": 3.0
+  },
+  {
+    "id": "W_RAIN_THUDUC",
+    "description": "Mưa rào khu vực Thủ Đức",
+    "condition": "Rain",
+    "wind_speed": 8.0,
+    "lat": 10.85,
+    "lng": 106.76,
+    "radius": 4.0
+  },
+  {
+    "id": "W_FOG_NHABE",
+    "description": "Sương mù dày đặc Nhà Bè",
+    "condition": "Fog",
+    "wind_speed": 2.0,
+    "lat": 10.65,
+    "lng": 106.74,
+    "radius": 5.0
+  }
+]

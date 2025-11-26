@@ -1,0 +1,35 @@
+[
+  {
+    "id": "MOCK_SAIGON_FLOOD",
+    "title": "[MOCK] Ngập đường Nam Kỳ Khởi Nghĩa (TP.HCM)",
+    "categories": [{ "id": "floods", "title": "Floods" }],
+    "geometry": [
+      {
+        "type": "Point",
+        "coordinates": [106.699, 10.752]
+      }
+    ]
+  },
+  {
+    "id": "MOCK_DANANG_LANDSLIDE",
+    "title": "[MOCK] Sạt lở Đèo Hải Vân (Đà Nẵng)",
+    "categories": [{ "id": "landslides", "title": "Landslides" }],
+    "geometry": [
+      {
+        "type": "Point",
+        "coordinates": [108.01, 16.18]
+      }
+    ]
+  },
+  {
+    "id": "MOCK_HANOI_STORM",
+    "title": "[MOCK] Cây đổ Cầu Nhật Tân (Hà Nội)",
+    "categories": [{ "id": "severeStorms", "title": "Severe Storms" }],
+    "geometry": [
+      {
+        "type": "Point",
+        "coordinates": [105.82, 21.09]
+      }
+    ]
+  }
+]

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safety Route - AI Map</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/map.css" />
+  </head>
+  <body>
+    <div class="sidebar" id="sidebar">
+      <button class="toggle-btn" id="toggleBtn">◀</button>
+
+      <div class="sidebar-content">
+        <div class="search-container">
+          <h3>🚩 Lộ trình An toàn</h3>
+
+          <div class="input-group">
+            <label for="startPoint">Điểm bắt đầu</label>
+            <div class="autocomplete-wrapper">
+              <input
+                type="text"
+                id="startPoint"
+                placeholder="Nhập vị trí của bạn..."
+                autocomplete="off"
+              />
+              <ul id="start-results" class="results-list"></ul>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="endPoint">Điểm đến</label>
+            <div class="autocomplete-wrapper">
+              <input
+                type="text"
+                id="endPoint"
+                placeholder="Nhập nơi muốn đến..."
+                autocomplete="off"
+              />
+              <ul id="end-results" class="results-list"></ul>
+            </div>
+          </div>
+
+          <button id="searchBtn" class="btn-primary">
+            🔍 Tìm & Phân tích AI
+          </button>
+        </div>
+
+        <div
+          id="status-area"
+          style="margin-top: 20px; font-size: 0.9em; color: #666"
+        ></div>
+      </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="js/map_radar.js"></script>
+
+    <script src="js/search.js"></script>
+
+    <script src="js/find_route.js"></script>
+  </body>
+</html>
