@@ -4,10 +4,10 @@ import json
 import requests
 import os
 import sys
+import chatbot
 
 # --- IMPORT CORE LOGIC ---
 import core_logic
-import chatbot
 
 # --- IMPORT DỮ LIỆU VỆ TINH ---
 from weather import get_mock_weather_zones
@@ -116,4 +116,3 @@ if __name__ == '__main__':
     # debug=True giúp tự reload khi sửa code
 
     app.run(debug=True, port=5000, host='0.0.0.0')
-

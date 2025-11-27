@@ -7,43 +7,77 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Cấu hình API Key
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+genai.configure(api_key=os.getenv("AIzaSyAxA1IHzYIKGrMLo8jgaD3A55sBNZ_ud9s"))
 
 def clean_json_string(text):
     """Làm sạch chuỗi JSON trả về từ AI"""
     match = re.search(r'\{.*\}', text, re.DOTALL)
     return match.group(0) if match else text
 
+# file: chatbot.py
 
 def generate_safety_advice(user_query, route_result):
     """
     Tư vấn an toàn KHI ĐÃ CÓ lộ trình (GraphRAG)
     """
     try:
+        # --- [DEBUG] IN DỮ LIỆU NHẬN ĐƯỢC RA TERMINAL ---
+        print("\n🔍 [CHATBOT DEBUG] Dữ liệu nhận được từ Core Logic:")
+        print(f"   - Safety Label: {route_result.get('summary', {}).get('safety_label')}")
+        print(f"   - Disasters Hit: {route_result.get('hit_details', {}).get('disasters')}")
+        print("-" * 50)
+        # -------------------------------------------------
+
+        # Lấy dữ liệu chi tiết
+        summary = route_result.get('summary', {})
         risks = route_result.get('risk_summary', {})
         details = route_result.get('hit_details', {})
         
+        # Xử lý danh sách thiên tai (tránh None)
+        disaster_list = details.get('disasters', [])
+        weather_list = details.get('weathers', [])
+        
+        # Tạo Context (Bối cảnh) cho AI
+        # Mẹo: Đưa thông tin nguy hiểm lên đầu tiên để AI chú ý
         graph_context = f"""
+        THÔNG TIN QUAN TRỌNG NHẤT (BẮT BUỘC CHÚ Ý):
+        1. MỨC ĐỘ CẢNH BÁO: {summary.get('safety_label', 'Không rõ')}
+        2. DANH SÁCH THIÊN TAI: {', '.join(disaster_list) if disaster_list else 'Không có'}
+        
+        THÔNG TIN PHỤ (THAM KHẢO):
         - Quãng đường: {route_result.get('distance_km')} km
         - Thời gian: {route_result.get('duration_min')} phút
-        - Giao thông: {risks.get('traffic_level')}
-        - Cảnh báo thời tiết: {', '.join(details.get('weathers', [])) if risks.get('weather_warning') else 'Không'}
-        - Cảnh báo thiên tai: {', '.join(details.get('disasters', [])) if risks.get('disaster_warning') else 'Không'}
-        - Đám đông: {risks.get('crowd_level')}
+        - Lý do cảnh báo: {summary.get('description')}
+        - Giao thông: {risks.get('traffic_level')} (Low=Vắng, High=Kẹt)
         """
 
+        # Prompt (Kịch bản)
         prompt = f"""
-        Bạn là trợ lý SafetyRoute. User hỏi: "{user_query}"
-        Dữ liệu lộ trình thực tế: {graph_context}
-        Hãy trả lời ngắn gọn, cảnh báo rủi ro nếu có. Chúc đi an toàn nếu đường sạch.
+        Bạn là Trợ lý An toàn (Safety Assistant).
+        Người dùng hỏi: "{user_query}"
+        
+        Dữ liệu hệ thống phân tích được:
+        {graph_context}
+        
+        YÊU CẦU XỬ LÝ:
+        1. ƯU TIÊN SỐ 1: Nhìn mục "MỨC ĐỘ CẢNH BÁO" và "DANH SÁCH THIÊN TAI".
+           - Nếu thấy chữ "CỰC KỲ NGUY HIỂM" hoặc có tên Thiên tai (ví dụ: Cháy, Bão, Ngập), bạn PHẢI ngăn cản người dùng.
+           - Tuyệt đối KHÔNG được nói "đường thông thoáng" hay "an toàn" trong trường hợp này, dù giao thông có Low đi nữa.
+           
+        2. Nếu cảnh báo là "An toàn" (Xanh):
+           - Báo tin vui, chúc thượng lộ bình an.
+           
+        3. Trả lời ngắn gọn (dưới 3 câu), giọng điệu quan tâm, nghiêm túc nếu có nguy hiểm.
         """
 
         model = genai.GenerativeModel('models/gemini-2.5-flash')
         response = model.generate_content(prompt)
         return response.text
+        
     except Exception as e:
+        print(f"🔥 Lỗi Chatbot Logic: {e}")
         return f"Xin lỗi, tôi đang gặp sự cố kỹ thuật. ({str(e)})"
-
+    
 def generate_general_chat(user_query):
     """
     Hàm chat tự do KHI CHƯA CÓ lộ trình.
