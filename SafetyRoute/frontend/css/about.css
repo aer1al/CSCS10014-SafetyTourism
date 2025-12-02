@@ -1,0 +1,48 @@
+/* --- Cài đặt chung --- */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body {
+    background-color: #f4f4f4; /* Nền xám nhạt */
+    width: 100%;
+    min-height: 100vh; /* Đảm bảo trang cao bằng màn hình */
+    display: flex;
+    flex-direction: column; /* Xếp dọc */
+}
+
+/* Header (Copy từ home để giống nhau) */
+header { background-color: #00509d; width: 100%; height: 70px; display: flex; justify-content: center; flex-shrink: 0; }
+.header-content { width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; color: white; }
+.logo h1 { font-size: 20px; font-style: italic; line-height: 1.2; }
+nav a { color: white; text-decoration: none; margin-left: 30px; font-weight: bold; font-size: 16px; }
+nav a:hover, nav a.active { opacity: 0.8; text-decoration: underline; }
+
+/* Phần nội dung chính của About */
+.about-container {
+    flex: 1; /* Tự giãn nở để đẩy footer xuống */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa ngang */
+    padding-top: 50px;
+}
+
+.about-title {
+    font-size: 60px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 50px;
+}
+
+.about-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    height: 50px;
+    background-color: #6a8cff; /* Màu tím nhạt */
+    width: 100%;
+    margin-top: auto; /* Đẩy xuống đáy */
+    flex-shrink: 0;
+}
