@@ -17,3 +17,5 @@ numpy
 
 Rtree
 gunicorn
+google-generativeai
+
