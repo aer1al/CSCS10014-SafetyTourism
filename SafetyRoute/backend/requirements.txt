@@ -16,6 +16,5 @@ tqdm
 numpy
 
 Rtree
-gunicorn
-google-generativeai
+
 
