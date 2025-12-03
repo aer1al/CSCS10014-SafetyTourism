@@ -14,4 +14,6 @@ geopandas
 shapely>=2.0
 tqdm
 numpy
+
 Rtree
+gunicorn
