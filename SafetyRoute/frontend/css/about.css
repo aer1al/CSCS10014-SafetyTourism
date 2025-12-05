@@ -1,48 +1,159 @@
-/* --- Cài đặt chung --- */
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+/* --- 1. Cài đặt chung --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
 body {
     background-color: #f4f4f4; /* Nền xám nhạt */
     width: 100%;
     min-height: 100vh; /* Đảm bảo trang cao bằng màn hình */
     display: flex;
-    flex-direction: column; /* Xếp dọc */
+    flex-direction: column; /* Xếp dọc để Footer luôn ở dưới */
+    line-height: 1.6; /* Tăng khoảng cách dòng cho dễ đọc */
 }
 
-/* Header (Copy từ home để giống nhau) */
-header { background-color: #00509d; width: 100%; height: 70px; display: flex; justify-content: center; flex-shrink: 0; }
-.header-content { width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; color: white; }
-.logo h1 { font-size: 20px; font-style: italic; line-height: 1.2; }
-nav a { color: white; text-decoration: none; margin-left: 30px; font-weight: bold; font-size: 16px; }
-nav a:hover, nav a.active { opacity: 0.8; text-decoration: underline; }
-
-/* Phần nội dung chính của About */
-.about-container {
-    flex: 1; /* Tự giãn nở để đẩy footer xuống */
+/* --- 2. Header (Giữ nguyên theo code của bạn) --- */
+header {
+    background-color: #00509d;
+    width: 100%;
+    height: 70px;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Căn giữa ngang */
-    padding-top: 50px;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Thêm bóng nhẹ cho đẹp */
 }
 
+.header-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+}
+
+.logo h1 {
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.2;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: opacity 0.3s; /* Hiệu ứng mượt khi hover */
+}
+
+nav a:hover, nav a.active {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* --- 3. Phần nội dung chính (Đã chỉnh sửa cho đẹp hơn) --- */
+.about-container {
+    flex: 1; /* Tự giãn để đẩy footer xuống */
+    width: 100%;
+    max-width: 900px; /* Giới hạn chiều rộng để không bị bè ra quá */
+    margin: 40px auto; /* Căn giữa trang */
+    background-color: white; /* Nền trắng cho phần chữ dễ đọc */
+    padding: 40px; /* Khoảng cách lề bên trong */
+    border-radius: 10px; /* Bo tròn góc */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Bóng đổ nhẹ tạo chiều sâu */
+}
+
+/* Tiêu đề chính */
 .about-title {
-    font-size: 60px;
+    font-size: 40px; /* Giảm chút so với 60px để cân đối hơn */
     font-weight: bold;
-    color: black;
-    margin-bottom: 50px;
-}
-
-.about-text {
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
+    color: #00509d; /* Dùng màu xanh của Header cho đồng bộ */
+    margin-bottom: 30px;
     text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
 }
 
-/* Footer */
+/* Các đoạn văn bản thường */
+p {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 16px;
+    text-align: justify; /* Căn đều 2 bên cho gọn */
+}
+
+/* Box thông tin nhóm (Xanh nhạt) */
+.project-info {
+    background-color: #e3f2fd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 5px solid #00509d;
+}
+
+/* Box cảnh báo (Vàng nhạt) */
+.disclaimer-box {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    border: 1px solid #ffeeba;
+}
+
+/* Tiêu đề mục nhỏ (H2, H3) */
+.content-section h2, 
+.content-section h3 {
+    color: #00509d;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Danh sách tính năng */
+.feature-list {
+    list-style: none; /* Bỏ chấm tròn mặc định */
+}
+
+.feature-list li {
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-left: 4px solid #6a8cff; /* Dùng màu tím nhạt của footer */
+}
+
+/* Thẻ (Tag) công nghệ */
+.tag {
+    display: inline-block;
+    background-color: #00509d;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+/* Đường kẻ ngang */
+.divider {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 40px 0;
+}
+
+/* --- 4. Footer (Giữ nguyên theo code của bạn) --- */
 footer {
     height: 50px;
     background-color: #6a8cff; /* Màu tím nhạt */
     width: 100%;
-    margin-top: auto; /* Đẩy xuống đáy */
     flex-shrink: 0;
+    display: flex;             /* Thêm flex để căn giữa chữ */
+    align-items: center;       /* Căn giữa dọc */
+    justify-content: center;   /* Căn giữa ngang */
+    color: white;              /* Chữ màu trắng */
+    font-weight: bold;
 }
