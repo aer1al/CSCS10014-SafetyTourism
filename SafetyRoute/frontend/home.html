@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safety Route - Home</title>
+    <title>Safety Route - Trang Chủ</title>
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -23,34 +24,65 @@
     </header>
 
     <section class="hero">
-        <h2>Home</h2>
+        <div class="hero-text">
+            <h2>Home</h2>
+        </div>
     </section>
 
     <main>
         <div class="cta-wrapper">
             <div class="cta-box">
-                <p>Bạn cần tìm một tuyến đường tối ưu nhất cho lịch trình của bạn.</p>
-                <button class="cta-button">Nhấn tại đây.</button>
+                <p>Bạn cần tìm một tuyến đường tối ưu nhất cho lịch trình của bạn?</p>
+                <a href="index.html" class="cta-button">Trải nghiệm ngay</a>
             </div>
         </div>
 
-        <section class="features-grid">
-            <div class="card">
+        <h3 class="section-title">Cảnh báo rủi ro thời gian thực</h3>
+
+    <section class="features-grid">
+    
+    <a href="index.html?type=crowd" style="text-decoration: none; color: inherit; display: block;">
+        <div class="card">
+            <div class="card-image">
                 <img src="photo/Dongduc.png" alt="Đám đông">
-                <div class="card-text">Dân cư đông đúc tại ....</div>
             </div>
-            <div class="card">
+            <div class="card-content">
+                <h4 id="crowd-location">Đang tải...</h4>
+                <p id="crowd-status" class="status-warning">...</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="index.html?type=weather" style="text-decoration: none; color: inherit; display: block;">
+        <div class="card">
+            <div class="card-image">
                 <img src="photo/Mua.png" alt="Mưa bão">
-                <div class="card-text">Mưa lớn tại....</div>
             </div>
-            <div class="card">
+            <div class="card-content">
+                <h4 id="weather-location">Đang tải...</h4>
+                <p id="weather-status" class="status-danger">...</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="index.html?type=flood" style="text-decoration: none; color: inherit; display: block;">
+        <div class="card">
+            <div class="card-image">
                 <img src="photo/Ngap.png" alt="Lũ lụt">
-                <div class="card-text">Đường ngập tại....</div>
             </div>
-        </section>
+            <div class="card-content">
+                <h4 id="flood-location">Đang tải...</h4>
+                <p id="flood-status" class="status-danger">...</p>
+            </div>
+        </div>
+    </a>
+
+</section>
     </main>
 
-    <footer></footer>
+    <footer>
+        <p>&copy; 2024 Safety Route Project - Group 5</p>
+    </footer>
 
 </body>
 </html>
