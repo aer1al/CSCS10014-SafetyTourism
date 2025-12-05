@@ -170,4 +170,32 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.checked) window.map.addLayer(crowdLayer);
     else window.map.removeLayer(crowdLayer);
   });
+  // 1. Đọc tham số từ URL (ví dụ: ?type=crowd)
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get('type'); // Lấy chữ 'crowd', 'weather', hoặc 'flood'
+
+  // 2. Kiểm tra và kích hoạt checkbox tương ứng
+  if (type) {
+      console.log("📢 Phát hiện yêu cầu bật filter:", type);
+      
+      let checkboxToClick = null;
+
+      if (type === 'crowd') {
+          checkboxToClick = document.getElementById('chk-crowd');
+      } 
+      else if (type === 'weather') {
+          checkboxToClick = document.getElementById('chk-weather');
+      } 
+      else if (type === 'flood') { 
+          // Lưu ý: Bên HTML bạn gọi là 'flood', nhưng ID checkbox là 'chk-disaster'
+          checkboxToClick = document.getElementById('chk-disaster');
+      }
+
+      // 3. Giả lập cú click chuột để bật layer lên
+      if (checkboxToClick) {
+          // Phải dùng .click() thay vì .checked = true 
+          // để nó kích hoạt luôn sự kiện vẽ bản đồ (change event)
+          checkboxToClick.click(); 
+      }
+  }
 });
