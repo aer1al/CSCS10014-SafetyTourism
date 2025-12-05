@@ -1,183 +1,85 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Safety Route - AI Map</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Route - Trang Chủ</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/sidebar.css" />
-    <link rel="stylesheet" href="css/map.css" />
-    <link rel="stylesheet" href="css/chat.css" />
-    <link rel="stylesheet" href="css/feature.css" />
-  </head>
-  
-  <body>
     <header>
         <div class="header-content">
             <div class="logo">
                 <h1>Safety<br>Route</h1>
             </div>
             <nav>
-                <a href="index.html" class="active">Feature</a>
-                <a href="home.html">Home</a>
+                <a href="index.html">Feature</a>
+                <a href="home.html" class="active">Home</a>
                 <a href="team.html">Team</a>
                 <a href="about.html">About</a>
             </nav>
         </div>
     </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Home</h2>
+        </div>
+    </section>
+
+    <main>
+        <div class="cta-wrapper">
+            <div class="cta-box">
+                <p>Bạn cần tìm một tuyến đường tối ưu nhất cho lịch trình của bạn?</p>
+                <a href="index.html" class="cta-button">Trải nghiệm ngay</a>
+            </div>
+        </div>
+
+        <h3 class="section-title">Cảnh báo rủi ro thời gian thực</h3>
+
+    <section class="features-grid">
     
-    <div class="sidebar" id="sidebar">
-      <button class="toggle-btn" id="toggleBtn">◀</button>
-
-      <div class="sidebar-content">
-        <div class="search-container">
-          <h3>🚩 Safety Route</h3>
-
-          <div class="input-group">
-            <label for="startPoint">Điểm bắt đầu</label>
-            <div class="autocomplete-wrapper">
-              <input type="text" id="startPoint" placeholder="Nhập vị trí của bạn..." autocomplete="off" />
-              <ul id="start-results" class="results-list"></ul>
+    <a href="index.html?type=crowd" style="text-decoration: none; color: inherit; display: block;">
+        <div class="card">
+            <div class="card-image">
+                <img src="photo/Dongduc.png" alt="Đám đông">
             </div>
-          </div>
-
-          <div class="input-group">
-            <label for="endPoint">Điểm đến</label>
-            <div class="autocomplete-wrapper">
-              <input type="text" id="endPoint" placeholder="Nhập nơi muốn đến..." autocomplete="off" />
-              <ul id="end-results" class="results-list"></ul>
-            </div>
-          </div>
-
-          <button id="searchBtn" class="btn-primary">
-            🔍 Tìm & Phân tích AI
-          </button>
-        </div>
-
-        <div id="status-area" style="margin-top: 20px; font-size: 0.9em; color: #666"></div>
-      </div>
-    </div>
-
-    <div id="map"></div>
-
-    <div class="layer-control-bar">
-      <label class="modern-toggle weather-toggle">
-        <input type="checkbox" id="chk-weather" checked />
-        <span class="toggle-content">
-          <span class="icon" style="font-size: 16px">⛈️</span>
-          <span class="label">Thời tiết</span>
-        </span>
-      </label>
-
-      <div class="divider"></div>
-
-      <label class="modern-toggle disaster-toggle">
-        <input type="checkbox" id="chk-disaster" checked />
-        <span class="toggle-content">
-          <span class="icon" style="font-size: 16px">⚡</span>
-          <span class="label">Thiên tai</span>
-        </span>
-      </label>
-
-      <div class="divider"></div>
-
-      <label class="modern-toggle crowd-toggle">
-        <input type="checkbox" id="chk-crowd" />
-        <span class="toggle-content">
-          <span class="icon" style="font-size: 16px">👥</span>
-          <span class="label">Điểm nóng</span>
-        </span>
-      </label>
-    </div>
-
-    <div class="chat-toggle-btn" id="chat-toggle-btn">
-        <div class="chat-icon">
-            🤖
-        </div>
-        <span class="tooltip">Hỏi AI về lộ trình</span>
-    </div>
-
-    <div class="chat-widget" id="chat-widget">
-        <div class="chat-header">
-            <div class="header-info">
-                <div class="avatar-bot">🤖</div>
-                <div class="title-container">
-                    <h3>Safety Assistant</h3>
-                    <span class="status-badge"><span class="dot"></span> Online</span>
-                </div>
-            </div>
-            <button id="close-chat" class="close-btn">✕</button>
-        </div>
-        
-        <div class="chat-body" id="chat-messages">
-            <div class="message bot">
-                <div class="msg-content">
-                    Xin chào! 👋 <br>
-                    Tôi đã sẵn sàng phân tích dữ liệu rủi ro. Hãy tìm đường trước, sau đó hỏi tôi nhé!
-                </div>
-                <div class="msg-time">Vừa xong</div>
+            <div class="card-content">
+                <h4 id="crowd-location">Xem vùng đông đúc</h4>
             </div>
         </div>
-        
-        <div class="chat-footer">
-            <input type="text" id="chat-input" placeholder="Đường này có an toàn không?..." autocomplete="off">
-            <button id="send-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
+    </a>
+
+    <a href="index.html?type=weather" style="text-decoration: none; color: inherit; display: block;">
+        <div class="card">
+            <div class="card-image">
+                <img src="photo/Mua.png" alt="Mưa bão">
+            </div>
+            <div class="card-content">
+                <h4 id="weather-location">Xem vùng mưa bão</h4>
+            </div>
         </div>
-    </div>
+    </a>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="js/map_radar.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/find_route.js"></script>
-    <script src="js/layers.js"></script>
-    <script src="js/chat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // 1. Lấy tham số ?type=... trên thanh địa chỉ
-            const params = new URLSearchParams(window.location.search);
-            const type = params.get('type');
+    <a href="index.html?type=flood" style="text-decoration: none; color: inherit; display: block;">
+        <div class="card">
+            <div class="card-image">
+                <img src="photo/Ngap.png" alt="Lũ lụt">
+            </div>
+            <div class="card-content">
+                <h4 id="flood-location">Xem vùng ngập</h4>
+            </div>
+        </div>
+    </a>
 
-            if (type) {
-                console.log("🚀 Đang kích hoạt chế độ riêng biệt:", type);
+</section>
+    </main>
 
-                // Danh sách tất cả các checkbox
-                const chkWeather = document.getElementById('chk-weather');
-                const chkDisaster = document.getElementById('chk-disaster');
-                const chkCrowd = document.getElementById('chk-crowd');
+    <footer>
+        <p>&copy; 2024 Safety Route Project - Group 5</p>
+    </footer>
 
-                // 2. Hàm tắt checkbox nếu nó đang bật
-                const turnOff = (checkbox) => {
-                    if (checkbox && checkbox.checked) {
-                        checkbox.click(); // Click để tắt và xóa layer khỏi bản đồ
-                    }
-                };
-
-                // 3. Logic: Tắt hết các cái khác, chỉ bật cái cần thiết
-                setTimeout(() => {
-                    if (type === 'crowd') {
-                        turnOff(chkWeather);   // Tắt thời tiết
-                        turnOff(chkDisaster);  // Tắt thiên tai
-                        if (chkCrowd && !chkCrowd.checked) chkCrowd.click(); // Bật điểm nóng
-                    } 
-                    else if (type === 'weather') {
-                        turnOff(chkDisaster);
-                        turnOff(chkCrowd);
-                        if (chkWeather && !chkWeather.checked) chkWeather.click();
-                    } 
-                    else if (type === 'flood') {
-                        turnOff(chkWeather);
-                        turnOff(chkCrowd);
-                        if (chkDisaster && !chkDisaster.checked) chkDisaster.click();
-                    }
-                }, 500); // Đợi 0.5s để bản đồ load xong mới thực hiện
-            }
-        });
-    </script>
-  </body>
+</body>
 </html>
