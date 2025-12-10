@@ -463,3 +463,122 @@
   border-style: solid;
   border-color: #c0392b transparent transparent transparent;
 }
+
+/* --- BỔ SUNG CSS CHO INPUT MỚI --- */
+
+/* Dropdown chọn xe */
+.custom-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fcfcfc;
+    font-size: 14px;
+    cursor: pointer;
+}
+.custom-select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Hộp Preferences */
+.preferences-box {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.pref-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #555;
+}
+
+.pref-item input[type=range] {
+    width: 60%;
+    cursor: pointer;
+}
+
+/* --- CSS CHO PREFERENCES & SLIDER MỚI --- */
+
+.preferences-box {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #eef0f2;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.pref-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pref-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.pref-row:last-child {
+    margin-bottom: 0;
+}
+
+.pref-label {
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+    width: 40%; /* Chừa chỗ cho chữ */
+}
+
+/* --- TÙY CHỈNH SLIDER (Range Input) --- */
+.styled-slider {
+    -webkit-appearance: none; /* Xóa style mặc định */
+    width: 60%;
+    height: 6px;
+    background: #e9ecef; /* Màu thanh trượt nền */
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+}
+
+/* Nút kéo (Thumb) - Chrome/Safari */
+.styled-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #007bff; /* Màu xanh chủ đạo */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+    transition: transform 0.2s;
+    margin-top: -6px; /* Căn giữa nút với thanh */
+}
+
+.styled-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Nút kéo (Thumb) - Firefox */
+.styled-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+    border: none;
+}

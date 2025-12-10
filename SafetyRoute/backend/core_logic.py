@@ -254,7 +254,7 @@ class RoutingEngine:
         # 3. Gọi AI Risk Model (Batch Prediction)
         # standardization.risk_model đã được load sẵn
         predicted_penalties = []
-        if standardization.risk_model and ai_inputs:
+        if risk_model and ai_inputs:
             try:
                 predicted_penalties = standardization.risk_model.predict(ai_inputs)
             except:
@@ -377,6 +377,7 @@ class RoutingEngine:
     def _audit_route(self, G, route_nodes, env_data, route_name="Route", start_coords=None, end_coords=None):
         """
         PRIVATE: Kiểm tra lại lộ trình, tính tổng ETA, gán nhãn màu sắc.
+        CẬP NHẬT: Thêm logic đếm số lượng rủi ro ĐÃ NÉ ĐƯỢC.
         """
         total_dist = 0
         total_eta = 0
@@ -388,50 +389,73 @@ class RoutingEngine:
         crowd_count = 0
         route_coords = []
         
-        # Traceback
+        # Traceback lộ trình (giữ nguyên logic cũ)
         for i in range(len(route_nodes) - 1):
             u, v = route_nodes[i], route_nodes[i+1]
-            edge = G.get_edge_data(u, v)[0] # Lấy cạnh đầu tiên
+            # ... (giữ nguyên code lấy edge data) ...
+            # Lấy data cạnh để cộng dồn khoảng cách/thời gian
+            edge = G.get_edge_data(u, v)[0] 
             meta = edge.get('meta_info', {})
             length = edge.get('length', 10)
             
             total_dist += length
             total_eta += meta.get('eta', 0)
-            
             p = meta.get('penalty', 0)
             total_risk_score += (p * length)
             max_segment_risk = max(max_segment_risk, p)
             
-            # Lấy tọa độ
             route_coords.append([G.nodes[u]['y'], G.nodes[u]['x']])
             
-            # Check flag để hiện tên
+            # Check flag (giữ nguyên logic cũ)
             flags = meta.get('risk_flags', {})
             if flags.get('crowd'): crowd_count += 1
             
+            # SỬA LẠI CHỖ LẤY TÊN (như đã fix ở bước trước)
             if flags.get('disaster'):
-                # Truy ngược lại list disaster để lấy tên (Logic đơn giản: tìm cái gần nhất)
                 node_obj = G.nodes[u]
                 for d in env_data['disasters']:
-                    if standardization.haversine(node_obj['y'], node_obj['x'], d['lat'], d['lng']) <= (d.get('radius',5)+0.1):
-                        hit_disasters.add(d.get('title', 'Thiên tai'))
+                    # Tăng radius check lên một chút để bắt dính tên
+                    if standardization.haversine(node_obj['y'], node_obj['x'], d['lat'], d['lng']) <= (d.get('radius', 5) + 0.2):
+                        hit_disasters.add(d.get('name', 'Thiên tai')) # Sửa title -> name
             
             if flags.get('weather'):
                 node_obj = G.nodes[u]
                 for w in env_data['weather']:
-                     if standardization.haversine(node_obj['y'], node_obj['x'], w['lat'], w['lng']) <= (w.get('radius',5)+0.1):
-                        hit_weathers.add(f"{w.get('condition')} ({w.get('description')})")
+                     if standardization.haversine(node_obj['y'], node_obj['x'], w['lat'], w['lng']) <= (w.get('radius', 5) + 0.2):
+                        hit_weathers.add(f"{w.get('condition')}")
 
-        # Add điểm cuối
+        # Add điểm cuối (giữ nguyên)
         last = route_nodes[-1]
         route_coords.append([G.nodes[last]['y'], G.nodes[last]['x']])
         
-        # --- TÍNH TOÁN METRICS ---
-        final_eta_min = round((total_eta * 1.15) / 60) # Buffer đèn đỏ
+        # --- [MỚI] TÍNH TOÁN MINH CHỨNG (PROOF OF AVOIDANCE) ---
+        # Tổng số rủi ro có trong vùng Bounding Box (Môi trường)
+        total_disasters_in_area = len(env_data['disasters'])
+        total_storms_in_area = len([w for w in env_data['weather'] if w['condition'] in ['Rain', 'Thunderstorm']])
+        
+        # Số rủi ro mình bị dính
+        hit_disaster_count = len(hit_disasters)
+        # Weather hit thì tính sơ bộ
+        hit_storm_count = len(hit_weathers)
+
+        # Số rủi ro ĐÃ NÉ
+        avoided_disasters = max(0, total_disasters_in_area - hit_disaster_count)
+        avoided_storms = max(0, total_storms_in_area - hit_storm_count)
+        
+        avoidance_msg = []
+        if avoided_disasters > 0:
+            avoidance_msg.append(f"Đã né {avoided_disasters} điểm thiên tai")
+        if avoided_storms > 0:
+            avoidance_msg.append(f"Đã né {avoided_storms} vùng mưa bão")
+            
+        proof_text = ", ".join(avoidance_msg) if avoidance_msg else "Không có rủi ro lớn trong khu vực."
+
+        # --- TÍNH TOÁN METRICS (Giữ nguyên) ---
+        final_eta_min = round((total_eta * 1.15) / 60)
         final_dist_km = round(total_dist / 1000, 2)
         avg_risk = total_risk_score / total_dist if total_dist > 0 else 0
         
-        # --- GÁN NHÃN ---
+        # --- GÁN NHÃN (Cập nhật description) ---
         safety_label = "🟢 An toàn"
         safety_color = "green"
         reasons = []
@@ -439,8 +463,7 @@ class RoutingEngine:
         if len(hit_disasters) > 0:
             safety_label = "🔴 CỰC KỲ NGUY HIỂM"
             safety_color = "red"
-            reasons.append(f"⛔ Đi qua {len(hit_disasters)} điểm thiên tai!")
-            avg_risk = 100.0
+            reasons.append(f"⛔ Đi qua {len(hit_disasters)} vùng nguy hiểm!")
         elif max_segment_risk > 20.0:
             safety_label = "🔴 Nguy hiểm"
             safety_color = "red"
@@ -448,13 +471,14 @@ class RoutingEngine:
         elif len(hit_weathers) > 0 or (crowd_count / len(route_nodes) > 0.3):
             safety_label = "🟡 Cẩn trọng"
             safety_color = "yellow"
-            if len(hit_weathers) > 0: reasons.append(f"🌧️ Có {len(hit_weathers)} vùng thời tiết xấu")
+            if len(hit_weathers) > 0: reasons.append(f"🌧️ Mưa: {', '.join(hit_weathers)}")
             if crowd_count > 0: reasons.append("👥 Đông đúc")
         
-        description = f"{route_name}: Lộ trình thuận lợi." if not reasons else f"{route_name}: " + " | ".join(reasons)
+        # Ghép minh chứng vào description
+        base_desc = " | ".join(reasons) if reasons else "Lộ trình thuận lợi."
+        full_description = f"{base_desc} ({proof_text})"
         
-        # Logic Traffic/Crowd Status (3 cấp độ)
-        traffic_status = "High" if avg_risk > 0.7 else "Medium" if avg_risk > 0.4 else "Low" # (Giả định)
+        traffic_status = "High" if avg_risk > 0.7 else "Medium" if avg_risk > 0.4 else "Low"
         crowd_status = "High" if crowd_count > 2 else "Medium" if crowd_count > 0 else "Low"
 
         return {
@@ -465,7 +489,8 @@ class RoutingEngine:
             "summary": {
                 "safety_label": safety_label,
                 "safety_color": safety_color,
-                "description": description,
+                "description": full_description, # <--- Đã cập nhật dòng này
+                "avoidance_proof": proof_text,   # <--- Thêm trường riêng để Frontend dễ hiển thị
                 "eta_display": f"{final_eta_min} phút"
             },
             "risk_summary": {
@@ -482,7 +507,6 @@ class RoutingEngine:
                 "weathers": list(hit_weathers)
             }
         }
-
 # --- KHỞI TẠO SINGLETON ---
 # Để app.py gọi được
 engine = RoutingEngine()
