@@ -150,5 +150,54 @@
     <script src="js/find_route.js"></script>
     <script src="js/layers.js"></script>
     <script src="js/chat.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // 1. Lấy tham số 'type' từ đường link (URL)
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type');
+
+        // Nếu không có tham số type thì không làm gì cả
+        if (!type) return;
+
+        console.log("🔍 Đang lọc chế độ:", type);
+
+        // 2. Lấy các nút checkbox
+        const chkWeather = document.getElementById("chk-weather");
+        const chkDisaster = document.getElementById("chk-disaster");
+        const chkCrowd = document.getElementById("chk-crowd");
+
+        // 3. Hàm kích hoạt checkbox (Vừa tick, vừa báo cho map vẽ lại)
+        function toggleLayer(checkbox, shouldBeOn) {
+            if (!checkbox) return;
+            
+            // Nếu trạng thái hiện tại khác với trạng thái mong muốn
+            if (checkbox.checked !== shouldBeOn) {
+                checkbox.checked = shouldBeOn;
+                
+                // QUAN TRỌNG: Giả lập sự kiện 'change' để kích hoạt code trong layers.js
+                // Nếu chỉ set .checked = true thì map sẽ không vẽ lại
+                checkbox.dispatchEvent(new Event('change'));
+            }
+        }
+
+        // 4. Xử lý Logic bật/tắt theo từng loại
+        if (type === 'weather') {
+            toggleLayer(chkWeather, true);   // Bật Thời tiết
+            toggleLayer(chkDisaster, false); // Tắt Thiên tai
+            toggleLayer(chkCrowd, false);    // Tắt Đám đông
+        } 
+        else if (type === 'disaster') {
+            toggleLayer(chkWeather, false);
+            toggleLayer(chkDisaster, true);  // Bật Thiên tai
+            toggleLayer(chkCrowd, false);
+        } 
+        else if (type === 'crowd') {
+            toggleLayer(chkWeather, false);
+            toggleLayer(chkDisaster, false);
+            toggleLayer(chkCrowd, true);     // Bật Đám đông
+        }
+    });
+    </script>
   </body>
+
 </html>
