@@ -61,3 +61,9 @@ def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
                     'categories_raw': [c.get("id") for c in cats] 
                 })
     return formatted_list
+
+# --- HÀM SETTER ĐỂ APP GỌI (ĐỒNG BỘ VỚI WEATHER) ---
+def set_demo_mode(status: bool):
+    global DEMO_MODE
+    DEMO_MODE = status
+    print(f"🌋 [DISASTER] Đã chuyển DEMO_MODE thành: {DEMO_MODE}")

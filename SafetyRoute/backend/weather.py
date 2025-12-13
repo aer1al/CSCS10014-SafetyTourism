@@ -1,91 +1,99 @@
-# file: weather.py
 import requests
-import numpy as np # Cần cài numpy: pip install numpy
+import numpy as np 
 import os
 import json
+import random
 
-def get_current_weather(lat, lon):
-    """
-    Hàm gọi API Open-Meteo lấy thời tiết tại 1 điểm tọa độ.
-    """
-    url = "https://api.open-meteo.com/v1/forecast"
-    params = {
-        "latitude": lat,
-        "longitude": lon,
-        "current_weather": "true",
-        "windspeed_unit": "ms"
-    }
-    try:
-        resp = requests.get(url, params=params, timeout=3)
-        if resp.status_code == 200:
-            data = resp.json()
-            if 'current_weather' in data:
-                current = data['current_weather']
-                wmo_code = current.get('weathercode', 0)
-                wind_speed = current.get('windspeed', 0.0)
-                weather_main = wmo_code_to_string(wmo_code)
-                return weather_main, wind_speed
-    except:
-        return "Clear", 0.0
-    return "Clear", 0.0
+DEMO_MODE = True  # <--- CÔNG TẮC: True = Đọc file json, False = Quét API thật
 
-def wmo_code_to_string(code):
-    # Mapping mã WMO sang từ khóa
-    if code == 0: return "Clear"
-    if code in [1, 2, 3]: return "Clouds"
-    if code in [45, 48]: return "Fog"
-    if code in [51, 53, 55, 56, 57]: return "Drizzle"
-    if code in [61, 63, 65, 66, 67, 80, 81, 82]: return "Rain"
-    if code in [95, 96, 99]: return "Thunderstorm"
-    return "Clear"
-
-def get_realtime_weather_zones(bbox):
+def get_weather_zones(bbox):
     """
-    🔥 ĐÂY LÀ HÀM BẠN CẦN: QUÉT LƯỚI TRONG BBOX 🔥
-    Input: bbox (south, west, north, east) từ Core Logic.
-    Output: Danh sách các vùng mưa (để tính toán và hiển thị).
+    Hàm duy nhất lấy dữ liệu thời tiết (Mưa/Gió).
+    Tự động switch giữa Mock File và API Realtime.
     """
     south, west, north, east = bbox
     zones = []
 
-    # 1. Chia BBox thành lưới (Grid)
-    # Ví dụ: Chia làm 3 điểm chiều dọc, 3 điểm chiều ngang -> Tổng 9 điểm quét
-    # Nếu BBox quá nhỏ (đi ngắn), linspace vẫn chia đúng điểm đầu/cuối/giữa.
-    lat_steps = np.linspace(south, north, 3)
-    lon_steps = np.linspace(west, east, 3)
+    # --- [MỚI] TÍNH BÁN KÍNH ĐỘNG THEO HỘP ---
+    # 1. Tính kích thước hộp (lấy cạnh lớn nhất) theo độ
+    box_span_deg = max(north - south, east - west)
+    
+    # 2. Đổi ra km (1 độ vĩ ~ 111km)
+    box_span_km = box_span_deg * 111.0
+    
+    # 3. Công thức: Radius = 1/4 kích thước hộp
+    # (Để các vòng tròn nằm rải rác đẹp mắt, không đè chồng lên nhau quá nhiều)
+    # Kẹp giá trị: Tối thiểu 0.3km (để còn nhìn thấy), Tối đa 5.0km
+    raw_radius = box_span_km / 15.0
+    base_radius = max(0.1, min(3.0, raw_radius))
 
-    # print(f"📡 Đang quét {len(lat_steps)*len(lon_steps)} điểm trong vùng tìm đường...")
+    # --- CASE 1: CHẠY DEMO (Đọc từ file mock_weather.json) ---
+    if DEMO_MODE:
+        # Logic: Vẫn chia lưới như thật, nhưng fake dữ liệu
+        lat_steps = np.linspace(south, north, 4) # Chia lưới 4x4
+        lon_steps = np.linspace(west, east, 4)
+        
+        for lat in lat_steps:
+            for lon in lon_steps:
+                # Random 30% là có mưa
+                if random.random() < 0.3: 
+                    zones.append({
+                        "lat": lat, "lng": lon, 
+                        "radius": base_radius,
+                        "condition": "Rain",
+                        "wind_speed": 5.0,
+                        "description": "Mock Grid Rain"
+                    })
 
-    # 2. Duyệt qua từng điểm trong lưới
-    for lat in lat_steps:
-        for lon in lon_steps:
-            # Gọi API thật
-            cond, wind = get_current_weather(lat, lon)
-            
-            # 3. Logic lọc: Chỉ lấy điểm nào có Mưa hoặc Gió to
-            is_bad = False
-            radius = 2.0 # Bán kính ảnh hưởng mặc định (km)
+    # --- CASE 2: CHẠY REAL (Quét lưới Open-Meteo) ---
+    else:
+        # 1. Tạo lưới quét
+        lat_steps = np.linspace(south, north, 3)
+        lon_steps = np.linspace(west, east, 3)
 
-            if cond in ["Rain", "Thunderstorm", "Drizzle", "Fog"]:
-                is_bad = True
-                if cond == "Thunderstorm": radius = 4.0 # Bão thì vùng to hơn
-            
-            if wind >= 10.0: # Gió cấp 5 trở lên
-                is_bad = True
+        for lat in lat_steps:
+            for lon in lon_steps:
+                # Gọi hàm helper bên dưới
+                cond, wind = _fetch_open_meteo(lat, lon)
+                
+                # Logic lọc xấu
+                is_bad = False
+                radius = base_radius
+                if cond in ["Rain", "Thunderstorm", "Drizzle", "Fog"]:
+                    is_bad = True
+                    if cond == "Thunderstorm": radius = 4.0
+                if wind >= 10.0: is_bad = True
 
-            # 4. Nếu xấu -> Thêm vào list
-            if is_bad:
-                zones.append({
-                    "lat": lat,
-                    "lng": lon,
-                    "radius": radius,
-                    "condition": cond,
-                    "wind_speed": wind,
-                    "description": f"Realtime: {cond}, Gió: {wind}m/s"
-                })
-
+                if is_bad:
+                    zones.append({
+                        "lat": lat, "lng": lon, "radius": round(radius,2),
+                        "condition": cond, "wind_speed": wind,
+                        "description": f"Realtime: {cond}, Gió: {wind}m/s"
+                    })
+    
     return zones
 
-# Giữ lại hàm Mock cũ để fallback nếu cần, hoặc xóa đi cũng được
-def get_mock_weather_zones():
-    return []
+# --- HÀM HỖ TRỢ (PRIVATE) ---
+def _fetch_open_meteo(lat, lon):
+    try:
+        url = "https://api.open-meteo.com/v1/forecast"
+        params = {"latitude": lat, "longitude": lon, "current_weather": "true", "windspeed_unit": "ms"}
+        resp = requests.get(url, params=params, timeout=3)
+        if resp.status_code == 200:
+            curr = resp.json().get('current_weather', {})
+            return _wmo_to_str(curr.get('weathercode', 0)), curr.get('windspeed', 0.0)
+    except: pass
+    return "Clear", 0.0
+
+def _wmo_to_str(code):
+    if code in [51, 53, 55, 56, 57]: return "Drizzle"
+    if code in [61, 63, 65, 66, 67, 80, 81, 82]: return "Rain"
+    if code in [95, 96, 99]: return "Thunderstorm"
+    if code in [45, 48]: return "Fog"
+    return "Clear" # Bao gồm cả Clouds (An toàn)
+
+# --- HÀM SETTER ĐỂ APP GỌI ---
+def set_demo_mode(status: bool):
+    global DEMO_MODE
+    DEMO_MODE = status
+    print(f"🔄 [SYSTEM] Đã chuyển DEMO_MODE thành: {DEMO_MODE}")
