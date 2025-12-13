@@ -187,3 +187,107 @@
     opacity: 0;
   } /* Lan rộng ra gấp 4 lần */
 }
+
+/* --- FIX THANH TOGGLE TRÊN BẢN ĐỒ --- */
+
+/* 1. Đưa nó nổi lên trên cùng (Khắc phục lỗi bấm không ăn) */
+.leaflet-control-layers, 
+.layer-control-container, /* Nếu ông dùng class riêng */
+#layer-toggles {          /* Nếu ông dùng ID riêng */
+    z-index: 9999 !important; /* Chỉ số "quyền lực" cao nhất */
+    position: absolute;
+    cursor: pointer;
+}
+
+/* 2. Phóng to nút Checkbox/Radio (Khắc phục lỗi khó bấm) */
+input[type="checkbox"], 
+input[type="radio"] {
+    transform: scale(1.5); /* Phóng to gấp 1.5 lần */
+    margin-right: 8px;     /* Cách chữ ra xíu cho thoáng */
+    cursor: pointer;
+}
+
+/* 3. Làm đẹp cái nhãn chữ (Label) đi kèm */
+label {
+    font-size: 14px;       /* Chữ to rõ */
+    font-weight: 600;      /* Đậm lên cho dễ đọc trên nền bản đồ */
+    color: #333;           /* Màu đen rõ ràng */
+    cursor: pointer;       /* Hiện bàn tay khi rê chuột */
+    background: rgba(255, 255, 255, 0.8); /* Nền trắng mờ để chữ không bị chìm vào map */
+    padding: 2px 5px;      /* Đệm thịt cho chữ */
+    border-radius: 4px;    /* Bo góc nhẹ */
+}
+
+/* --- THANH ĐIỀU KHIỂN LAYER (XẾP DỌC) --- */
+
+.layer-control-bar {
+    position: absolute;
+    /* Đặt vị trí: Nên để dưới nút Zoom hoặc thanh tìm kiếm */
+    top: 80px;            
+    right: 10px;          
+    z-index: 9999;        
+    
+    /* Xếp dọc thần thánh */
+    display: flex;
+    flex-direction: row; /* Xếp từ trên xuống dưới */
+    gap: 8px;               /* Khoảng cách giữa các nút */
+    
+    /* Không dùng nền cho cả cục to nữa, để nền cho từng nút cho đẹp */
+    background: transparent; 
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+    
+    /* Cố định chiều rộng để các nút thẳng hàng tăm tắp */
+    width: 140px; 
+}
+
+/* Ẩn cái gạch phân cách đi (xếp dọc không cần nữa) */
+.divider { display: none; }
+
+/* Style cho từng nút (Label) */
+.toggle-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;     /* Bo góc vuông vức hơn xíu */
+    background: white;      /* Nền trắng cho từng nút */
+    color: #555;
+    transition: all 0.2s ease;
+    
+    /* Đổ bóng nhẹ cho từng nút nổi lên */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15); 
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.toggle-content .icon { font-size: 18px; width: 20px; text-align: center; }
+.toggle-content .label { font-size: 13px; font-weight: 600; }
+
+/* --- TRẠNG THÁI KHI BẬT (Checked) --- */
+
+/* Weather: Xanh đậm hơn */
+#chk-weather:checked + .toggle-content {
+    background: #2196f3; /* Màu nền đổi hẳn sang màu */
+    color: white;        /* Chữ trắng cho nổi */
+    border-color: #1976d2;
+}
+
+/* Disaster: Đỏ */
+#chk-disaster:checked + .toggle-content {
+    background: #e53935;
+    color: white;
+    border-color: #c62828;
+}
+
+/* Crowd: Cam/Vàng */
+#chk-crowd:checked + .toggle-content {
+    background: #ff9800;
+    color: white;
+    border-color: #f57c00;
+}
+
+/* Hover effect */
+.modern-toggle:hover .toggle-content {
+    transform: translateX(-3px); /* Di chuyển nhẹ sang trái khi rê chuột */
+}

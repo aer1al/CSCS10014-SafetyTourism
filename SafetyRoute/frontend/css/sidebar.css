@@ -582,3 +582,103 @@
     box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
     border: none;
 }
+
+/* --- CSS CHO BẢNG KẾT QUẢ TÌM ĐƯỜNG MỚI --- */
+.result-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 10px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.route-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.stat { text-align: center; }
+.stat .value { font-size: 20px; font-weight: 800; color: #333; display: block; }
+.stat .label { font-size: 10px; color: #888; letter-spacing: 1px; }
+
+.divider-vertical { width: 1px; height: 30px; background: #eee; }
+
+.risk-section { margin: 15px 0; }
+
+/* Huy hiệu an toàn */
+.safe-badge { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+.danger-badge { background: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+.warning-badge { background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; }
+
+/* Grid trạng thái nhỏ bên dưới */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+.status-item { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+.status-badge { padding: 2px 8px; border-radius: 10px; font-weight: bold; font-size: 10px; }
+.status-badge.good { background: #e8f5e9; color: #2e7d32; }
+.status-badge.medium { background: #fff3e0; color: #ef6c00; }
+.status-badge.bad { background: #ffebee; color: #c62828; }
+
+/* --- ICON BẢN ĐỒ --- */
+.custom-div-icon { background: transparent; border: none; }
+.start-marker, .end-marker { font-size: 30px; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3)); }
+
+/* --- CÔNG TẮC DEMO MODE (iOS Style) --- */
+.demo-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; width: 16px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+/* Khi BẬT (Checked) -> Màu Xanh */
+input:checked + .slider { background-color: #2196F3; }
+input:focus + .slider { box-shadow: 0 0 1px #2196F3; }
+
+/* Hiệu ứng trượt nút tròn */
+input:checked + .slider:before { transform: translateX(16px); }
+
+/* Bo tròn */
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }
+
+.switch-label { font-size: 13px; font-weight: 600; color: #555; }
