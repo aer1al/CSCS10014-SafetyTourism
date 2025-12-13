@@ -336,17 +336,19 @@ def calculate_traffic_score(current_hour: float, is_weekend: bool, weather_score
         
     return score
 
-def calculate_segment_speed(edge_data, current_hour, is_weekend, weather_score):
+def calculate_segment_speed(edge_data, current_hour, is_weekend, weather_score, vehicle_mode="motorbike"):
     """
-    Tính tốc độ di chuyển thực tế (km/h) trên MỘT đoạn đường cụ thể.
-    Kết hợp: Loại đường + Giờ giấc + Thời tiết + AI Traffic.
+    Tính tốc độ di chuyển thực tế (km/h).
+    CẬP NHẬT: Đã thêm tham số vehicle_mode để khớp với core_logic.
     """
     
-    # 1. Xác định tốc độ cơ bản dựa trên loại đường (OSM tag: 'highway')
-    # Mặc định 30km/h nếu không rõ
+    # 1. Xử lý trường hợp đi bộ (Walking)
+    if vehicle_mode == "walking":
+        return 5.0 # Tốc độ trung bình đi bộ là 5km/h, không bị kẹt xe ảnh hưởng nhiều
+    
+    # 2. Xác định tốc độ cơ bản (Max Speed)
     max_speed = 30.0 
     
-    # OSM thường lưu maxspeed là string ('50') hoặc list ['50', '40']
     raw_maxspeed = edge_data.get('maxspeed', 30)
     if isinstance(raw_maxspeed, list):
         raw_maxspeed = raw_maxspeed[0]
@@ -354,29 +356,67 @@ def calculate_segment_speed(edge_data, current_hour, is_weekend, weather_score):
     try:
         max_speed = float(raw_maxspeed)
     except:
-        pass # Giữ nguyên mặc định nếu lỗi parse
+        pass 
 
-    # Nếu không có maxspeed, đoán theo loại đường (heuristic)
+    # Heuristic loại đường
     highway_type = edge_data.get('highway', 'residential')
     if isinstance(highway_type, list): highway_type = highway_type[0]
     
-    if max_speed == 30.0: # Nếu chưa có dữ liệu chuẩn thì đoán
+    if max_speed == 30.0:
         if highway_type in ['trunk', 'primary', 'secondary']: max_speed = 50.0
         elif highway_type in ['tertiary']: max_speed = 40.0
-        else: max_speed = 30.0 # Hẻm, đường nhỏ
+        else: max_speed = 30.0 
 
-    # 2. Tính hệ số giảm tốc (Traffic Factor)
-    # Gọi hàm tính traffic score (AI hoặc Rule-based) mà ta đã viết
-    # Traffic score: 0.0 (Vắng) -> 1.0 (Kẹt cứng)
+    # 3. Tính hệ số giảm tốc (Traffic Factor)
     tf_score = calculate_traffic_score(current_hour, is_weekend, weather_score)
     
-    # 3. Công thức giảm tốc độ thực tế
-    # Ví dụ: Mưa to + Giờ cao điểm (Score=0.9) -> Tốc độ chỉ còn 20% max_speed
-    # Score=0.0 -> Tốc độ đạt 90-100% max_speed
+    # Công thức giảm tốc độ: 
+    # Nếu xe máy thì luồn lách tốt hơn ô tô khi kẹt xe
+    traffic_impact = 0.8 if vehicle_mode == "car" else 0.6
     
-    efficiency = 1.0 - (tf_score * 0.8) # Không bao giờ giảm về 0, tối thiểu còn 20%
+    efficiency = 1.0 - (tf_score * traffic_impact) 
     
     real_speed_kmh = max_speed * efficiency
     
-    # Đảm bảo không quá chậm (tối thiểu 5km/h để không bị chia cho 0)
     return max(5.0, real_speed_kmh)
+
+# --- BỔ SUNG CUỐI FILE standardization.py ---
+
+class SimpleSpatialIndex:
+    """
+    Một lớp giả lập Spatial Index (R-tree) đơn giản.
+    Giúp tìm nhanh các vật thể nằm trong một vùng hình chữ nhật (BBox).
+    Dùng cái này để không phải cài thư viện 'rtree' (thường khó cài trên Windows).
+    """
+    def __init__(self, items):
+        self.items = items
+
+    def intersection(self, bbox):
+        """
+        Tìm các item có khả năng nằm trong bbox.
+        Input: bbox (min_x, min_y, max_x, max_y) <-> (min_lng, min_lat, max_lng, max_lat)
+        Output: List các index (vị trí) của item trong danh sách gốc.
+        """
+        min_lng, min_lat, max_lng, max_lat = bbox
+        found_indices = []
+        
+        # Buffer an toàn (khoảng 5km) để không bỏ sót các đám mây/bão nằm ở mép
+        buffer = 0.05 
+        
+        for i, item in enumerate(self.items):
+            i_lat = item.get('lat')
+            i_lng = item.get('lng')
+            
+            # Kiểm tra sơ bộ: Nếu item nằm trong vùng (hoặc gần vùng) bbox thì lấy
+            if (min_lat - buffer <= i_lat <= max_lat + buffer) and \
+               (min_lng - buffer <= i_lng <= max_lng + buffer):
+                found_indices.append(i)
+                
+        return found_indices
+
+def create_spatial_index(items):
+    """
+    Hàm Factory để tạo Spatial Index từ danh sách (Disasters/Weather).
+    Được gọi bởi core_logic.py.
+    """
+    return SimpleSpatialIndex(items)
