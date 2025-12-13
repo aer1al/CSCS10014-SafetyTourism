@@ -158,6 +158,54 @@
     <script src="js/find_route.js"></script>
     <script src="js/layers.js"></script>
     <script src="js/chat.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // 1. Lấy tham số 'type' từ đường link
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type');
+
+        // Nếu không có tham số nào thì dừng lại, không làm gì cả
+        if (!type) return;
+
+        console.log("🔍 Đang kích hoạt chế độ:", type);
+
+        // 2. Lấy các thẻ Checkbox (Đảm bảo ID của bạn đúng với ID trong file HTML)
+        const chkWeather = document.getElementById("chk-weather");
+        const chkDisaster = document.getElementById("chk-disaster");
+        const chkCrowd = document.getElementById("chk-crowd");
+
+        // 3. Hàm hỗ trợ bật/tắt layer
+        function setLayerState(checkbox, shouldTurnOn) {
+            if (!checkbox) return; // Nếu không tìm thấy checkbox thì bỏ qua
+
+            // Nếu trạng thái hiện tại khác với trạng thái mong muốn
+            if (checkbox.checked !== shouldTurnOn) {
+                checkbox.checked = shouldTurnOn;
+                
+                // QUAN TRỌNG: Giả lập hành động click để code bản đồ nhận diện thay đổi
+                checkbox.dispatchEvent(new Event('change')); 
+            }
+        }
+
+        // 4. Xử lý logic: Cái nào được chọn thì Bật, còn lại Tắt hết
+        if (type === 'weather') {
+            setLayerState(chkWeather, true);   // Bật
+            setLayerState(chkDisaster, false); // Tắt
+            setLayerState(chkCrowd, false);    // Tắt
+        } 
+        else if (type === 'disaster') {
+            setLayerState(chkWeather, false);
+            setLayerState(chkDisaster, true);  // Bật
+            setLayerState(chkCrowd, false);
+        } 
+        else if (type === 'crowd') {
+            setLayerState(chkWeather, false);
+            setLayerState(chkDisaster, false);
+            setLayerState(chkCrowd, true);     // Bật
+        }
+    });
+    </script>
   </body>
 
 </html>
+
