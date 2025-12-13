@@ -4,7 +4,7 @@ import os
 import json
 import random
 
-DEMO_MODE = True  # <--- CÔNG TẮC: True = Đọc file json, False = Quét API thật
+DEMO_MODE = False  # <--- CÔNG TẮC: True = Đọc file json, False = Quét API thật
 
 def get_weather_zones(bbox):
     """
@@ -96,4 +96,5 @@ def _wmo_to_str(code):
 def set_demo_mode(status: bool):
     global DEMO_MODE
     DEMO_MODE = status
+
     print(f"🔄 [SYSTEM] Đã chuyển DEMO_MODE thành: {DEMO_MODE}")
