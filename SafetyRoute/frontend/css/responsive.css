@@ -1,10 +1,11 @@
-/* css/responsive.css - Phiên bản Menu ngang & Sidebar trượt dọc */
+/* css/responsive.css */
 
+/* ====================================================== */
+/* GIAO DIỆN MOBILE */
+/* ====================================================== */
 @media (max-width: 768px) {
 
-    /* ========================================= */
-    /* 1. HEADER & MENU NGANG HÀNG             */
-    /* ========================================= */
+    /* --- 1. HEADER & MENU NGANG HÀNG --- */
     header {
         height: auto !important;
         padding-bottom: 10px;
@@ -16,85 +17,97 @@
         padding: 10px;
     }
 
-    /* Ép Menu thành 1 hàng ngang */
     nav {
         display: flex;
         flex-direction: row !important; /* Bắt buộc hàng ngang */
         justify-content: center;
         flex-wrap: nowrap !important; /* Không cho xuống dòng */
-        gap: 5px; /* Khoảng cách giữa các chữ */
+        gap: 5px;
         width: 100%;
-        overflow-x: auto; /* Nếu màn hình quá bé thì cho lướt ngang */
+        overflow-x: auto; /* Cho phép lướt ngang nếu màn hình quá bé */
     }
 
     nav a {
-        margin: 0 8px !important; /* Căn chỉnh khoảng cách */
+        margin: 0 8px !important;
         font-size: 14px !important;
-        white-space: nowrap; /* Không ngắt dòng chữ */
+        white-space: nowrap;
     }
-
-    /* ========================================= */
-    /* 2. CHỈNH VỊ TRÍ FILTER (HẠ THẤP XUỐNG)  */
-    /* ========================================= */
     
+    /* --- 2. THANH FILTER (NHỎ GỌN, TRONG SUỐT, THẲNG HÀNG) --- */
     .layer-control-bar {
-        width: 95% !important;
-        
-        /* Hạ thấp xuống để tránh đụng Header */
-        /* Header cao khoảng 70-80px, nên ta để top khoảng 90px hoặc 100px */
-        top: 100px !important; 
-        
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 5px;
+        width: fit-content !important;  /* Rộng vừa đủ nội dung */
+        max-width: 100% !important;
+        top: 120px !important;          /* Vị trí hợp lý dưới header */
+        left: 50% !important;           /* Căn giữa */
+        transform: translateX(-50%) !important;
+
+        display: flex !important;
+        flex-wrap: nowrap !important;   /* 3 nút thẳng hàng */
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 4px !important;
+        padding: 0 !important;
+
+        /* Trong suốt hoàn toàn */
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        z-index: 1000 !important; /* Thấp hơn Chatbot */
     }
-    
+
     .layer-control-bar label {
-        font-size: 12px;
-        padding: 5px 8px;
+        font-size: 10px !important;
+        padding: 5px 6px !important;
+        width: auto !important;
+        white-space: nowrap !important;
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        height: 26px !important;
     }
 
-    /* ========================================= */
-    /* 3. SIDEBAR (TRƯỢT LÊN/XUỐNG)    */
-    /* ========================================= */
-
-   /* 1. Trạng thái MỞ (Hiện lên) */
+    /* --- 3. SIDEBAR (TRƯỢT LÊN/XUỐNG) --- */
     .sidebar {
         width: 100% !important;
         height: 45vh !important; /* Chiếm 45% màn hình dưới */
-        
-        /* Reset vị trí desktop */
         top: auto !important;
         left: 0 !important;
-        margin-left: 0 !important; 
+        margin-left: 0 !important;
+        bottom: 0 !important;
         
-        /* Dính đáy màn hình */
-        bottom: 0 !important; 
-        
-        border-radius: 20px 20px 0 0; /* Bo tròn góc trên */
-        box-shadow: 0 -5px 20px rgba(0,0,0,0.2); 
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
         transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
         z-index: 2000;
         display: flex;
         flex-direction: column;
     }
-
-    /* 2. Trạng thái ĐÓNG (Trượt xuống) */
+   
+    /* Trạng thái đóng Sidebar */
     .sidebar.collapsed {
-        /* Giấu toàn bộ chiều cao (45vh), chỉ chừa lại nút bấm */
-        bottom: -45vh !important; 
+        bottom: -45vh !important;
         margin-left: 0 !important;
     }
 
-    /* 3. Nút Bật/Tắt (Nằm trên đỉnh Sidebar) */
+    /* Nội dung bên trong Sidebar */
+    .sidebar-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        padding-bottom: 40px;
+    }
+
+    /* Nút Tròn Toggle Sidebar (Nằm trên đỉnh Sidebar) */
     .toggle-btn {
         position: absolute;
-        top: -45px !important; /* Đẩy lên trên sidebar 45px */
-        
-        /* Căn giữa chuẩn xác */
+        top: -45px !important;
         left: 50% !important;
         right: auto !important;
-        transform: translateX(-50%) !important; 
+        transform: translateX(-50%) !important;
         
         width: 45px !important;
         height: 45px !important;
@@ -111,114 +124,45 @@
         z-index: 2001;
     }
 
-    /* 4. Hiệu ứng Xoay Mũi Tên (Lên/Xuống) */
-    .toggle-btn i, 
-    .toggle-btn span {
+    /* Hiệu ứng xoay mũi tên */
+    .toggle-btn i, .toggle-btn span {
         transition: transform 0.3s ease;
         display: block;
     }
+    .sidebar:not(.collapsed) .toggle-btn i { transform: rotate(90deg); }
+    .sidebar.collapsed .toggle-btn i { transform: rotate(-90deg); }
 
-    /* Khi đang MỞ -> Mũi tên chỉ XUỐNG (để bấm đóng) */
-    .sidebar:not(.collapsed) .toggle-btn i,
-    .sidebar:not(.collapsed) .toggle-btn span {
-        transform: rotate(90deg); /* Chỉnh lại độ nếu mũi tên bị lệch */
-    }
-
-    /* Khi đang ĐÓNG -> Mũi tên chỉ LÊN (để bấm mở) */
-    .sidebar.collapsed .toggle-btn i,
-    .sidebar.collapsed .toggle-btn span {
-        transform: rotate(-90deg);
-    }
-
-    /* 5. Nội dung bên trong */
-    .sidebar-content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 20px;
-        padding-bottom: 40px;
-    }
-
-    /* ========================================= */
-    /* 4. CÁC TRANG KHÁC (HOME, ABOUT...)      */
-    /* ========================================= */
-    /* Giữ nguyên các chỉnh sửa cơ bản */
+    /* --- 4. CÁC TRANG KHÁC --- */
     .hero { min-height: 300px; }
     .features-grid, .about-layout { flex-direction: column; }
     .card, .about-content, .about-sidebar { width: 100% !important; }
-    /* ========================================= */
-    /* 5. THU NHỎ CHATBOT TRÊN MOBILE (MỚI)      */
-    /* ========================================= */
 
-    /* 5.1. Thu nhỏ Nút tròn bật/tắt chat */
+    /* --- 5. CHATBOT MOBILE (NHỎ GỌN) --- */
+    /* Nút bật tắt chat */
     .chat-toggle-btn {
-        width: 50px !important;    /* Nhỏ lại (Mặc định thường là 60px) */
+        width: 50px !important;
         height: 50px !important;
-        font-size: 24px !important; /* Icon bên trong nhỏ lại */
-        
-        /* Điều chỉnh vị trí cho gọn góc */
-        bottom: 70px !important;   
+        font-size: 24px !important;
+        bottom: 70px !important;
         right: 15px !important;
     }
 
-    /* 5.2. Thu nhỏ Khung cửa sổ chat khi mở ra */
+    /* Khung chat */
     .chat-box {
-        /* Nếu muốn nó tự co giãn theo màn hình thì dùng dòng dưới: */
-        width: 92% !important; right: 4% !important;
-
-        height: 180px !important; /* Chiều cao ngắn lại cho đỡ che màn hình */
-        
-        /* Vị trí khi mở: nằm trên nút bấm một chút */
-        bottom: 130px !important; 
-        right: 15px !important;
-    }
-
-    /* 5.3. Tinh chỉnh nội dung bên trong cho gọn */
-    .chat-header {
-        padding: 10px 15px !important; /* Header mỏng lại */
-    }
-    
-    .chat-header h3 {
-        font-size: 16px !important; /* Tiêu đề nhỏ lại */
-    }
-
-    .chat-body {
-        padding: 10px !important;
-        /* Quan trọng: Giới hạn chiều cao vùng tin nhắn để không bị tràn */
-        max-height: 280px !important; 
-    }
-
-    .chat-message {
-        font-size: 13px !important; /* Cỡ chữ tin nhắn nhỏ lại */
-        padding: 8px 12px !important; /* Bong bóng chat gọn hơn */
-    }
-
-    .chat-footer {
-        padding: 8px !important; /* Vùng nhập liệu mỏng lại */
-    }
-
-    .chat-footer input {
-        font-size: 13px !important; /* Chữ khi gõ nhỏ lại */
-        padding: 8px !important;
-    }
-    
-    .chat-footer button {
-        width: 35px !important;
-        height: 35px !important;
-        font-size: 14px !important;
-    }
-    .chat-box {
-        /* Thêm dòng này vào để khung chat nổi lên trên cùng */
-        z-index: 9999 !important; 
-        
-        /* Giữ nguyên các thông số cũ */
+        z-index: 9999 !important; /* Luôn nổi trên cùng */
         width: 300px !important;
-        height: 380px !important;
+        height: 380px !important; /* Hoặc 180px như code bạn gửi tùy ý */
         bottom: 130px !important;
         right: 15px !important;
     }
     
-    /* Để chắc chắn hơn, bạn giảm z-index của thanh Filter xuống thấp hơn chatbox */
-    .layer-control-bar {
-        z-index: 1000 !important; /* Số này nhỏ hơn 9999 là được */
-    }
+    /* Nội dung chat */
+    .chat-header { padding: 10px 15px !important; }
+    .chat-header h3 { font-size: 16px !important; }
+    .chat-body { padding: 10px !important; max-height: 280px !important; }
+    .chat-message { font-size: 13px !important; padding: 8px 12px !important; }
+    .chat-footer { padding: 8px !important; }
+    .chat-footer input { font-size: 13px !important; padding: 8px !important; }
+    .chat-footer button { width: 35px !important; height: 35px !important; }
+
 }
