@@ -3,7 +3,7 @@ import json
 import os
 from utils import haversine # Import hàm chung
 
-DEMO_MODE = True # <--- CÔNG TẮC DEMO
+DEMO_MODE = False # <--- CÔNG TẮC DEMO
 
 def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
     # 1. Chọn nguồn dữ liệu
@@ -66,4 +66,5 @@ def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
 def set_demo_mode(status: bool):
     global DEMO_MODE
     DEMO_MODE = status
+
     print(f"🌋 [DISASTER] Đã chuyển DEMO_MODE thành: {DEMO_MODE}")
