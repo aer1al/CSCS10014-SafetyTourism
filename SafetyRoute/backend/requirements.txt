@@ -14,7 +14,10 @@ geopandas
 shapely>=2.0
 tqdm
 numpy
-
+chromadb
+neo4j
+google-generativeai
+dotenv
 Rtree
 
 
