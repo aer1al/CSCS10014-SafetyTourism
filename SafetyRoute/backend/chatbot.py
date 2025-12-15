@@ -1,107 +1,109 @@
 import google.generativeai as genai
 import os
-import json
 import re
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Cấu hình API Key
-genai.configure(api_key=os.getenv("AIzaSyAxA1IHzYIKGrMLo8jgaD3A55sBNZ_ud9s"))
+# Cấu hình API Key (Lấy từ biến môi trường hoặc hardcode nếu bạn test nhanh)
+api_key = os.getenv("GEMINI_API_KEY") 
+# Hoặc nếu bạn muốn giữ key cứng như cũ (nhưng ko khuyến khích):
+# api_key = "AIzaSyAxA1IHzYIKGrMLo8jgaD3A55sBNZ_ud9s"
 
-def clean_json_string(text):
-    """Làm sạch chuỗi JSON trả về từ AI"""
-    match = re.search(r'\{.*\}', text, re.DOTALL)
-    return match.group(0) if match else text
+if not api_key:
+    # Fallback key nếu quên cấu hình .env (Dùng tạm key cũ của bạn)
+    api_key = "AIzaSyAxA1IHzYIKGrMLo8jgaD3A55sBNZ_ud9s"
 
-# file: chatbot.py
+genai.configure(api_key=api_key)
 
-def generate_safety_advice(user_query, route_result):
-    """
-    Tư vấn an toàn KHI ĐÃ CÓ lộ trình (GraphRAG)
-    """
+# Cấu hình Model (Dùng bản Flash cho nhanh và rẻ)
+MODEL_NAME = 'gemini-2.5-flash' 
+
+# ============================================================================
+# CASE 1: TƯ VẤN VỚI LOGIC SUY LUẬN TỰ NHIÊN NHẤT
+# ============================================================================
+def generate_general_chat(user_query, rag_context="", current_time="Không rõ"):
     try:
-        # --- [DEBUG] IN DỮ LIỆU NHẬN ĐƯỢC RA TERMINAL ---
-        print("\n🔍 [CHATBOT DEBUG] Dữ liệu nhận được từ Core Logic:")
-        print(f"   - Safety Label: {route_result.get('summary', {}).get('safety_label')}")
-        print(f"   - Disasters Hit: {route_result.get('hit_details', {}).get('disasters')}")
-        print("-" * 50)
-        # -------------------------------------------------
+        model = genai.GenerativeModel(MODEL_NAME)
+        
+        prompt = f"""
+        Bạn là Chuyên gia Giao thông TP.HCM, tự xưng là Safety Bot.
+        
+        1. THÔNG TIN ĐẦU VÀO:
+        - Câu hỏi: "{user_query}"
+        - Thời gian hiện tại: {current_time}
+        - DỮ LIỆU ĐỊA ĐIỂM TÌM ĐƯỢC (Graph RAG):
+        ---------------------
+        {rag_context}
+        ---------------------
 
-        # Lấy dữ liệu chi tiết
+        2. KIẾN THỨC NỀN TẢNG (Quy tắc Giờ Cao Điểm TP.HCM):
+        - Sáng: 07:00 - 09:00 | Chiều: 16:30 - 19:00.
+        
+        3. NHIỆM VỤ SUY LUẬN (PHẢI TUÂN THỦ TỪNG BƯỚC):
+        
+        A. PHÂN TÍCH CHUNG:
+           - Bắt đầu bằng cách nhận định chung về tuyến đường (Ví dụ: Nguyễn Tất Thành là đường ra cảng, nhiều xe tải) và so sánh với thời gian hiện tại ("{current_time}" có nằm trong/gần Giờ Cao Điểm không?).
+           - **TUYỆT ĐỐI KHÔNG DÙNG CỤM TỪ:** "Theo dữ liệu hệ thống", "Theo RAG Context", hay "Dựa trên cơ sở dữ liệu". Hãy nói như thể bạn đã biết thông tin đó rồi.
+
+        B. BỔ SUNG CHI TIẾT (Nếu có trong Context):
+           - Nếu Dữ liệu Graph (Market, School, RiskZone) có liên quan, hãy dùng nó để giải thích TẠI SAO đường đông.
+           - Ví dụ: Nếu {current_time} là 10:30 (như trong ảnh) và có Chợ (Market), hãy nói: "Dù đã qua giờ cao điểm, khu vực này còn ảnh hưởng bởi Chợ Xóm Chiếu nên xe cộ vẫn di chuyển chậm."
+           
+        C. ĐỊNH DẠNG TRẢ LỜI (Văn phong chuyên nghiệp, thân thiện, ngắn gọn):
+           - Lời chào: Ngắn gọn (Ví dụ: "Chào bạn,").
+           - Câu trả lời chính: Trả lời trực tiếp vào tình trạng giao thông + Giải thích bằng kiến thức chung (Giờ cao điểm/Cảng).
+           - Câu bổ sung: Lồng ghép thông tin Chợ/Trường học để tăng độ chính xác.
+           - Lời khuyên: Kết thúc bằng lời khuyên cụ thể (Ví dụ: nên đi chậm, nên kiểm tra Maps).
+        
+        4. MẪU TRẢ LỜI MONG MUỐN:
+        "Chào bạn, lúc này là {current_time}. [Nhận định chung về Giờ Cao Điểm/Đặc điểm đường Nguyễn Tất Thành]. [Bổ sung về Chợ/Trường học]. Bạn nên [Lời khuyên]."
+        """
+        
+        response = model.generate_content(prompt)
+        return response.text.strip()
+    except Exception as e:
+        return f"Xin lỗi, lỗi xử lý: {str(e)}"
+
+# ============================================================================
+# CASE 2: PHÂN TÍCH LỘ TRÌNH ĐÃ CÓ
+# User hỏi: "Đường đi này như thế nào?" (Khi đã có bản đồ)
+# ============================================================================
+def generate_safety_advice(user_query, route_result, rag_context=""):
+    try:
+        # Lấy thông tin tóm tắt từ JSON đường đi
         summary = route_result.get('summary', {})
+        dist = route_result.get('distance_km', 0)
+        dur = route_result.get('duration_min', 0)
         risks = route_result.get('risk_summary', {})
-        details = route_result.get('hit_details', {})
         
-        # Xử lý danh sách thiên tai (tránh None)
-        disaster_list = details.get('disasters', [])
-        weather_list = details.get('weathers', [])
-        
-        # Tạo Context (Bối cảnh) cho AI
-        # Mẹo: Đưa thông tin nguy hiểm lên đầu tiên để AI chú ý
-        graph_context = f"""
-        THÔNG TIN QUAN TRỌNG NHẤT (BẮT BUỘC CHÚ Ý):
-        1. MỨC ĐỘ CẢNH BÁO: {summary.get('safety_label', 'Không rõ')}
-        2. DANH SÁCH THIÊN TAI: {', '.join(disaster_list) if disaster_list else 'Không có'}
-        
-        THÔNG TIN PHỤ (THAM KHẢO):
-        - Quãng đường: {route_result.get('distance_km')} km
-        - Thời gian: {route_result.get('duration_min')} phút
-        - Lý do cảnh báo: {summary.get('description')}
-        - Giao thông: {risks.get('traffic_level')} (Low=Vắng, High=Kẹt)
-        """
-
-        # Prompt (Kịch bản)
-        prompt = f"""
-        Bạn là Trợ lý An toàn (Safety Assistant).
-        Người dùng hỏi: "{user_query}"
-        
-        Dữ liệu hệ thống phân tích được:
-        {graph_context}
-        
-        YÊU CẦU XỬ LÝ:
-        1. ƯU TIÊN SỐ 1: Nhìn mục "MỨC ĐỘ CẢNH BÁO" và "DANH SÁCH THIÊN TAI".
-           - Nếu thấy chữ "CỰC KỲ NGUY HIỂM" hoặc có tên Thiên tai (ví dụ: Cháy, Bão, Ngập), bạn PHẢI ngăn cản người dùng.
-           - Tuyệt đối KHÔNG được nói "đường thông thoáng" hay "an toàn" trong trường hợp này, dù giao thông có Low đi nữa.
-           
-        2. Nếu cảnh báo là "An toàn" (Xanh):
-           - Báo tin vui, chúc thượng lộ bình an.
-           
-        3. Trả lời ngắn gọn (dưới 3 câu), giọng điệu quan tâm, nghiêm túc nếu có nguy hiểm.
-        """
-
-        model = genai.GenerativeModel('models/gemini-2.5-flash')
-        response = model.generate_content(prompt)
-        return response.text
-        
-    except Exception as e:
-        print(f"🔥 Lỗi Chatbot Logic: {e}")
-        return f"Xin lỗi, tôi đang gặp sự cố kỹ thuật. ({str(e)})"
-    
-def generate_general_chat(user_query):
-    """
-    Hàm chat tự do KHI CHƯA CÓ lộ trình.
-    AI sẽ đóng vai hướng dẫn viên, nhắc user tìm đường.
-    """
-    try:
-        model = genai.GenerativeModel('models/gemini-2.5-flash')
+        model = genai.GenerativeModel(MODEL_NAME)
         
         prompt = f"""
-        Bạn là Trợ lý ảo của ứng dụng "Safety Route" (Bản đồ an toàn tại TP.HCM).
-        Tên bạn là Safety Bot.
+        Bạn đang đóng vai là "người ngồi sau xe" phân tích lộ trình cho tài xế.
         
-        Người dùng đang hỏi: "{user_query}"
-        Hiện tại người dùng CHƯA chọn lộ trình trên bản đồ.
+        1. DỮ LIỆU LỘ TRÌNH (Đã được tính toán):
+        - Tổng quãng đường: {dist} km.
+        - Thời gian dự kiến: {dur} phút.
+        - Đánh giá an toàn chung: {summary.get('safety_label')} ({summary.get('description')}).
+        - Cảnh báo cụ thể:
+          + Mức độ kẹt xe: {risks.get('traffic_level', 'Thấp')}
+          + Mức độ đám đông: {risks.get('crowd_level', 'Thấp')}
+          + Thiên tai/Bão: {risks.get('disaster_status', 'Không có')}
         
-        Nhiệm vụ của bạn:
-        1. Nếu người dùng chào hỏi: Hãy chào lại thân thiện và giới thiệu tính năng tìm đường an toàn tránh cướp giật, ngập lụt.
-        2. Nếu người dùng hỏi về một địa điểm: Hãy giới thiệu sơ qua về địa điểm đó và nhắc họ: "Bạn có muốn tôi chỉ đường đến đó không?"
-        3. Nếu người dùng hỏi linh tinh: Hãy trả lời ngắn gọn và hướng họ về việc tìm đường.
-        
-        Văn phong: Thân thiện, ngắn gọn, Tiếng Việt tự nhiên.
+        2. DỮ LIỆU ĐỊA PHƯƠNG (RAG Context - Các điểm đen cụ thể):
+        {rag_context}
+
+        3. CÂU HỎI USER: "{user_query}"
+
+        4. YÊU CẦU TRẢ LỜI:
+        - Đừng lặp lại thông số khô khan. Hãy nói như một lời khuyên.
+        - Nếu lộ trình AN TOÀN: "Tuyến đường này khá ổn, chỉ mất khoảng {dur} phút cho {dist}km. Hệ thống không phát hiện kẹt xe hay ngập nước."
+        - Nếu lộ trình NGUY HIỂM (hoặc có cảnh báo): "Lộ trình này tuy ngắn ({dist}km) nhưng bạn cần cẩn thận đoạn... vì hệ thống phát hiện có [Kẹt xe/Đám đông/Chợ]."
+        - Dựa vào RAG Context để chỉ đích danh tên đường/khu vực cần chú ý.
         """
-        
+
         response = model.generate_content(prompt)
-        return response.text
+        return response.text.strip()
     except Exception as e:
-        return "Xin chào! Tôi là Safety Bot. Bạn hãy nhập điểm đi và đến để tôi phân tích rủi ro nhé!"
+        return "Hệ thống đang bận, bạn cứ đi theo lộ trình trên bản đồ nhé."
