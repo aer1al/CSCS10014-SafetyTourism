@@ -1,0 +1,3195 @@
+[
+  {
+    "name": "Chợ Đêm Tân An",
+    "lat": 10.5313746,
+    "lng": 106.4165997,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Coopmart Tân An",
+    "lat": 10.5345475,
+    "lng": 106.4107415,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Chợ Vĩnh Tân",
+    "lat": 11.0437006,
+    "lng": 107.0186129,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cầu Dừa",
+    "lat": 10.758802,
+    "lng": 106.694865,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ An Bình",
+    "lat": 10.8724735,
+    "lng": 106.7572494,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Xã Tây",
+    "lat": 10.7530475,
+    "lng": 106.6629554,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cầu",
+    "lat": 10.847542,
+    "lng": 106.6356317,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Khu Du Lịch Đại Nam",
+    "lat": 11.0432629,
+    "lng": 106.6347994,
+    "type": "tourism",
+    "radius": 0.5,
+    "weight": 0.9
+  },
+  {
+    "name": "Chợ Vườn Lài",
+    "lat": 10.86014,
+    "lng": 106.6917046,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Station Mall",
+    "lat": 10.8011701,
+    "lng": 106.7331602,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.7
+  },
+  {
+    "name": "Chợ Tăng Nhơn Phú B",
+    "lat": 10.831297,
+    "lng": 106.7840226,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Khánh",
+    "lat": 10.7866226,
+    "lng": 106.7383719,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hải Sản Hàng Dương",
+    "lat": 10.38719,
+    "lng": 106.919392,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Ap 3",
+    "lat": 10.692771,
+    "lng": 107.0163,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Ấp Tập Phước",
+    "lat": 10.706494,
+    "lng": 107.006428,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Ấp Đất Mới",
+    "lat": 10.72898,
+    "lng": 106.989644,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Bàu Trai",
+    "lat": 10.9003024,
+    "lng": 106.3934648,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 11.0606908,
+    "lng": 106.5275722,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.742013,
+    "lng": 106.6946068,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Công Viên Ven Sông An Phú Hưng",
+    "lat": 10.7362462,
+    "lng": 106.7099951,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Địa Đạo Phú Thọ Hòa",
+    "lat": 10.7842199,
+    "lng": 106.6312668,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.7
+  },
+  {
+    "name": "Chợ Campuchia",
+    "lat": 10.7633674,
+    "lng": 106.6776016,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Monkey Island",
+    "lat": 10.4114941,
+    "lng": 106.8868156,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.7
+  },
+  {
+    "name": "Cu Chi Wildlife Rescue Station",
+    "lat": 11.0927233,
+    "lng": 106.5137054,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Rừng Ngập Mặn Vàm Sát",
+    "lat": 10.489441,
+    "lng": 106.7958226,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Hội quán 99",
+    "lat": 10.904278,
+    "lng": 106.70301,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Khu Du Lịch Bình Qưới",
+    "lat": 10.8294989,
+    "lng": 106.7392535,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.7
+  },
+  {
+    "name": "Dai Nam Zoo",
+    "lat": 11.0488817,
+    "lng": 106.6249326,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ Hiệp Bình Phước",
+    "lat": 10.863161,
+    "lng": 106.7210254,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Wildlife at Risk",
+    "lat": 11.0913435,
+    "lng": 106.5134968,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Lang tre Phu An",
+    "lat": 11.0660639,
+    "lng": 106.5849136,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8429948,
+    "lng": 106.5998989,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Long Trường",
+    "lat": 10.8061332,
+    "lng": 106.8224664,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.9875517,
+    "lng": 106.4816014,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.9695192,
+    "lng": 106.5057016,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Trung Tâm Mua Sắm Nguyễn Kim Gò Vấp",
+    "lat": 10.8298519,
+    "lng": 106.6778983,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.7
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.9781704,
+    "lng": 106.6511271,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Nancy",
+    "lat": 10.7557937,
+    "lng": 106.6858615,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Trung Tâm Mua Sắm Russian",
+    "lat": 10.7617399,
+    "lng": 106.6950862,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.6174875,
+    "lng": 106.454065,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7662905,
+    "lng": 106.6913686,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7737987,
+    "lng": 106.7002497,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Chiều",
+    "lat": 10.7676377,
+    "lng": 106.6928286,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nhật Tảo",
+    "lat": 10.7641455,
+    "lng": 106.6653042,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Video show place",
+    "lat": 11.1436058,
+    "lng": 106.4642569,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 11.0966537,
+    "lng": 106.5097797,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 11.1368401,
+    "lng": 106.457415,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "គុយទាវ Hong Phat",
+    "lat": 10.7714656,
+    "lng": 106.6833353,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Cà Phê Điêu Thuyền",
+    "lat": 10.8439776,
+    "lng": 106.6553312,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7728028,
+    "lng": 106.6956161,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7720792,
+    "lng": 106.6976304,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Phú Định",
+    "lat": 10.7198216,
+    "lng": 106.6232197,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.6875607,
+    "lng": 106.5850339,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7902787,
+    "lng": 106.6994063,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Vĩnh Lộc A",
+    "lat": 10.8324893,
+    "lng": 106.5655415,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Đình",
+    "lat": 10.9855069,
+    "lng": 106.6679563,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.9175385,
+    "lng": 106.7524888,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Khiết Tâm",
+    "lat": 10.8763939,
+    "lng": 106.746659,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.9973267,
+    "lng": 106.5744045,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ An Lạc",
+    "lat": 10.7418135,
+    "lng": 106.6200916,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Chim Xanh",
+    "lat": 10.7659514,
+    "lng": 106.6484854,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7739837,
+    "lng": 106.762328,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.774699,
+    "lng": 106.692279,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Disco Travel - Du lịch Quốc Tế Khám Phá",
+    "lat": 10.8151663,
+    "lng": 106.6734822,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7702128,
+    "lng": 106.67081,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Cống Rạch Đào",
+    "lat": 10.5981429,
+    "lng": 106.3932627,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Sculpture Garden",
+    "lat": 10.7747342,
+    "lng": 106.6938172,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "LOTTE Mart Cộng Hòa",
+    "lat": 10.800858,
+    "lng": 106.6529899,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Công viên bờ sông Sài Gòn",
+    "lat": 10.7716671,
+    "lng": 106.7097359,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7611115,
+    "lng": 106.6955947,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7762451,
+    "lng": 106.7069417,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7542634,
+    "lng": 106.6553654,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Phạm Thế Hiển",
+    "lat": 10.7432291,
+    "lng": 106.6711112,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Cầu Đi Bộ Số 7",
+    "lat": 10.7458291,
+    "lng": 106.6543332,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7637304,
+    "lng": 106.6956337,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Tân Kiểng 1",
+    "lat": 10.7515198,
+    "lng": 106.7054977,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bàu Sen",
+    "lat": 10.7581159,
+    "lng": 106.6784826,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7625665,
+    "lng": 106.6731423,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7665321,
+    "lng": 106.6761598,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Phước Hoà",
+    "lat": 10.7111536,
+    "lng": 107.0057555,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7676116,
+    "lng": 106.6781032,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Bình An",
+    "lat": 10.8984228,
+    "lng": 106.8084973,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Liberation village",
+    "lat": 11.1399294,
+    "lng": 106.4622617,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "B52 crater",
+    "lat": 11.1441834,
+    "lng": 106.463411,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Bamboo trap",
+    "lat": 11.1440617,
+    "lng": 106.4633916,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Soldiers",
+    "lat": 11.1427597,
+    "lng": 106.4642921,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Ammunition and soldiers",
+    "lat": 11.1431295,
+    "lng": 106.4639622,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "US vehicles graveyard",
+    "lat": 11.1424216,
+    "lng": 106.4625406,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Guns gallery",
+    "lat": 11.1430005,
+    "lng": 106.4628652,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Ammunition gallery",
+    "lat": 11.1432663,
+    "lng": 106.462782,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Video show place",
+    "lat": 11.143915,
+    "lng": 106.4642465,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Video show place",
+    "lat": 11.1426571,
+    "lng": 106.4642613,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.780298,
+    "lng": 106.705046,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7797801,
+    "lng": 106.7050605,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7247693,
+    "lng": 106.7191045,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Co.op Mart",
+    "lat": 10.7720132,
+    "lng": 106.7716974,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.4047787,
+    "lng": 106.8897721,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Đo Đạc",
+    "lat": 10.7943977,
+    "lng": 106.7346479,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Parkson Hùng Vương",
+    "lat": 10.7557757,
+    "lng": 106.6629025,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8296646,
+    "lng": 106.6358594,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Circle K",
+    "lat": 10.7752756,
+    "lng": 106.634713,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Co.op Food - Trịnh Đình Thảo",
+    "lat": 10.7752486,
+    "lng": 106.6347907,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Circle K",
+    "lat": 10.7697462,
+    "lng": 106.633742,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Circle K",
+    "lat": 10.760328,
+    "lng": 106.6808899,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Circle K",
+    "lat": 10.7608827,
+    "lng": 106.6796708,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "vòng xoay",
+    "lat": 10.8394731,
+    "lng": 106.8108201,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8208871,
+    "lng": 106.7039424,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 11.0620699,
+    "lng": 106.5291735,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Trung tâm Thương mại Chợ Tân Thành",
+    "lat": 11.1513006,
+    "lng": 106.8423977,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "KDL-Bằng Lăng Tím Hùng Vương-Ấp Chính Nghĩa-Vĩnh Thanh-",
+    "lat": 10.6626679,
+    "lng": 106.8584542,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "KDL-Bò Cạp Vàng Hùng Vương-Ấp Chính Nghĩa-Vĩnh Thanh-",
+    "lat": 10.6591759,
+    "lng": 106.8560403,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Chợ Long Thạnh",
+    "lat": 10.3848268,
+    "lng": 106.9109483,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7393116,
+    "lng": 106.6874722,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Siêu Thị Sky Fresh",
+    "lat": 10.7921246,
+    "lng": 106.7228756,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hoa Hồ Thị Kỷ",
+    "lat": 10.7656721,
+    "lng": 106.6774059,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 1.0
+  },
+  {
+    "name": "Saigon Mall Cao Thắng",
+    "lat": 10.7692463,
+    "lng": 106.6829983,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Trung Tâm Mua Sắm Nowzone - Nguyễn Văn Cừ",
+    "lat": 10.764339,
+    "lng": 106.6824266,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Trung tâm mua sắm Sài Gòn Garden",
+    "lat": 10.7733608,
+    "lng": 106.7038659,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Gigamall Thủ Đức",
+    "lat": 10.8276722,
+    "lng": 106.721539,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ An Nhơn",
+    "lat": 10.8412339,
+    "lng": 106.6772851,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Khu du lịch Văn Thánh",
+    "lat": 10.7982863,
+    "lng": 106.7156297,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Bách Hoá Xanh - 2C - 2D Phùng Văn Cung",
+    "lat": 10.7999139,
+    "lng": 106.6866177,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Phước Long B",
+    "lat": 10.8292978,
+    "lng": 106.7687005,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Dân Sinh",
+    "lat": 10.7665534,
+    "lng": 106.6979948,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cô Giang",
+    "lat": 10.7627952,
+    "lng": 106.6947299,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cư xá Ngân hàng",
+    "lat": 10.7482605,
+    "lng": 106.7167158,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Linh Xuân",
+    "lat": 10.8774415,
+    "lng": 106.7660961,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Lò Than",
+    "lat": 10.7398106,
+    "lng": 106.6539072,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Vincom Plus Nam Long Quận 7",
+    "lat": 10.743815,
+    "lng": 106.7325841,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ Lạc Quang",
+    "lat": 10.8353586,
+    "lng": 106.6196328,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Ngã Ba Bầu",
+    "lat": 10.8701553,
+    "lng": 106.615238,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Hữu",
+    "lat": 10.7905502,
+    "lng": 106.789698,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Đầu mối Nông Sản Thực Phẩm Hóc Môn",
+    "lat": 10.8600343,
+    "lng": 106.6014401,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 1.0
+  },
+  {
+    "name": "Vincom Quận 2",
+    "lat": 10.7882994,
+    "lng": 106.7657527,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ Xóm Mới",
+    "lat": 10.8500841,
+    "lng": 106.6643054,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thông Dụng",
+    "lat": 10.9359603,
+    "lng": 106.7447949,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Đáng",
+    "lat": 10.9193995,
+    "lng": 106.7290922,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hài Mỹ",
+    "lat": 10.9745582,
+    "lng": 106.7154313,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Đêm Linh Trung",
+    "lat": 10.8896113,
+    "lng": 106.7269697,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ Tân Phước Khánh",
+    "lat": 11.0046937,
+    "lng": 106.7199894,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Vĩnh Tân",
+    "lat": 11.1170754,
+    "lng": 106.7031525,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Phong",
+    "lat": 10.9716237,
+    "lng": 106.7421133,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Đêm Man Thiện",
+    "lat": 10.8500849,
+    "lng": 106.7963248,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ Bà Lát",
+    "lat": 10.7709448,
+    "lng": 106.5515239,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hưng Long",
+    "lat": 10.6579687,
+    "lng": 106.6082338,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ 78",
+    "lat": 10.9396653,
+    "lng": 106.7187971,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Chí Hùng",
+    "lat": 10.9771814,
+    "lng": 106.7536811,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Dĩ An 2",
+    "lat": 10.8847076,
+    "lng": 106.7579605,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ 434",
+    "lat": 10.9179867,
+    "lng": 106.7343481,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Nhựt",
+    "lat": 10.7052372,
+    "lng": 106.5641671,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Liên Ấp 123",
+    "lat": 10.7908531,
+    "lng": 106.5803932,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Đông Thạnh",
+    "lat": 10.9041924,
+    "lng": 106.6365673,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 11.1409052,
+    "lng": 106.4610506,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Địa Đạo Bến Đình Củ Chi",
+    "lat": 11.0415424,
+    "lng": 106.5498182,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Địa Đạo Bến Đình Củ Chi",
+    "lat": 11.0451888,
+    "lng": 106.5483108,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ Cây Điệp",
+    "lat": 10.8111914,
+    "lng": 106.6953748,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thuận Mỹ",
+    "lat": 10.4452838,
+    "lng": 106.5618713,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Trạch",
+    "lat": 10.5630164,
+    "lng": 106.5732226,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Phố Thương Mại",
+    "lat": 10.8449583,
+    "lng": 106.8377232,
+    "type": "mall",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ đêm Biên Hùng",
+    "lat": 10.9533848,
+    "lng": 106.8215467,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Cambodia Bus Companies (many)",
+    "lat": 10.7678095,
+    "lng": 106.6915258,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Chợ Huỳnh Văn Chính",
+    "lat": 10.7808343,
+    "lng": 106.6414933,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Góc Nhật Bản",
+    "lat": 10.7800735,
+    "lng": 106.7044599,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7918935,
+    "lng": 106.6937784,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 11.1404979,
+    "lng": 106.4639362,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Đường Sách",
+    "lat": 10.7805735,
+    "lng": 106.6996948,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7872032,
+    "lng": 106.7087444,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7894608,
+    "lng": 106.7048403,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Some Rockets And Military Vehicles",
+    "lat": 10.8022168,
+    "lng": 106.6487042,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Seafood mini-market",
+    "lat": 10.7910098,
+    "lng": 106.7073948,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Bãi chờ ra ca đi nhậu",
+    "lat": 10.8534256,
+    "lng": 106.7965294,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "leo rừng",
+    "lat": 11.1452749,
+    "lng": 106.4615972,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Ben Nghe Street Food",
+    "lat": 10.7776249,
+    "lng": 106.6978228,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Phố đêm xứ Trảng",
+    "lat": 11.0317784,
+    "lng": 106.3538818,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "cầu lê văn việt",
+    "lat": 10.843635,
+    "lng": 106.8064678,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Lã xuân oai",
+    "lat": 10.83047,
+    "lng": 106.804746,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Cầu",
+    "lat": 10.8295205,
+    "lng": 106.8037086,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "fpt",
+    "lat": 10.8355736,
+    "lng": 106.8082511,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "cty lập thành",
+    "lat": 10.8323592,
+    "lng": 106.8061051,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Sámung",
+    "lat": 10.8284276,
+    "lng": 106.802193,
+    "type": "tourism",
+    "radius": 0.3,
+    "weight": 0.6
+  },
+  {
+    "name": "Chợ Cây Quéo",
+    "lat": 10.8089294,
+    "lng": 106.6868754,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Long Phước",
+    "lat": 10.8084246,
+    "lng": 106.8598815,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bến Thành",
+    "lat": 10.7725707,
+    "lng": 106.6980174,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 1.0
+  },
+  {
+    "name": "Chợ Tân Định",
+    "lat": 10.7898998,
+    "lng": 106.6900513,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 1.0
+  },
+  {
+    "name": "Chợ Đa Kao",
+    "lat": 10.7924476,
+    "lng": 106.6965889,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thái Bình",
+    "lat": 10.7667598,
+    "lng": 106.6888743,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Trần Hữu Trang",
+    "lat": 10.7934979,
+    "lng": 106.6718224,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Nhuận",
+    "lat": 10.7939272,
+    "lng": 106.6827315,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nguyễn Đình Chiểu",
+    "lat": 10.8046364,
+    "lng": 106.6800049,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Xóm Chiếu",
+    "lat": 10.7635257,
+    "lng": 106.7061049,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ An Đông",
+    "lat": 10.7581051,
+    "lng": 106.6721844,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 1.0
+  },
+  {
+    "name": "Chợ hoa Hồ Thị Kỷ",
+    "lat": 10.7657014,
+    "lng": 106.6772919,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 1.0
+  },
+  {
+    "name": "Chợ Hòa Bình",
+    "lat": 10.752056,
+    "lng": 106.6756651,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hãng Phân",
+    "lat": 10.7623211,
+    "lng": 106.7002213,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Lâm",
+    "lat": 10.7555561,
+    "lng": 106.6314179,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cây Da Sà",
+    "lat": 10.7562354,
+    "lng": 106.6188804,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Mỹ",
+    "lat": 10.7364452,
+    "lng": 106.7187278,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Kim Biên",
+    "lat": 10.7500448,
+    "lng": 106.6559414,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ Võ Thành Trang",
+    "lat": 10.800423,
+    "lng": 106.6378438,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Bình",
+    "lat": 10.7860771,
+    "lng": 106.6532813,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nguyễn Văn Trỗi",
+    "lat": 10.7863437,
+    "lng": 106.6798496,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Biên Hòa",
+    "lat": 10.9464622,
+    "lng": 106.8143888,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hạnh Thông Tây",
+    "lat": 10.835642,
+    "lng": 106.6586789,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ An Sương",
+    "lat": 10.8460021,
+    "lng": 106.6211754,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Quy",
+    "lat": 10.7449265,
+    "lng": 106.7067222,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thị Nghè",
+    "lat": 10.7920425,
+    "lng": 106.707548,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Kiểng 2",
+    "lat": 10.7454228,
+    "lng": 106.7047774,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thủ Dầu Một",
+    "lat": 10.9773191,
+    "lng": 106.6512814,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ cá",
+    "lat": 10.9785747,
+    "lng": 106.6511853,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Sơn Kỳ",
+    "lat": 10.8058848,
+    "lng": 106.6225827,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Trảng Bàng",
+    "lat": 11.0335203,
+    "lng": 106.3529355,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Đông Hòa",
+    "lat": 10.8903238,
+    "lng": 106.7858479,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Dĩ An",
+    "lat": 10.9071038,
+    "lng": 106.7700934,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nội Hóa",
+    "lat": 10.8991288,
+    "lng": 106.7919107,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Phú",
+    "lat": 10.8689715,
+    "lng": 106.8076192,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bà Chiểu",
+    "lat": 10.8016821,
+    "lng": 106.6988175,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 1.0
+  },
+  {
+    "name": "Chợ đầu mối Thủ Đức",
+    "lat": 10.8699654,
+    "lng": 106.7275743,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 1.0
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8501209,
+    "lng": 106.7558111,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Gò Vấp",
+    "lat": 10.8235049,
+    "lng": 106.6872202,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Củ Chi",
+    "lat": 10.9699442,
+    "lng": 106.4821788,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cây Quéo",
+    "lat": 10.8094781,
+    "lng": 106.6848458,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phước Bình",
+    "lat": 10.8172086,
+    "lng": 106.7721339,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Lợi 2",
+    "lat": 10.7082488,
+    "lng": 106.6224266,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thiếc",
+    "lat": 10.7598051,
+    "lng": 106.6567232,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Từ Đức",
+    "lat": 10.8489437,
+    "lng": 106.7656481,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nguyễn Tri Phương",
+    "lat": 10.7644473,
+    "lng": 106.6637169,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Trảng Bom",
+    "lat": 10.9551262,
+    "lng": 107.0144046,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Long Thành",
+    "lat": 10.7770924,
+    "lng": 106.9562343,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Lái Thiêu",
+    "lat": 10.903128,
+    "lng": 106.6994992,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Uyên",
+    "lat": 11.0590435,
+    "lng": 106.7945895,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 11.0593746,
+    "lng": 106.7940453,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Hoa Hậu Giang",
+    "lat": 10.7495387,
+    "lng": 106.6384519,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Minh Phụng",
+    "lat": 10.7507711,
+    "lng": 106.6428025,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Đức Hòa",
+    "lat": 10.8188889,
+    "lng": 106.4535823,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thạnh Xuân",
+    "lat": 10.8800564,
+    "lng": 106.6781032,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hiệp Thành",
+    "lat": 10.8793363,
+    "lng": 106.6389503,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bến Cát",
+    "lat": 11.1515248,
+    "lng": 106.5894438,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8077369,
+    "lng": 106.7396518,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Phú Thọ",
+    "lat": 10.7626601,
+    "lng": 106.6540696,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hóc Môn",
+    "lat": 10.8889115,
+    "lng": 106.5962818,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Thới Nhì",
+    "lat": 10.8966909,
+    "lng": 106.5776098,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hóc Môn",
+    "lat": 10.8888853,
+    "lng": 106.5970211,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thạnh Mỹ Lợi",
+    "lat": 10.7702578,
+    "lng": 106.7697558,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Xóm Củi",
+    "lat": 10.7459362,
+    "lng": 106.661018,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cần Đước",
+    "lat": 10.5042907,
+    "lng": 106.6040242,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bàu Cát",
+    "lat": 10.7915841,
+    "lng": 106.6420705,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hòa Hưng",
+    "lat": 10.7831905,
+    "lng": 106.6710848,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Tiên",
+    "lat": 10.7459406,
+    "lng": 106.6443656,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nhị Thiên Đường",
+    "lat": 10.7395075,
+    "lng": 106.657276,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phạm Thế Hiển",
+    "lat": 10.74323,
+    "lng": 106.6711226,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Ba Đình",
+    "lat": 10.7482886,
+    "lng": 106.6684142,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Rạch Cát",
+    "lat": 10.7133457,
+    "lng": 106.6256687,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nguyễn Chế Nghĩa",
+    "lat": 10.7426143,
+    "lng": 106.6540423,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tín Nghĩa",
+    "lat": 10.7499283,
+    "lng": 106.6564243,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Phú",
+    "lat": 10.7911484,
+    "lng": 106.6362486,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hoa Tươi Đầm Sen",
+    "lat": 10.7696954,
+    "lng": 106.642764,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Lạc",
+    "lat": 10.6906895,
+    "lng": 106.6537972,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Kiến Đức 2",
+    "lat": 10.7288181,
+    "lng": 106.6198563,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hiệp Tân",
+    "lat": 10.7720249,
+    "lng": 106.6296991,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Phú 2",
+    "lat": 10.7840146,
+    "lng": 106.625526,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Kiến Đức",
+    "lat": 10.7535061,
+    "lng": 106.6139404,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Trị Đông",
+    "lat": 10.7635846,
+    "lng": 106.6125787,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Bửu",
+    "lat": 10.6854537,
+    "lng": 106.5391935,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Vườn Chuối",
+    "lat": 10.7735273,
+    "lng": 106.6842638,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Nhà lồng B",
+    "lat": 10.70141,
+    "lng": 106.6100964,
+    "type": "market",
+    "radius": 0.3
+  },
+  {
+    "name": "Chợ đầu mối Bình Điền",
+    "lat": 10.7029112,
+    "lng": 106.6103055,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 1.0
+  },
+  {
+    "name": "Chợ Xuân Thới Thượng",
+    "lat": 10.8636061,
+    "lng": 106.5689509,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hòa Lợi",
+    "lat": 11.076869,
+    "lng": 106.6739563,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Bình",
+    "lat": 10.9398453,
+    "lng": 106.7652497,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Búng",
+    "lat": 10.9458106,
+    "lng": 106.6906905,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thủ Đức",
+    "lat": 10.8502385,
+    "lng": 106.7541973,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ thuốc Quận 10",
+    "lat": 10.7806119,
+    "lng": 106.6667432,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Thới",
+    "lat": 10.7594191,
+    "lng": 106.6425361,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Hòa Đông",
+    "lat": 10.7599924,
+    "lng": 106.6272415,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bốn Xã mới",
+    "lat": 10.7731894,
+    "lng": 106.6207912,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Linh Trung",
+    "lat": 10.8599715,
+    "lng": 106.7731619,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.8
+  },
+  {
+    "name": "Chợ Tam Bình",
+    "lat": 10.8703194,
+    "lng": 106.735563,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.6932286,
+    "lng": 106.5780324,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Tăng Nhơn Phú",
+    "lat": 10.8443916,
+    "lng": 106.787967,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ An Dương Vương",
+    "lat": 10.7419252,
+    "lng": 106.6222988,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hồ Trọng Quý",
+    "lat": 10.7401689,
+    "lng": 106.6321336,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bà Hom",
+    "lat": 10.7533289,
+    "lng": 106.5909238,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Nhà lồng F",
+    "lat": 10.7041036,
+    "lng": 106.6094152,
+    "type": "market",
+    "radius": 0.3
+  },
+  {
+    "name": "Nhà lồng D",
+    "lat": 10.7027331,
+    "lng": 106.6097854,
+    "type": "market",
+    "radius": 0.3
+  },
+  {
+    "name": "Chợ Bến Lức",
+    "lat": 10.6385059,
+    "lng": 106.4806245,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thuận Đạo",
+    "lat": 10.6255307,
+    "lng": 106.4879841,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ An Thạnh",
+    "lat": 10.6624206,
+    "lng": 106.4643929,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Gò Đen",
+    "lat": 10.6386868,
+    "lng": 106.5376174,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Hương",
+    "lat": 10.7903428,
+    "lng": 106.6229108,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Long",
+    "lat": 10.7818929,
+    "lng": 106.6169046,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân An",
+    "lat": 10.5380757,
+    "lng": 106.4139791,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Chánh",
+    "lat": 10.665692,
+    "lng": 106.5717637,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Quy Đức",
+    "lat": 10.6492182,
+    "lng": 106.6551734,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cầu Xáng",
+    "lat": 10.7909894,
+    "lng": 106.5154257,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Trung Chánh",
+    "lat": 10.8603504,
+    "lng": 106.6099327,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Chánh Hiệp",
+    "lat": 10.8598516,
+    "lng": 106.6181902,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Lê Hồng Phong",
+    "lat": 10.7643514,
+    "lng": 106.6767748,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bà Hoa",
+    "lat": 10.7916887,
+    "lng": 106.6474841,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phạm Văn Hai",
+    "lat": 10.7947735,
+    "lng": 106.6627004,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cần Giuộc",
+    "lat": 10.6102483,
+    "lng": 106.6705053,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thủ Thừa",
+    "lat": 10.5980261,
+    "lng": 106.4053834,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thảo Điền",
+    "lat": 10.8024021,
+    "lng": 106.7282374,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Việt Kiều",
+    "lat": 10.9629796,
+    "lng": 106.5044684,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Trà Cổ",
+    "lat": 10.9451478,
+    "lng": 106.9804951,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bà Điểm",
+    "lat": 10.8402679,
+    "lng": 106.6001016,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Xuân",
+    "lat": 10.7026776,
+    "lng": 106.7374723,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hòa Bình",
+    "lat": 10.6987184,
+    "lng": 106.8184117,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Rạch Kiến",
+    "lat": 10.5816773,
+    "lng": 106.5894556,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Kinh Nước Mặn",
+    "lat": 10.4949976,
+    "lng": 106.6695057,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Tập",
+    "lat": 10.5344725,
+    "lng": 106.7012697,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nam Hòa",
+    "lat": 10.7830242,
+    "lng": 106.6601834,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nghĩa Hòa",
+    "lat": 10.7876762,
+    "lng": 106.6594484,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thanh Phú Long",
+    "lat": 10.4532338,
+    "lng": 106.517019,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tầm Vu",
+    "lat": 10.4479033,
+    "lng": 106.4672545,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Trụ",
+    "lat": 10.5215914,
+    "lng": 106.5223056,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nhật Tảo",
+    "lat": 10.7651635,
+    "lng": 106.6698901,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Trảng Dài",
+    "lat": 10.9834316,
+    "lng": 106.8605824,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hiệp Bình Chánh",
+    "lat": 10.8308263,
+    "lng": 106.7290708,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Triệu",
+    "lat": 10.8300415,
+    "lng": 106.7146752,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Văn Thánh",
+    "lat": 10.8018459,
+    "lng": 106.7208087,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Đông Thành",
+    "lat": 10.9275074,
+    "lng": 106.7608264,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thống Nhất",
+    "lat": 10.9084902,
+    "lng": 106.7523532,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Xóm Mới",
+    "lat": 10.9036963,
+    "lng": 106.7509472,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ An Hội",
+    "lat": 10.8417385,
+    "lng": 106.644638,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Mỹ Phước II",
+    "lat": 11.1301967,
+    "lng": 106.6131641,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Hưng (Chợ Ông Địa)",
+    "lat": 10.7791176,
+    "lng": 106.6526593,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7495201,
+    "lng": 106.6516723,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7492651,
+    "lng": 106.6504246,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Trần Văn Quang",
+    "lat": 10.7786713,
+    "lng": 106.6469095,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Trị Đông B",
+    "lat": 10.738334,
+    "lng": 106.6051369,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Long Kiểng",
+    "lat": 10.7530496,
+    "lng": 106.7052273,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Đông",
+    "lat": 10.7385187,
+    "lng": 106.6431372,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cây Xoài",
+    "lat": 10.7774416,
+    "lng": 106.7664433,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Lợi",
+    "lat": 10.7239423,
+    "lng": 106.63546,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7629238,
+    "lng": 106.6540533,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7634268,
+    "lng": 106.6532571,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Bàn Cờ",
+    "lat": 10.768574,
+    "lng": 106.6804115,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bàn Cờ",
+    "lat": 10.7688569,
+    "lng": 106.6800736,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ nông sản Hóc Môn",
+    "lat": 10.8595847,
+    "lng": 106.6013207,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "An Tây",
+    "lat": 11.088757,
+    "lng": 106.5478615,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cần Giờ",
+    "lat": 10.4173755,
+    "lng": 106.9717701,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Đồng Hòa",
+    "lat": 10.3791002,
+    "lng": 106.8791504,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tương Bình Hiệp",
+    "lat": 11.0054197,
+    "lng": 106.6306613,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bình Trưng",
+    "lat": 10.7889551,
+    "lng": 106.7556147,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cháy",
+    "lat": 10.7647807,
+    "lng": 106.6978818,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Chí Hòa",
+    "lat": 10.782554,
+    "lng": 106.6713098,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Cần Giờ",
+    "lat": 10.3827195,
+    "lng": 106.8833604,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thạnh An",
+    "lat": 10.4701046,
+    "lng": 106.974924,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Hiệp",
+    "lat": 10.9629047,
+    "lng": 106.8557637,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hóa An",
+    "lat": 10.9355325,
+    "lng": 106.8042842,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Bình",
+    "lat": 10.9997289,
+    "lng": 106.8094463,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hiệp Hòa",
+    "lat": 10.9308165,
+    "lng": 106.832293,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Biên",
+    "lat": 10.9670951,
+    "lng": 106.8895189,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Mai",
+    "lat": 10.9546965,
+    "lng": 106.8514052,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Long Bình Tân",
+    "lat": 10.9035578,
+    "lng": 106.8506978,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Tiến",
+    "lat": 10.9644102,
+    "lng": 106.8491845,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bửu Hoà",
+    "lat": 10.9293858,
+    "lng": 106.8207143,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tam Hiệp",
+    "lat": 10.9461134,
+    "lng": 106.8570809,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bửu Long",
+    "lat": 10.9559255,
+    "lng": 106.8064595,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Biên Hòa",
+    "lat": 10.9462789,
+    "lng": 106.8154647,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Xã Tây",
+    "lat": 10.7530387,
+    "lng": 106.6628451,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Mai 2",
+    "lat": 10.8751235,
+    "lng": 106.9104289,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hương Phước",
+    "lat": 10.8871388,
+    "lng": 106.8995009,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Nhà lồng T",
+    "lat": 10.7051,
+    "lng": 106.6101001,
+    "type": "market",
+    "radius": 0.3
+  },
+  {
+    "name": "Nhà lồng A",
+    "lat": 10.703861,
+    "lng": 106.6071133,
+    "type": "market",
+    "radius": 0.3
+  },
+  {
+    "name": "Chợ An Bình",
+    "lat": 10.9281014,
+    "lng": 106.8543667,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Nhà lồng H",
+    "lat": 10.703199,
+    "lng": 106.6117288,
+    "type": "market",
+    "radius": 0.3
+  },
+  {
+    "name": "Nhà lồng K",
+    "lat": 10.704851,
+    "lng": 106.6112684,
+    "type": "market",
+    "radius": 0.3
+  },
+  {
+    "name": "Chợ Tân Ba",
+    "lat": 10.9755983,
+    "lng": 106.7652399,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Nhị Bình",
+    "lat": 10.9108084,
+    "lng": 106.6837212,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Ngã Ba Bầu",
+    "lat": 10.8701702,
+    "lng": 106.6154551,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Phong",
+    "lat": 10.9638365,
+    "lng": 106.8378273,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ cũ Long Thành",
+    "lat": 10.7842643,
+    "lng": 106.9507094,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Hiếu Liêm",
+    "lat": 11.1144042,
+    "lng": 106.9661072,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Trụ",
+    "lat": 10.8188508,
+    "lng": 106.6346129,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Tân Trụ",
+    "lat": 10.5130519,
+    "lng": 106.5091381,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.6104793,
+    "lng": 106.6710571,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Long Thượng",
+    "lat": 10.6364355,
+    "lng": 106.6099455,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ An Chu",
+    "lat": 10.9630315,
+    "lng": 106.9478102,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Bà Thức",
+    "lat": 10.9829454,
+    "lng": 106.8424105,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7449092,
+    "lng": 106.6383233,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Phú Định",
+    "lat": 10.7482348,
+    "lng": 106.6331981,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7865826,
+    "lng": 106.7383795,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7867589,
+    "lng": 106.7384609,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.7695322,
+    "lng": 106.7675621,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Hoàng Hoa Thám",
+    "lat": 10.798381,
+    "lng": 106.6467325,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Hòa Đông",
+    "lat": 11.0257294,
+    "lng": 106.5652893,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8600568,
+    "lng": 106.6014252,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8594125,
+    "lng": 106.6012711,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8598034,
+    "lng": 106.6000818,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8600327,
+    "lng": 106.5999176,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.859571,
+    "lng": 106.5992677,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Unknown Spot",
+    "lat": 10.8591325,
+    "lng": 106.5991425,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.3
+  },
+  {
+    "name": "Chợ Tân An",
+    "lat": 10.5387757,
+    "lng": 106.4128563,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Rạch Ông",
+    "lat": 10.746806,
+    "lng": 106.6864536,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Thủ Thừa",
+    "lat": 10.6030972,
+    "lng": 106.4032189,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Vạn Nguyên",
+    "lat": 10.7280144,
+    "lng": 106.6325676,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Trung",
+    "lat": 10.7737294,
+    "lng": 106.6431029,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Chợ Phú Thuận",
+    "lat": 10.7279255,
+    "lng": 106.7360307,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.5
+  },
+  {
+    "name": "Nhà lồng Ts",
+    "lat": 10.7048457,
+    "lng": 106.6091794,
+    "type": "market",
+    "radius": 0.3,
+    "weight": 0.8
+  }
+]
