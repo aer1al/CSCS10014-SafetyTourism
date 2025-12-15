@@ -6,7 +6,11 @@ import sys
 
 # --- IMPORT MODULE VỆ TINH ---
 import core_logic      # Xử lý tìm đường
+sys.path.append(os.path.join(os.path.dirname(__file__), 'rag_engine'))
+from rag_service import rag_engine
 import chatbot         # AI Chatbot
+
+
 import weather         # Module thời tiết (đã có set_demo_mode)
 import disasters       # Module thiên tai (đã có set_demo_mode)
 
@@ -139,7 +143,7 @@ def get_map_layers():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 # ==========================================
-# 4. API CHATBOT
+# 4. API CHATBOT (ĐÃ NÂNG CẤP RAG)
 # ==========================================
 @app.route('/api/chat', methods=['POST'])
 def chat_with_ai():
@@ -147,18 +151,26 @@ def chat_with_ai():
         data = request.json
         user_message = data.get('message')
         route_info = data.get('route_data')
+        current_time = data.get('current_time', 'Không rõ') # <--- Nhận thời gian
 
-        if not user_message: return jsonify({"reply": "..."})
+        # ... (Đoạn gọi RAG Engine giữ nguyên) ...
+        rag_data = rag_engine.search(user_message)
+        context = rag_data['combined_context']
 
+        # --- GỌI CHATBOT VỚI THAM SỐ MỚI ---
         if route_info:
-            ai_reply = chatbot.generate_safety_advice(user_message, route_info)
+            # Case 2: Đã có đường đi -> Phân tích lộ trình
+            ai_reply = chatbot.generate_safety_advice(user_message, route_info, context)
         else:
-            ai_reply = chatbot.generate_general_chat(user_message)
+            # Case 1: Hỏi vãng lai -> Phân tích thời gian & địa điểm
+            # Truyền thêm current_time vào đây
+            ai_reply = chatbot.generate_general_chat(user_message, context, current_time)
         
-        return jsonify({"reply": ai_reply})
+        return jsonify({ "reply": ai_reply, "rag_data": rag_data['vector_results'] })
 
     except Exception as e:
-        return jsonify({"reply": "Xin lỗi, AI đang bảo trì."}), 500
+        print(f"🔥 Lỗi Chatbot: {e}")
+        return jsonify({"reply": "Xin lỗi, hệ thống AI đang quá tải."}), 500
     
 # ==========================================
 # 5. API CÀI ĐẶT HỆ THỐNG
