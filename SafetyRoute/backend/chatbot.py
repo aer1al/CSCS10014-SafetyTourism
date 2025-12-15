@@ -1,109 +1,141 @@
-import google.generativeai as genai
+from ollama import Client
 import os
-import re
 from dotenv import load_dotenv
+from datetime import datetime
 
+# ============================================================
+# CONFIG
+# ============================================================
 load_dotenv()
 
-# Cấu hình API Key (Lấy từ biến môi trường hoặc hardcode nếu bạn test nhanh)
-api_key = os.getenv("GEMINI_API_KEY") 
-# Hoặc nếu bạn muốn giữ key cứng như cũ (nhưng ko khuyến khích):
-# api_key = "AIzaSyAxA1IHzYIKGrMLo8jgaD3A55sBNZ_ud9s"
+# Cấu hình Ollama
+# Nếu chạy trên máy local thì mặc định là http://localhost:11434
+# Nếu chạy server riêng thì đổi IP ở file .env hoặc sửa trực tiếp tại đây
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 
-if not api_key:
-    # Fallback key nếu quên cấu hình .env (Dùng tạm key cũ của bạn)
-    api_key = "AIzaSyAxA1IHzYIKGrMLo8jgaD3A55sBNZ_ud9s"
+# Tên model (Cần chạy 'ollama pull llama3' hoặc model bạn muốn trước)
+MODEL_NAME = os.getenv("OLLAMA_MODEL", "gemma3:1b") 
 
-genai.configure(api_key=api_key)
+# ============================================================
+# UTILITY: LẤY TIME SLOT
+# ============================================================
+def get_time_slot():
+    hour = datetime.now().hour
+    if 6 <= hour < 9:
+        return "SÁNG (giờ cao điểm)"
+    elif 9 <= hour < 16:
+        return "TRƯA"
+    elif 16 <= hour < 19:
+        return "CHIỀU (giờ cao điểm)"
+    else:
+        return "TỐI"
 
-# Cấu hình Model (Dùng bản Flash cho nhanh và rẻ)
-MODEL_NAME = 'gemini-2.5-flash' 
+# ============================================================
+# CHATBOT CLASS (OLLAMA VERSION)
+# ============================================================
 
-# ============================================================================
-# CASE 1: TƯ VẤN VỚI LOGIC SUY LUẬN TỰ NHIÊN NHẤT
-# ============================================================================
-def generate_general_chat(user_query, rag_context="", current_time="Không rõ"):
-    try:
-        model = genai.GenerativeModel(MODEL_NAME)
-        
+class ChatBot:
+    def __init__(self):
+        # Khởi tạo Client kết nối đến Ollama
+        try:
+            self.client = Client(host=OLLAMA_HOST)
+            self.model = MODEL_NAME
+            print(f"🔌 ChatBot đã kết nối Ollama tại {OLLAMA_HOST} (Model: {self.model})")
+        except Exception as e:
+            print(f"❌ Lỗi kết nối Ollama: {e}")
+
+    def _generate_response(self, prompt: str) -> str:
+        """Hàm nội bộ để gọi Ollama và xử lý lỗi"""
+        try:
+            response = self.client.chat(
+                model=self.model,
+                messages=[{'role': 'user', 'content': prompt}],
+                options={'temperature': 0.7} # Tùy chỉnh độ sáng tạo
+            )
+            return response['message']['content'].strip()
+        except Exception as e:
+            print(f"🔥 Lỗi khi gọi model: {e}")
+            return "Xin lỗi, hệ thống AI đang gặp sự cố kết nối."
+
+    # ========================================================
+    # CASE 1: CHAT THƯỜNG (GREETING / INFO)
+    # ========================================================
+    def generate_general_chat(self, message: str) -> str:
         prompt = f"""
-        Bạn là Chuyên gia Giao thông TP.HCM, tự xưng là Safety Bot.
-        
-        1. THÔNG TIN ĐẦU VÀO:
-        - Câu hỏi: "{user_query}"
-        - Thời gian hiện tại: {current_time}
-        - DỮ LIỆU ĐỊA ĐIỂM TÌM ĐƯỢC (Graph RAG):
-        ---------------------
-        {rag_context}
-        ---------------------
+        Bạn là trợ lý thân thiện.
+        Trả lời ngắn gọn, tự nhiên bằng Tiếng Việt.
+        Không phân tích giao thông.
+        Không dùng dữ liệu hệ thống.
 
-        2. KIẾN THỨC NỀN TẢNG (Quy tắc Giờ Cao Điểm TP.HCM):
-        - Sáng: 07:00 - 09:00 | Chiều: 16:30 - 19:00.
-        
-        3. NHIỆM VỤ SUY LUẬN (PHẢI TUÂN THỦ TỪNG BƯỚC):
-        
-        A. PHÂN TÍCH CHUNG:
-           - Bắt đầu bằng cách nhận định chung về tuyến đường (Ví dụ: Nguyễn Tất Thành là đường ra cảng, nhiều xe tải) và so sánh với thời gian hiện tại ("{current_time}" có nằm trong/gần Giờ Cao Điểm không?).
-           - **TUYỆT ĐỐI KHÔNG DÙNG CỤM TỪ:** "Theo dữ liệu hệ thống", "Theo RAG Context", hay "Dựa trên cơ sở dữ liệu". Hãy nói như thể bạn đã biết thông tin đó rồi.
-
-        B. BỔ SUNG CHI TIẾT (Nếu có trong Context):
-           - Nếu Dữ liệu Graph (Market, School, RiskZone) có liên quan, hãy dùng nó để giải thích TẠI SAO đường đông.
-           - Ví dụ: Nếu {current_time} là 10:30 (như trong ảnh) và có Chợ (Market), hãy nói: "Dù đã qua giờ cao điểm, khu vực này còn ảnh hưởng bởi Chợ Xóm Chiếu nên xe cộ vẫn di chuyển chậm."
-           
-        C. ĐỊNH DẠNG TRẢ LỜI (Văn phong chuyên nghiệp, thân thiện, ngắn gọn):
-           - Lời chào: Ngắn gọn (Ví dụ: "Chào bạn,").
-           - Câu trả lời chính: Trả lời trực tiếp vào tình trạng giao thông + Giải thích bằng kiến thức chung (Giờ cao điểm/Cảng).
-           - Câu bổ sung: Lồng ghép thông tin Chợ/Trường học để tăng độ chính xác.
-           - Lời khuyên: Kết thúc bằng lời khuyên cụ thể (Ví dụ: nên đi chậm, nên kiểm tra Maps).
-        
-        4. MẪU TRẢ LỜI MONG MUỐN:
-        "Chào bạn, lúc này là {current_time}. [Nhận định chung về Giờ Cao Điểm/Đặc điểm đường Nguyễn Tất Thành]. [Bổ sung về Chợ/Trường học]. Bạn nên [Lời khuyên]."
+        Câu hỏi:
+        {message}
         """
-        
-        response = model.generate_content(prompt)
-        return response.text.strip()
-    except Exception as e:
-        return f"Xin lỗi, lỗi xử lý: {str(e)}"
+        return self._generate_response(prompt)
 
-# ============================================================================
-# CASE 2: PHÂN TÍCH LỘ TRÌNH ĐÃ CÓ
-# User hỏi: "Đường đi này như thế nào?" (Khi đã có bản đồ)
-# ============================================================================
-def generate_safety_advice(user_query, route_result, rag_context=""):
-    try:
-        # Lấy thông tin tóm tắt từ JSON đường đi
-        summary = route_result.get('summary', {})
-        dist = route_result.get('distance_km', 0)
-        dur = route_result.get('duration_min', 0)
-        risks = route_result.get('risk_summary', {})
-        
-        model = genai.GenerativeModel(MODEL_NAME)
-        
+    # ========================================================
+    # CASE 2: ROUTING + GRAPH RAG
+    # ========================================================
+    def generate_route_response(self, user_message: str, context: str, time_slot: str) -> str:
         prompt = f"""
-        Bạn đang đóng vai là "người ngồi sau xe" phân tích lộ trình cho tài xế.
-        
-        1. DỮ LIỆU LỘ TRÌNH (Đã được tính toán):
-        - Tổng quãng đường: {dist} km.
-        - Thời gian dự kiến: {dur} phút.
-        - Đánh giá an toàn chung: {summary.get('safety_label')} ({summary.get('description')}).
-        - Cảnh báo cụ thể:
-          + Mức độ kẹt xe: {risks.get('traffic_level', 'Thấp')}
-          + Mức độ đám đông: {risks.get('crowd_level', 'Thấp')}
-          + Thiên tai/Bão: {risks.get('disaster_status', 'Không có')}
-        
-        2. DỮ LIỆU ĐỊA PHƯƠNG (RAG Context - Các điểm đen cụ thể):
-        {rag_context}
+        Bạn là hệ thống phân tích giao thông.
+        CHỈ sử dụng dữ liệu được cung cấp bên dưới.
 
-        3. CÂU HỎI USER: "{user_query}"
+        Thời điểm hiện tại: {time_slot}
 
-        4. YÊU CẦU TRẢ LỜI:
-        - Đừng lặp lại thông số khô khan. Hãy nói như một lời khuyên.
-        - Nếu lộ trình AN TOÀN: "Tuyến đường này khá ổn, chỉ mất khoảng {dur} phút cho {dist}km. Hệ thống không phát hiện kẹt xe hay ngập nước."
-        - Nếu lộ trình NGUY HIỂM (hoặc có cảnh báo): "Lộ trình này tuy ngắn ({dist}km) nhưng bạn cần cẩn thận đoạn... vì hệ thống phát hiện có [Kẹt xe/Đám đông/Chợ]."
-        - Dựa vào RAG Context để chỉ đích danh tên đường/khu vực cần chú ý.
+        Dữ liệu khu vực (Context):
+        {context}
+
+        Yêu cầu người dùng:
+        {user_message}
+
+        NHIỆM VỤ:
+        - Trước hết hãy nói thông tin tổng quát về khu vực user hỏi ngắn gọn, không dài dòng, nhưng phải hữu ích, phù hợp.
+        - Dựa vào dữ liệu khu vực, hãy xác định thêm các khu vực như Chợ / Trường / Công Trình /../ gây ảnh hưởng tới nơi user hỏi. Chú ý tới thời gian.
+
+        BẮT BUỘC trả lời theo format sau (Không thêm lời dẫn thừa):
+
+        Thời điểm: {time_slot}
+        Tình trạng chung:
+        Yếu tố ảnh hưởng:
+        Đánh giá:
         """
+        return self._generate_response(prompt)
 
-        response = model.generate_content(prompt)
-        return response.text.strip()
-    except Exception as e:
-        return "Hệ thống đang bận, bạn cứ đi theo lộ trình trên bản đồ nhé."
+    # ========================================================
+    # CASE 3: PHÂN TÍCH LỘ TRÌNH ĐÃ TÍNH TOÁN
+    # ========================================================
+    def generate_safety_advice(self, user_query, route_result, rag_context=""):
+        try:
+            summary = route_result.get("summary", {})
+            dist = route_result.get("distance_km", 0)
+            dur = route_result.get("duration_min", 0)
+            risks = route_result.get("risk_summary", {})
+
+            prompt = f"""
+            Bạn đang đóng vai người ngồi sau xe, phân tích lộ trình cho tài xế.
+
+            DỮ LIỆU LỘ TRÌNH:
+            - Quãng đường: {dist} km
+            - Thời gian: {dur} phút
+            - Đánh giá chung: {summary.get('safety_label')} ({summary.get('description')})
+
+            CẢNH BÁO:
+            - Kẹt xe: {risks.get('traffic_level', 'Thấp')}
+            - Đám đông: {risks.get('crowd_level', 'Thấp')}
+            - Thời tiết/Thiên tai: {risks.get('disaster_status', 'Không có')}
+
+            ĐIỂM ĐEN KHU VỰC:
+            {rag_context}
+
+            CÂU HỎI:
+            {user_query}
+
+            YÊU CẦU:
+            - Nói như lời khuyên tự nhiên bằng Tiếng Việt.
+            - Nếu an toàn → nói yên tâm.
+            - Nếu có rủi ro → chỉ rõ khu vực cần chú ý.
+            """
+            return self._generate_response(prompt)
+
+        except Exception:
+            return "Lộ trình này tạm ổn, bạn cứ đi theo hướng dẫn trên bản đồ nhé."
