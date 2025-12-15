@@ -16,60 +16,34 @@ class GraphRetriever:
     def close(self):
         self.driver.close()
 
-    def find_related_risks(self, road_name):
-        """
-        Logic: Tìm đường -> Chỉ lấy Chợ, Trường, Điểm rủi ro nằm trên đường đó.
-        """
-        # Query này dùng whitelist để CHỈ LẤY những thứ ảnh hưởng giao thông
+    def find_related_risks(self, road_name: str):
         query = """
-        MATCH (r:Road)
+        MATCH (r:Road)-[rel]-(p)
         WHERE toLower(r.name) CONTAINS toLower($road_name)
-        
-        // Tìm các node kết nối trực tiếp với đường (Market, School, RiskZone...)
-        MATCH (r)-[rel]-(place)
-        
-        // --- BỘ LỌC QUAN TRỌNG (FILTER) ---
-        // Chỉ lấy những node có nhãn (Label) nằm trong danh sách này:
-        WHERE any(label IN labels(place) WHERE label IN ['Market', 'School', 'University', 'Hospital', 'RiskZone', 'Flood', 'TrafficJam', 'Construction'])
-        
-        RETURN 
-            r.name as road_name,
-            labels(place) as place_types,
-            place.name as place_name,
-            place.description as description,
-            type(rel) as relationship
-        LIMIT 5
+          AND NOT p:Road  // Không trả về các node Road khác
+        RETURN labels(p) AS labels,
+            p.name AS name,
+            p.description AS description,
+            p.time_start AS time_start,  // <--- THÊM TRƯỜNG TIME START
+            p.time_end AS time_end       // <--- THÊM TRƯỜNG TIME END
+        LIMIT 10
         """
-        
-        results = []
-        print(f"⚡ [NEO4J] Đang tìm các điểm ảnh hưởng trên đường: {road_name}...")
-        
-        try:
-            with self.driver.session() as session:
-                result = session.run(query, road_name=road_name)
-                for record in result:
-                    # Lấy loại địa điểm (Ví dụ: Market, School...)
-                    # labels(place) trả về list, ta lấy cái đầu tiên không phải là 'Place' (nếu có logic đó)
-                    # Hoặc đơn giản lấy cái đầu tiên
-                    types = record["place_types"]
-                    main_type = types[0] if types else "Unknown"
 
-                    # Tạo mô tả dễ hiểu cho Chatbot đọc
-                    item = {
-                        "road_found": record["road_name"],
-                        "type": main_type,               # Để Chatbot nhận diện (Market/School)
-                        "name": record["place_name"],    # Tên địa điểm (Chợ Xóm Chiếu)
-                        "description": record.get("description", "Địa điểm nằm trên tuyến đường này"),
-                        "relationship": record["relationship"]
-                    }
-                    results.append(item)
-            
-            if len(results) > 0:
-                print(f"✅ [NEO4J] Tìm thấy {len(results)} điểm ảnh hưởng (Chợ/Trường/Sự cố).")
-            else:
-                print(f"⚠️ [NEO4J] Không tìm thấy Chợ/Trường nào trên đường {road_name} (hoặc tên đường chưa khớp DB).")
+        results = []
+        with self.driver.session() as session:
+            for record in session.run(query, road_name=road_name):
+                node_type = record["labels"][0] if record["labels"] else "Unknown"
                 
-        except Exception as e:
-            print(f"❌ Lỗi truy vấn Graph: {e}")
-            
+                if node_type in ["Road", "Route", "Location"]:
+                    continue
+
+                # CẢI THIỆN: Dùng record.get("name") và cung cấp giá trị mặc định ("N/A")
+                # để giải quyết lỗi 'None' nếu dữ liệu thiếu name.
+                results.append({
+                    "type": node_type,
+                    "name": record.get("name", "N/A"), 
+                    "description": record.get("description", ""),
+                    "time_start": record.get("time_start", "N/A"), # Lấy dữ liệu time
+                    "time_end": record.get("time_end", "N/A")     # Lấy dữ liệu time
+                })
         return results
