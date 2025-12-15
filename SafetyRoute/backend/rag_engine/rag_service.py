@@ -1,35 +1,32 @@
 import sys
 import os
-import google.generativeai as genai
+import ollama
 from dotenv import load_dotenv
 
 # --- CẤU HÌNH PATH & IMPORT ---
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
 
-# Import đúng tên module bạn đang có
-from retriever import SafetyRetriever       
-from graph_retriever import GraphRetriever  
+from graph_retriever import GraphRetriever 
 
 load_dotenv()
 
-# Cấu hình AI (Dùng để bắt tên đường chính xác)
-api_key = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=api_key)
+# Cấu hình Ollama (Mặc định localhost và llama3)
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3")
+
+# Tạo client toàn cục cho Ollama
+try:
+    ollama_client = ollama.Client(host=OLLAMA_HOST)
+except:
+    ollama_client = None
 
 class RAGService:
     def __init__(self):
-        print("🔌 Đang khởi động RAG Engine (Mode: Graph Priority)...")
-        self.vector_db = None
+        print(f"🔌 Đang khởi động RAG Engine (Mode: Graph ONLY - Ollama {OLLAMA_MODEL})...")
         self.graph_db = None
         
-        # 1. Kết nối ChromaDB
-        try:
-            self.vector_db = SafetyRetriever()
-        except Exception as e:
-            print(f"⚠️ Cảnh báo: Không thể kết nối ChromaDB. ({e})")
-
-        # 2. Kết nối Neo4j
+        # Kết nối Neo4j
         try:
             self.graph_db = GraphRetriever()
         except Exception as e:
@@ -37,10 +34,12 @@ class RAGService:
 
     def _extract_road_name_with_ai(self, question):
         """
-        Dùng AI để sửa lỗi chính tả và lấy tên đường chuẩn.
+        Dùng Ollama để sửa lỗi chính tả và lấy tên đường chuẩn.
         """
         try:
-            model = genai.GenerativeModel('gemini-2.5-flash')
+            if not ollama_client:
+                return None
+
             prompt = f"""
             Nhiệm vụ: Trích xuất tên đường hoặc địa điểm từ câu hỏi và sửa lỗi chính tả (viết hoa chữ cái đầu).
             Chỉ trả về DUY NHẤT tên đường. Nếu không tìm thấy tên đường nào cụ thể, trả về "None".
@@ -52,93 +51,121 @@ class RAGService:
             - "đường 3/2 ra sao" -> Đường 3 Tháng 2
             - "chỗ nào ngập" -> None
             
-            Trả về (Chỉ tên):
+            Trả về (Chỉ tên, không giải thích):
             """
-            response = model.generate_content(prompt)
-            cleaned_name = response.text.strip()
             
+            response = ollama_client.chat(
+                model=OLLAMA_MODEL, 
+                messages=[{'role': 'user', 'content': prompt}],
+                options={'temperature': 0}
+            )
+            
+            cleaned_name = response['message']['content'].strip()
+            
+            # Xử lý hậu kỳ nếu model trả về thừa lời dẫn
+            if ":" in cleaned_name:
+                cleaned_name = cleaned_name.split(":")[-1].strip()
+
             if "None" in cleaned_name or len(cleaned_name) > 50:
                 return None
+            
+            # Xóa các ký tự thừa như dấu chấm
+            cleaned_name = cleaned_name.replace(".", "").replace('"', "")
+            
             return cleaned_name
+            
         except Exception as e:
-            print(f"⚠️ Lỗi AI Extract: {e}")
+            print(f"⚠️ Lỗi AI Extract (Ollama): {e}")
             return None
             
     def search(self, question, n_results=3):
         """
-        Logic MỚI: AI Extract -> Graph Search (Chính) -> Vector Search (Phụ)
+        Logic: AI Extract (Ollama) -> Graph Search (Neo4j)
         """
         response_data = {
-            "vector_results": [],
+            "road_name": None,
             "graph_results": [],
-            "combined_context": "",
-            "extracted_entity": None
+            "combined_context": ""
         }
 
-        # ---------------------------------------------------------
-        # BƯỚC 1: XÁC ĐỊNH MỤC TIÊU (Entity Extraction)
-        # ---------------------------------------------------------
-        road_name = self._extract_road_name_with_ai(question)
-        response_data["extracted_entity"] = road_name
-        
-        if road_name:
-            print(f"🎯 AI xác định mục tiêu: '{road_name}'")
-        else:
-            print("INFO: Không tìm thấy tên đường cụ thể trong câu hỏi.")
+        # 1️⃣ Extract tên đường
+        road_name = None
+        try:
+            road_name = self._extract_road_name_with_ai(question)
+        except Exception as e:
+            print("⚠️ Extract road failed:", e)
 
-        # ---------------------------------------------------------
-        # BƯỚC 2: TÌM KIẾM GRAPH (ƯU TIÊN TUYỆT ĐỐI)
-        # Chỉ chạy khi AI bắt được tên đường
-        # ---------------------------------------------------------
-        if self.graph_db and road_name:
-            print(f"🔍 Graph đang truy vấn trực tiếp cho: '{road_name}'")
-            # Gọi hàm find_related_risks mà bạn đã sửa trong graph_retriever.py
-            # (Hàm này giờ đã lọc chỉ lấy Chợ/Trường/RiskZone)
-            related_nodes = self.graph_db.find_related_risks(road_name)
-            response_data["graph_results"].extend(related_nodes)
+        response_data["road_name"] = road_name
 
-        # ---------------------------------------------------------
-        # BƯỚC 3: TÌM KIẾM VECTOR (BỔ TRỢ)
-        # Vẫn cần chạy để tìm các đoạn văn mô tả sự cố (nếu có)
-        # ---------------------------------------------------------
-        if self.vector_db:
+        # 2️⃣ GRAPH SEARCH – CHỈ KHI CÓ ROAD NAME
+        if road_name and self.graph_db:
             try:
-                # Nếu có tên đường -> Tìm theo tên đường cho sát
-                # Nếu không (hỏi chung chung) -> Tìm theo cả câu hỏi
-                search_query = road_name if road_name else question
-                
-                # print(f"📚 Vector đang tìm bổ sung cho: '{search_query}'")
-                response_data["vector_results"] = self.vector_db.query(search_query, n_results)
+                print(f"🔍 Graph query: {road_name}")
+                response_data["graph_results"] = self.graph_db.find_related_risks(road_name)
             except Exception as e:
-                print(f"⚠️ Lỗi Vector Search: {e}")
+                print("⚠️ Graph search failed:", e)
 
-        # ---------------------------------------------------------
-        # BƯỚC 4: TỔNG HỢP DỮ LIỆU (CONTEXT)
-        # ---------------------------------------------------------
+        # 3️⃣ BUILD CONTEXT
         context_lines = []
-        
-        # A. Đưa thông tin Graph lên đầu (QUAN TRỌNG NHẤT)
+
         if response_data["graph_results"]:
-            context_lines.append("=== CẤU TRÚC KHU VỰC (GRAPH DATA) ===")
+            context_lines.append("=== THÔNG TIN KHU VỰC (GRAPH) ===")
             for item in response_data["graph_results"]:
-                # Format: [Market] Chợ Xóm Chiếu - Nằm trên đường này
-                info = f"- [{item['type']}] {item['name']}: {item['description']}"
-                context_lines.append(info)
+                
+                # Định dạng thời gian
+                time_info = ""
+                if item.get("time_start") not in [None, "N/A"] or item.get("time_end") not in [None, "N/A"]:
+                    ts = item.get("time_start", "?")
+                    te = item.get("time_end", "?")
+                    time_info = f" (Giờ cao điểm: {ts} - {te})"
+                
+                # Định dạng chuỗi Context mới
+                context_lines.append(
+                    f"- [{item['type']}] {item['name']}: {item['description']}{time_info}"
+                )
 
-        # B. Đưa thông tin Vector xuống dưới (Tham khảo thêm)
-        if response_data["vector_results"]:
-            context_lines.append("\n=== GHI NHẬN SỰ CỐ/TIN TỨC (VECTOR DATA) ===")
-            for item in response_data["vector_results"]:
-                # Chỉ lấy những tin có độ tin cậy cao hoặc liên quan trực tiếp
-                line = f"- {item['description']} (Mức độ: {item.get('severity', 'N/A')})"
-                context_lines.append(line)
-
-        # Nếu không tìm thấy gì cả ở cả 2 nơi
         if not context_lines:
-            context_lines.append("Hệ thống chưa có dữ liệu cụ thể về địa điểm này.")
+            context_lines.append("Chưa có dữ liệu rủi ro cụ thể cho khu vực này.")
 
         response_data["combined_context"] = "\n".join(context_lines)
         return response_data
 
 # Tạo instance
 rag_engine = RAGService()
+
+# ======================================================
+# HÀM TEST CASE
+# ======================================================
+
+def test_rag_engine():
+    print(f"\n--- BẮT ĐẦU TEST RAG ENGINE (GRAPH ONLY - OLLAMA) ---")
+
+    test_cases = [
+        "đường nguyễn tất thành ra sao?", 
+        "đường có tắc không",             
+        "nguyễn văn linh chỗ nào nguy hiểm", 
+    ]
+
+    for i, question in enumerate(test_cases):
+        print(f"\n[TEST {i+1}] Câu hỏi: {question}")
+        try:
+            # Gọi hàm search
+            result = rag_engine.search(question)
+            
+            print(f"  > Road Name (AI Extract): {result['road_name']}")
+            
+            print("  > Combined Context (Kết quả gửi cho Chatbot):")
+            print("-------------------------------------------------")
+            print(result['combined_context'])
+            print("-------------------------------------------------")
+            
+            if not result['graph_results'] and result['road_name']:
+                 print("  *** Ghi chú: Context rỗng dù AI đã tìm được tên đường. Cần kiểm tra lại dữ liệu trong Neo4j. ***")
+            elif not result['road_name']:
+                 print("  *** Ghi chú: AI không trích xuất được tên đường cụ thể. Kết quả Context là mặc định. ***")
+
+        except Exception as e:
+            print(f"  ❌ LỖI KHI CHẠY TEST CASE: {e}")
+
+if __name__ == '__main__':
+    test_rag_engine()
