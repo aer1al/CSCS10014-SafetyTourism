@@ -1,0 +1,5250 @@
+[
+  {
+    "name": "Trường Tiểu Học Tân Túc 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Hữu Trí",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.6924157,
+      "lon": 106.5797889
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Mỹ thuật Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Phan Đăng Lưu",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8023353,
+      "lon": 106.6948886
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Hồ Văn Huê",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hoàng Minh Giám",
+    "district": "Phú Nhuận",
+    "location": {
+      "lat": 10.8085407,
+      "lon": 106.6742964
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Hoàng Hoa Thám",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hoàng Hoa Thám",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8041648,
+      "lon": 106.6928537
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Sư phạm Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Đường An Dương Vương",
+    "district": "5",
+    "location": {
+      "lat": 10.761357,
+      "lon": 106.6821769
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông chuyên Lê Hồng Phong",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Văn Cừ",
+    "district": "5",
+    "location": {
+      "lat": 10.7637673,
+      "lon": 106.6813739
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học Thực hành Sài Gòn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Trần Bình Trọng",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.7613384,
+      "lon": 106.6806006
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Khoa học Tự nhiên - ĐHQG Thành phố Hồ Chí Minh - Cơ sở 1",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Nguyễn Văn Cừ",
+    "district": "Phường Cầu Ông Lãnh",
+    "location": {
+      "lat": 10.7623947,
+      "lon": 106.6816972
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Ngọc Hồi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lý Thường Kiệt",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.7784426,
+      "lon": 106.655578
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Sài Gòn – cơ sở chính",
+    "type": "School",
+    "detail_type": "university",
+    "street": "An Dương Vương",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.7596827,
+      "lon": 106.6821439
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Văn Trỗi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Vĩnh Khánh",
+    "district": "Quận 4",
+    "location": {
+      "lat": 10.7632821,
+      "lon": 106.701541
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng Kỹ thuật Cao Thắng",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Huỳnh Thúc Kháng",
+    "district": "Quận 1",
+    "location": {
+      "lat": 10.7716605,
+      "lon": 106.7015799
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Hồng Bàng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Hồng Bàng",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.7556958,
+      "lon": 106.6607437
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phố thông Nguyễn Thị Minh Khai",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Ðiện Biên Phủ",
+    "district": "3",
+    "location": {
+      "lat": 10.7789486,
+      "lon": 106.6872398
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hoà Bình",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Công trường Công xã Paris",
+    "district": "Quận 1",
+    "location": {
+      "lat": 10.7789211,
+      "lon": 106.6989877
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Tân Sơn Nhất",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Thăng Long",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.8063942,
+      "lon": 106.6617878
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non 12",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trường Sa",
+    "district": "Phường Nhiêu Lộc",
+    "location": {
+      "lat": 10.7879774,
+      "lon": 106.6720138
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Vỗ Thị Sáu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đặng Đại Độ",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7335066,
+      "lon": 106.7109827
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Giao thông Vận tải Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Võ Oanh",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8048991,
+      "lon": 106.7167817
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Bách khoa, Đại học Quốc gia Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Lý Thường Kiệt",
+    "district": "10",
+    "location": {
+      "lat": 10.7734243,
+      "lon": 106.659677
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lương Thế Vinh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 10",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7462206,
+      "lon": 106.710659
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Thị Định",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lâm Văn Bền",
+    "district": "Phường Tân Hưng",
+    "location": {
+      "lat": 10.7429923,
+      "lon": 106.7162446
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Hàn Thuyên",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đặng Văn Ngữ",
+    "district": "Phú Nhuận",
+    "location": {
+      "lat": 10.7941348,
+      "lon": 106.6700932
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại Học Quốc Tế Hồng Bàng",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Điện Biên Phủ",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.800449,
+      "lon": 106.7060806
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Học viện Cán bộ Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Chu Văn An",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8123535,
+      "lon": 106.7024202
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Tân Phong",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số",
+    "district": "7",
+    "location": {
+      "lat": 10.7266928,
+      "lon": 106.6928184
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Tôn Đức Thắng",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Nguyễn Hữu Thọ",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7318026,
+      "lon": 106.6980789
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Cảnh sát Nhân dân",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Nguyễn Hữu Thọ",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7356156,
+      "lon": 106.6976293
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Thể dục Thể thao Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Võ Trường Toản",
+    "district": "Phường Linh Xuân",
+    "location": {
+      "lat": 10.8720215,
+      "lon": 106.7958388
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường tiểu học Vĩnh Lộc B",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường 3A",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7683648,
+      "lon": 106.5651182
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Trung Trực",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Kha Vạn Cân",
+    "district": "TP.Thủ Đức",
+    "location": {
+      "lat": 10.8518855,
+      "lon": 106.7551478
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Yên Thế",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Núi Thành",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.8013045,
+      "lon": 106.6428748
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng Kinh tế Đối ngoại",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Phan Đình Phùng",
+    "district": "Phường Cầu Kiệu",
+    "location": {
+      "lat": 10.7974479,
+      "lon": 106.6808134
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Colette",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hồ Xuân Hương",
+    "district": "3",
+    "location": {
+      "lat": 10.7759017,
+      "lon": 106.6865471
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hanh Thông",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Lợi",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8210844,
+      "lon": 106.6881633
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Kim Đồng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Thới An 28",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.8651129,
+      "lon": 106.6580969
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Phan Chu Trinh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Thạch Lam",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7779862,
+      "lon": 106.626666
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Phân hiệu Trường Đại học Giao thông Vận tải tại Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Đường Lê Văn Việt",
+    "district": "Phường Tăng Nhơn Phú",
+    "location": {
+      "lat": 10.8466553,
+      "lon": 106.7944796
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Phân hiệu Trường Đại học Giao thông vận tải tại Thành phố Hồ Chí Minh - Khu Văn phòng",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Đường Lê Văn Việt",
+    "district": "Phường Tăng Nhơn Phú",
+    "location": {
+      "lat": 10.8448529,
+      "lon": 106.7949332
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Mẫu Giáo Hoa lan",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Lợi",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8213687,
+      "lon": 106.6882802
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Cổ Loa",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Tự Tài",
+    "district": "Phú Nhuận",
+    "location": {
+      "lat": 10.8052925,
+      "lon": 106.6806414
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Lê Quý Đôn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lạc Long Quân",
+    "district": "11",
+    "location": {
+      "lat": 10.7684628,
+      "lon": 106.6423958
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phú Thọ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tôn Thất Hiệp",
+    "district": "11",
+    "location": {
+      "lat": 10.7605117,
+      "lon": 106.6525662
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường tiểu học Đống Đa",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đất Thánh",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.7814492,
+      "lon": 106.6560093
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Nguyễn Thượng Hiền",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hoàng Văn Thụ",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.7932995,
+      "lon": 106.6548591
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Quốc Toản",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đồng Đen",
+    "district": "Tan Binh",
+    "location": {
+      "lat": 10.7927467,
+      "lon": 106.6438985
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Tài chính - Maketing",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Đường Nguyễn Trọng Tuyển",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.7983845,
+      "lon": 106.6683082
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Văn Sỹ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Trọng Tuyển",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.7986466,
+      "lon": 106.6670127
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng Lý Tự Trọng",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Hoàng Văn Thụ",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.7976601,
+      "lon": 106.655691
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trươờng Tiểu học Lê Thị Hồng Gấm",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Thái Thị Nhạn",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.7851695,
+      "lon": 106.6442546
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Bình Phú",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Trần Văn Kiểu",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7354988,
+      "lon": 106.6275544
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phù Đổng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 9",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7438101,
+      "lon": 106.6295109
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Đình Chinh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Vạn Tượng",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.7487322,
+      "lon": 106.6569382
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Tạ Quang Bửu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tạ Quang Bửu",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7336058,
+      "lon": 106.6605318
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Hưng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 8",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7266354,
+      "lon": 106.6527599
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trung Tâm Giáo dục nghề nghiệp - Giáo dục thường xuyên Quận 8",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Huỳnh Thị Phụng",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7430475,
+      "lon": 106.67171
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trung tâm Bồi dưỡng CHính trị Quận 8",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Lê Quyên",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7412615,
+      "lon": 106.6675999
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hoàng Minh Đạo",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Bông Sao",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7372277,
+      "lon": 106.662517
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Thái Hưng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tạ Quang Bửu",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7377151,
+      "lon": 106.6724617
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Hậu Giang",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lò Siêu",
+    "district": "Phường Minh Phụng",
+    "location": {
+      "lat": 10.7548378,
+      "lon": 106.6486886
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Hậu Giang",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Hẻm 178 Hậu Giang",
+    "district": "Phường Bình Tây",
+    "location": {
+      "lat": 10.7509811,
+      "lon": 106.6442335
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Nguyễn Đức Cảnh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Minh Phụng",
+    "district": "6",
+    "location": {
+      "lat": 10.7536932,
+      "lon": 106.6433547
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Mạc Đĩnh Chi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Tân Hòa Đông",
+    "district": "6",
+    "location": {
+      "lat": 10.754956,
+      "lon": 106.6347191
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Tiên",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phan Văn Khoẻ",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7476044,
+      "lon": 106.6420968
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Chi Lăng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 199 Lê Quang Sung",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7509259,
+      "lon": 106.6453542
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Châu Văn Liêm",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phan Văn Khoẻ",
+    "district": "Phường Bình Tây",
+    "location": {
+      "lat": 10.7482497,
+      "lon": 106.6460131
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hưng Phú A",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hưng Phú",
+    "district": "8",
+    "location": {
+      "lat": 10.745995,
+      "lon": 106.6715236
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hưng Việt",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lạc Long Quân",
+    "district": "11",
+    "location": {
+      "lat": 10.7580314,
+      "lon": 106.6374025
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Văn Tám",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Nguyễn Đình Chi",
+    "district": "6",
+    "location": {
+      "lat": 10.7511281,
+      "lon": 106.6418824
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Bá Ngọc",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 395 Minh Phụng",
+    "district": "Quận 11",
+    "location": {
+      "lat": 10.759729,
+      "lon": 106.6433698
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phú Lâm",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Tân Hòa Đông",
+    "district": "6",
+    "location": {
+      "lat": 10.7551561,
+      "lon": 106.634301
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Nguyên Hãn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trần Nguyên Hãn",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7465681,
+      "lon": 106.6584168
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Huỳnh Văn Chính",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Huỳnh Thiện Lộc",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7803167,
+      "lon": 106.6388838
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Trần Quang Khải",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lạc Long Quân",
+    "district": "11",
+    "location": {
+      "lat": 10.7690599,
+      "lon": 106.6426416
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Văn Ơn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lạc Long Quân",
+    "district": "11",
+    "location": {
+      "lat": 10.7732102,
+      "lon": 106.6472021
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Bình Trọng - Khu B",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trần Bình Trọng",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.7575172,
+      "lon": 106.6812922
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Bình Trọng - Khu A",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trần Bình Trọng",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.7569407,
+      "lon": 106.6812712
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Danh Lâm",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hưng Phú",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7511074,
+      "lon": 106.6814492
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường tiểu học Rạch Ông",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Dương Bá Trạc",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.745,
+      "lon": 106.6889355
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Âu Dương Lân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Âu Dương Lân",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7469347,
+      "lon": 106.6830604
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hiệp Tân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Phan Anh",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7687805,
+      "lon": 106.6247933
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Chu Văn An",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Dương Đình Nghệ",
+    "district": "11",
+    "location": {
+      "lat": 10.7622332,
+      "lon": 106.650534
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Nguyễn Hiền",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Dương Đình Nghệ",
+    "district": "11",
+    "location": {
+      "lat": 10.7616187,
+      "lon": 106.6503431
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lạc Long Quân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lò Siêu",
+    "district": "11",
+    "location": {
+      "lat": 10.7618576,
+      "lon": 106.6508856
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Quyết Thắng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Đại Hành",
+    "district": "11",
+    "location": {
+      "lat": 10.7663423,
+      "lon": 106.6525883
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trưng Trắc",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Thị Nhỏ",
+    "district": "11",
+    "location": {
+      "lat": 10.7742875,
+      "lon": 106.6533376
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trung tâm Dạy nghề Quận 11",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 52",
+    "district": "11",
+    "location": {
+      "lat": 10.7733974,
+      "lon": 106.653605
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lương Thế Vinh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 16",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.746408,
+      "lon": 106.6162566
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Đại Thành",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Âu Cơ",
+    "district": "11",
+    "location": {
+      "lat": 10.7702766,
+      "lon": 106.6498627
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hiệp Tân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Phan Anh",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7689551,
+      "lon": 106.624802
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hiệp Tân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Phan Anh",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7687692,
+      "lon": 106.6247962
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Thị Nhỏ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường C",
+    "district": "11",
+    "location": {
+      "lat": 10.7697181,
+      "lon": 106.6534744
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phùng Hưng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lạc Long Quân",
+    "district": "11",
+    "location": {
+      "lat": 10.7645471,
+      "lon": 106.642703
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trung tâm Giáo dục Thường xuyên Quận 11",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lạc Long Quân",
+    "district": "11",
+    "location": {
+      "lat": 10.7693367,
+      "lon": 106.6453085
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Trị Đông",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tân Hoà Đông",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.76446,
+      "lon": 106.6221402
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Nguyễn Văn Phú",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lạc Long Quân",
+    "district": "11",
+    "location": {
+      "lat": 10.7618423,
+      "lon": 106.6396873
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hàn Hải Nguyên",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Thái Phiên",
+    "district": "11",
+    "location": {
+      "lat": 10.759197,
+      "lon": 106.645782
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Sân khấu - Điện ảnh Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Cống Quỳnh",
+    "district": "Quan 1",
+    "location": {
+      "lat": 10.765628,
+      "lon": 106.6893533
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Đề Thám",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lê Đại Hành",
+    "district": "Quận 11",
+    "location": {
+      "lat": 10.7586781,
+      "lon": 106.6595248
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Công Trứ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Trương Đình Hội",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7181393,
+      "lon": 106.6247274
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Bình Đông",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Bến Phú Định",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7172007,
+      "lon": 106.625935
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Trung Ngạn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lê Bôi",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7106769,
+      "lon": 106.6278746
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung cấp Kinh tế kỹ thuật Hồng Hà",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Quốc lộ 1A",
+    "district": "Quận Bình Tân",
+    "location": {
+      "lat": 10.7435738,
+      "lon": 106.5994319
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Viết Xuân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Dương Quảng Hàm",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8262691,
+      "lon": 106.6933743
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trung tâm Huấn luyện Bay",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Hồng Hà",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.8116832,
+      "lon": 106.6708631
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Văn Ơn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Thái Sơn",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8167766,
+      "lon": 106.6814888
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Học Viện Phật Giáo Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Đường kênh 3",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7728157,
+      "lon": 106.5155903
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "FPT Skillking HCM",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Nam Kỳ Khởi Nghĩa",
+    "district": "3",
+    "location": {
+      "lat": 10.7905758,
+      "lon": 106.6818704
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Trọng Tấn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 79 đường số 4",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.8067767,
+      "lon": 106.6043921
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Bình Giã",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 686 Cách mạng tháng 8",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.789127,
+      "lon": 106.6648052
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đoàn Lý Tự Trọng",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Dân Chủ",
+    "district": "Phường Thủ Đức",
+    "location": {
+      "lat": 10.8455517,
+      "lon": 106.764167
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Âu Cơ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trần Văn Cẩn",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.761639,
+      "lon": 106.6309887
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Đại học Quốc tế Hồng Bàng",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Đường Hòa Bình",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7702803,
+      "lon": 106.6341042
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hùng Vương",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hồng Bàng",
+    "district": "5",
+    "location": {
+      "lat": 10.753849,
+      "lon": 106.6527184
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Văn Luông",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hậu Giang",
+    "district": "6",
+    "location": {
+      "lat": 10.7473849,
+      "lon": 106.63721
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Đặng Thị Rành",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Quốc lộ 13 cũ",
+    "district": "Thành phố Thủ Đức",
+    "location": {
+      "lat": 10.8621037,
+      "lon": 106.7210794
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "La Petite École Ho Chi Minh City - French International School",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Nguyễn Văn Hưởng",
+    "district": "Quận 2",
+    "location": {
+      "lat": 10.8160432,
+      "lon": 106.7282584
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Ký túc xá Phân hiệu Trường Đại học Giao thông Vận tải tại Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "448",
+    "district": "Phường Tăng Nhơn Phú",
+    "location": {
+      "lat": 10.8427121,
+      "lon": 106.7965034
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Võ Thị Sáu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Nguyễn Sơn",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7843031,
+      "lon": 106.6210751
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học An Lạc 3",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Kinh Dương Vương",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7388262,
+      "lon": 106.6130455
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học An Lạc 1",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Kinh Dương Vương",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.72869,
+      "lon": 106.6100131
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học An Lạc 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phùng Tá Chu",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7537836,
+      "lon": 106.6207957
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Bình Trị Đông A",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Mã Lò",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.764557,
+      "lon": 106.6052853
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Trị 1",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hương Lộ 2",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7689879,
+      "lon": 106.6106015
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng Giao thông vận tải Trung ương VI",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Đường Kinh Dương Vương",
+    "district": "6",
+    "location": {
+      "lat": 10.7475288,
+      "lon": 106.626684
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng GTVT Trung ương III",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Văn Cao",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7872444,
+      "lon": 106.6215615
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Văn Tám",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Độc Lập",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.79225,
+      "lon": 106.6303919
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Giáo dục thường xuyên quận Tân Phú",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Bác Ái",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7902125,
+      "lon": 106.6298563
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Bình Trị 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 3",
+    "district": "Binh Tân",
+    "location": {
+      "lat": 10.7493191,
+      "lon": 106.616933
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Bình An",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phạm Thế Hiển",
+    "district": "8",
+    "location": {
+      "lat": 10.7252801,
+      "lon": 106.6368801
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Thi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "3 Tháng 2",
+    "district": "11",
+    "location": {
+      "lat": 10.7554642,
+      "lon": 106.6438916
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung cấp nghề Trần Đại Nghĩa - Cơ sở 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trần Văn Giàu",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7900095,
+      "lon": 106.5151418
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Văn Kiểu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Vĩnh Viễn",
+    "district": "10",
+    "location": {
+      "lat": 10.7619302,
+      "lon": 106.6609735
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Văn Thọ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Thị Kiểu",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.8682938,
+      "lon": 106.6432777
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng Kinh tế Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Đường Vĩnh Viễn",
+    "district": "10",
+    "location": {
+      "lat": 10.7645916,
+      "lon": 106.6735882
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Thiên Hộ Dương",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Tô Hiến Thành",
+    "district": "10",
+    "location": {
+      "lat": 10.7767452,
+      "lon": 106.6646869
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Phân hiệu Trường Cao đẳng Nông nghiệp Nam Bộ tại Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Đường An Dương Vương",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7483782,
+      "lon": 106.6227306
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Công Thương Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Lê Trọng Tấn",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.80692,
+      "lon": 106.628681
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lâm Văn Bền",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Huỳnh Tấn Phát",
+    "district": "Huyện Nhà Bè",
+    "location": {
+      "lat": 10.6919643,
+      "lon": 106.7417532
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "UEF - Đại học Kinh Tế Tài Chính",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Đường Điện Biên Phủ",
+    "district": "Quận Bình Thạnh",
+    "location": {
+      "lat": 10.7989905,
+      "lon": 106.706784
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trương Định",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường B",
+    "district": "12",
+    "location": {
+      "lat": 10.8227063,
+      "lon": 106.6239195
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Hoàng Hoa Thám",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đặng Thúc Vịnh",
+    "district": "Hóc Môn",
+    "location": {
+      "lat": 10.9040764,
+      "lon": 106.6373248
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường tiểu học Trần Văn Danh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Đt 2-5",
+    "district": "Hóc Môn",
+    "location": {
+      "lat": 10.9073161,
+      "lon": 106.6373507
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường tiểu học Bình Giả",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phạm Văn Hai",
+    "district": "Quận Tân Bình",
+    "location": {
+      "lat": 10.7925815,
+      "lon": 106.6636638
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hồ Văn Cường",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Trịnh Đình Trọng",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7744343,
+      "lon": 106.6433693
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trướng Tiểu học Tân Kiên",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hưng Nhơn",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7138132,
+      "lon": 106.5893233
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phong Phú 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 9",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.6914092,
+      "lon": 106.6463317
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Anh Văn Hội Việt Mỹ VUS",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trường Chinh",
+    "district": "Phường Đông Hưng Thuận",
+    "location": {
+      "lat": 10.8328707,
+      "lon": 106.6212628
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường tiểu học Giồng Ông Tố",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 6",
+    "district": "Quận 2",
+    "location": {
+      "lat": 10.7854643,
+      "lon": 106.7608644
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường tiểu học Thạnh Mỹ Lợi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Thị Định",
+    "district": "TP. Thủ Đức",
+    "location": {
+      "lat": 10.7757566,
+      "lon": 106.7661993
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phan Huy Ích",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Phan Huy Ích",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.8305726,
+      "lon": 106.6324769
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Lê Văn Thọ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lê Đức Thọ",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8525524,
+      "lon": 106.6597467
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Lương Thế Vinh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trương Văn Bang",
+    "district": "TP. Thủ Đức",
+    "location": {
+      "lat": 10.7741,
+      "lon": 106.7580662
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Đặng Thùy Trâm",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trần Xuân Soạn",
+    "district": "Phường Tân Thuận",
+    "location": {
+      "lat": 10.7517712,
+      "lon": 106.7178761
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Lương Thế Vinh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Dương Đình Cúc",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.6981187,
+      "lon": 106.5859985
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Đình Chiểu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lê Quang Định",
+    "district": "Quan Binh Thanh",
+    "location": {
+      "lat": 10.8032422,
+      "lon": 106.6980207
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Trương Công Định",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Văn Duyệt",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8021708,
+      "lon": 106.6961556
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Võ Thị Sáu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Văn Duyệt",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.7979493,
+      "lon": 106.6957271
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Hà Huy Tập",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phan Đăng Lưu",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8023941,
+      "lon": 106.6940557
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Đông Ba",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phan Đăng Lưu",
+    "district": "Quận Phú Nhuận",
+    "location": {
+      "lat": 10.8034146,
+      "lon": 106.6868269
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Cao Bá Quát",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phan Đăng Lưu",
+    "district": "Phú Nhuận",
+    "location": {
+      "lat": 10.804215,
+      "lon": 106.6849726
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Đặng Nguyên Cẩn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Đặng Nguyên Cẩn",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7534153,
+      "lon": 106.6320837
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lam Sơn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 820 Hậu Giang",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7476732,
+      "lon": 106.6300708
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Công Phép",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 1",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7376635,
+      "lon": 106.6212706
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Linh Trung",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 16",
+    "district": "Quận Thủ Đức",
+    "location": {
+      "lat": 10.8619542,
+      "lon": 106.7842635
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "BIS HCMC, Early Years and Infant Campus",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Thảo Điền",
+    "district": "Phường An Khánh",
+    "location": {
+      "lat": 10.8081172,
+      "lon": 106.7326681
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hùng Vương",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hưng Hóa",
+    "district": "Tân Hòa",
+    "location": {
+      "lat": 10.7866237,
+      "lon": 106.6610748
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Quang Diệu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Văn Sỹ",
+    "district": "Phường Nhiêu Lộc",
+    "location": {
+      "lat": 10.7884224,
+      "lon": 106.6772536
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Vĩnh Xuyên",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Chu Văn An",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7475471,
+      "lon": 106.6528885
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nhật Tảo",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Phạm Văn Chí",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7451627,
+      "lon": 106.6467265
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Kim Đồng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Võ Văn Kiệt",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7407147,
+      "lon": 106.6441176
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Tân Tạo",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hồ Văn Long",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7620492,
+      "lon": 106.5892914
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lạc Hồng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 1014/88 Tân Kỳ Tân Quý",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7923835,
+      "lon": 106.5999059
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trung tâm Giáo dục thường xuyên quận Bình Tân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 1014/88 Tân Kỳ Tân Quý",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7917186,
+      "lon": 106.5980885
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Hoa Phượng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 3",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.812217,
+      "lon": 106.5927192
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Đinh Bộ Lĩnh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Duong Bờ Bao Tân Thắng",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.802638,
+      "lon": 106.6218952
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bùi Hữu Nghĩa",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 389 Tỉnh lộ 10",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7544314,
+      "lon": 106.6218376
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Him Lam",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 11",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7526925,
+      "lon": 106.6250676
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nhị Tân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Tân Thới Nhì 24",
+    "district": "Huyện Hóc Môn",
+    "location": {
+      "lat": 10.8952495,
+      "lon": 106.5741823
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm Non Hoa Sen",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Trương Văn Bang",
+    "district": "TP. Thủ Đức",
+    "location": {
+      "lat": 10.7702919,
+      "lon": 106.7616158
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Mạc Đĩnh Chi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Chấn Hưng",
+    "district": "Tân Hòa",
+    "location": {
+      "lat": 10.7865706,
+      "lon": 106.6624963
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Triệu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Quốc lộ 13",
+    "district": "Thành phố Thủ Đức",
+    "location": {
+      "lat": 10.8291257,
+      "lon": 106.7153587
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Chính sách công và Phát triển nông thôn",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Đinh Tiên Hoàng",
+    "district": "Quận 1",
+    "location": {
+      "lat": 10.7856371,
+      "lon": 106.7016723
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Kinh tế - Luật",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Quốc lộ 1A",
+    "district": "Phường Linh Xuân",
+    "location": {
+      "lat": 10.8711957,
+      "lon": 106.7784374
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Hưng Hòa",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 18",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.8226967,
+      "lon": 106.6052453
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phù Đổng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lô Tư",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7849899,
+      "lon": 106.5992757
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Tô Vĩnh Diện",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đô Đốc Lộc",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7913298,
+      "lon": 106.6196278
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Tân Hương",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 137 Gò Dầu",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7935746,
+      "lon": 106.6216469
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Thuận",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Ấp Chiến lược",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7898686,
+      "lon": 106.6049695
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Long",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 4",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7854938,
+      "lon": 106.6118801
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Tân Thới",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đỗ Thừa Luông",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7919663,
+      "lon": 106.6168995
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Quang Định",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hoa Anh Đào",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.7073245,
+      "lon": 106.7077841
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Tạ Uyên",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Văn Lương",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.6922232,
+      "lon": 106.702035
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Lợi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lê Thị Tám",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.6796547,
+      "lon": 106.7065306
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Long Thới",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Văn Tạo",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.6562675,
+      "lon": 106.7276363
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trang Tấn Khương",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 512 Đường Nguyễn Hữu Thọ",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.6416314,
+      "lon": 106.7305987
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Việt Hồng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 8",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.6951433,
+      "lon": 106.7282972
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phạm Hùng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 6A",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7163273,
+      "lon": 106.6835152
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Lợi Trung",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 499",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8273222,
+      "lon": 106.704865
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Trần Quốc Toản",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Phan Văn Trị",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8266655,
+      "lon": 106.6885432
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Đức Thọ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 688 Lê Đức Thọ",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8496479,
+      "lon": 106.6749756
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Võ Thị Sáu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 9",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8451447,
+      "lon": 106.6691474
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phan Chu Trinh - cơ sở 1",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 945/44 Lê Đức Thọ",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8495821,
+      "lon": 106.6623651
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Văn Thọ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lê Đức Thọ",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8525129,
+      "lon": 106.6597464
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Quý Đôn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 237/65 Lê Đức Thọ",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.855013,
+      "lon": 106.6475438
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học An Hội",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phạm Văn Chiêu",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8442565,
+      "lon": 106.6412971
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Thị Minh Khai",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 637 Quang Trung",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8346961,
+      "lon": 106.6626267
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Hòa",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phan Châu Trinh",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8167475,
+      "lon": 106.7019854
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Chu Văn An",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 3",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8125516,
+      "lon": 106.7059532
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Lê Văn Tám",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Chu Văn An",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8096181,
+      "lon": 106.708523
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Cửu Long",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 142 Ngô Tất Tố",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.790085,
+      "lon": 106.714589
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Thanh Đa",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Thanh Đa",
+    "district": "Bình Thanh",
+    "location": {
+      "lat": 10.8167682,
+      "lon": 106.7194315
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Tầm Vu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Tầm Vu",
+    "district": "Bình Thạnh",
+    "location": {
+      "lat": 10.8142894,
+      "lon": 106.7162025
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lam Sơn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường 59",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8504682,
+      "lon": 106.6522693
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Lai",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tây Thạnh",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.8126858,
+      "lon": 106.6217319
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Minh Xuân 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Thích Thiện Hoà",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7221341,
+      "lon": 106.5348894
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Phước",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Rừng Sác",
+    "district": "Cần Giờ",
+    "location": {
+      "lat": 10.6426993,
+      "lon": 106.7870966
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học An Nghĩa",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tam Thôn Hiệp",
+    "district": "Cần Giờ",
+    "location": {
+      "lat": 10.5895742,
+      "lon": 106.8290817
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Văn Tạo",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Văn Tạo",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.6042285,
+      "lon": 106.7416662
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Dương Văn Lịch",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Văn Tạo",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.6310634,
+      "lon": 106.7338094
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Sơn Ca",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Chấn Hưng",
+    "district": "Tân Hòa",
+    "location": {
+      "lat": 10.7855605,
+      "lon": 106.6621444
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Sài Gòn – cơ sở 1",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Bà Huyện Thanh Quan",
+    "district": "Xuân Hòa",
+    "location": {
+      "lat": 10.7791512,
+      "lon": 106.6841304
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học An ninh Nhân dân",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Xa lộ Hà Nội",
+    "district": "Phường Linh Xuân",
+    "location": {
+      "lat": 10.8723543,
+      "lon": 106.8052551
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Kỳ Đồng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Kỳ Đồng",
+    "district": "3",
+    "location": {
+      "lat": 10.7823514,
+      "lon": 106.6813008
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Quý Đôn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 5",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7049626,
+      "lon": 106.6463238
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Tân Sơn Nhì",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Đặng Thế Phong",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7984596,
+      "lon": 106.6367921
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Thới Thạnh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Đặng Thúc Vịnh",
+    "district": "Hóc Môn",
+    "location": {
+      "lat": 10.9146182,
+      "lon": 106.6484963
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Mỹ 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Hà Duy Phiên",
+    "district": "Củ Chi",
+    "location": {
+      "lat": 10.9510576,
+      "lon": 106.6456266
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Mỹ 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 177",
+    "district": "Củ Chi",
+    "location": {
+      "lat": 10.9569057,
+      "lon": 106.6382402
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Bàn Cờ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Ðường Số 3",
+    "district": "Quận 3",
+    "location": {
+      "lat": 10.7729241,
+      "lon": 106.6821136
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đinh Thiện Lý",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Raymondienne",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7283814,
+      "lon": 106.7270688
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Đinh Bộ Lĩnh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 9",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7349987,
+      "lon": 106.7194475
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học An Thới Đông",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Liên ấp 2-3",
+    "district": "Cần Giờ",
+    "location": {
+      "lat": 10.5900473,
+      "lon": 106.7923865
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nhật Tảo",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Văn Thân",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.741447,
+      "lon": 106.6388555
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phạm Văn Chí - Cơ sở 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lò Gốm",
+    "district": "Quận 6",
+    "location": {
+      "lat": 10.7369366,
+      "lon": 106.6352143
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường mầm non Hướng Dương",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Lê Thị Tám",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.6800629,
+      "lon": 106.7086319
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng Kinh tế đối ngoại",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Đường Trần Bình Trọng",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.7547919,
+      "lon": 106.6815035
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bàu Sen",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Nguyễn Trãi",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.758456,
+      "lon": 106.6789344
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Nông Lâm Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Đỗ Mười",
+    "district": "Thủ Đức",
+    "location": {
+      "lat": 10.8723619,
+      "lon": 106.7898363
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Kim Đồng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phan Văn Trị",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.75452,
+      "lon": 106.6751605
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hàm Tử",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Võ Văn Kiệt",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.7528486,
+      "lon": 106.6803313
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Huỳnh Kiến Hoa",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Nguyễn Văn Đừng",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.751188,
+      "lon": 106.6713912
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Chương Dương",
+    "type": "School",
+    "detail_type": "school",
+    "street": "An Bình",
+    "district": "Quận 5",
+    "location": {
+      "lat": 10.7508535,
+      "lon": 106.6728602
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học An Phú",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 3",
+    "district": "Thủ Đức",
+    "location": {
+      "lat": 10.7860816,
+      "lon": 106.7524525
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Nhược Thị",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 2F2 Mễ Cốc",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7302153,
+      "lon": 106.6340571
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Hoa Sen - Cơ sở Thành Thái",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Hẻm 7 Thành Thái",
+    "district": "Quận 10",
+    "location": {
+      "lat": 10.7692351,
+      "lon": 106.66484
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học - Trung học cơ sở Pathway Tuệ Đức - Cơ sở Lương Định Của, Thành phố Thủ Đức",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lương Định Của",
+    "district": "Quan 2",
+    "location": {
+      "lat": 10.7876267,
+      "lon": 106.7355697
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Pathway Tuệ Đức - Cơ sở Bình An, Thành phố Thủ Đức",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường D2",
+    "district": "Quan 2",
+    "location": {
+      "lat": 10.7881319,
+      "lon": 106.734203
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm Non Pathway Tuệ Đức - Cơ sở Fuji Nam Long, Thành phố Thủ Đức",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường D1",
+    "district": "Phường Phước Long",
+    "location": {
+      "lat": 10.8129671,
+      "lon": 106.784509
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Pathway Tuệ Đức - Cơ sở Đoàn Kết, Thành phố Thủ Đức",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đoàn Kết",
+    "district": "Quận 9",
+    "location": {
+      "lat": 10.845086,
+      "lon": 106.7677355
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Trưng Đông",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Hồ Thị Nhung",
+    "district": "Phường Bình Trưng",
+    "location": {
+      "lat": 10.7904047,
+      "lon": 106.7723854
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hoàng Văn Thụ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hoàng Việt",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.793385,
+      "lon": 106.6586425
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bùi Minh Trực",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Phạm Thế Hiển",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7322956,
+      "lon": 106.6444228
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học phổ thông Đa Phước",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Ấp 41",
+    "district": null,
+    "location": {
+      "lat": 10.6690758,
+      "lon": 106.64829
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Văn Đang",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 205/39 Trần Văn Ðang",
+    "district": "Quận 3",
+    "location": {
+      "lat": 10.7861563,
+      "lon": 106.6721588
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Văn Trân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tập Đoàn 16",
+    "district": null,
+    "location": {
+      "lat": 10.6700348,
+      "lon": 106.6494215
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Pathway Tuệ Đức - Cơ sở Lê Thị Riêng, Quận 12",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Thị Riêng",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.8646643,
+      "lon": 106.6532331
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non - Tiểu học Pathway Tuệ Đức - Cơ sở Tân Thới Nhất 17, Quận 12",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tân Thới Nhất 17",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.825276,
+      "lon": 106.6247765
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Pathway Tuệ Đức - Cơ sở Hà Huy Giáp, Quận 12",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hà Huy Giáp",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.851919,
+      "lon": 106.679373
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Pathway Tuệ Đức - Cơ sở Tân Thới Nhất 6, Quận 12",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tân Thới Nhất 6",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.8351787,
+      "lon": 106.6097398
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Pathway Tuệ Đức - Cơ sở Lê Đức Thọ, Quận Gò Vấp",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 6",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8494114,
+      "lon": 106.6697377
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Pathway Tuệ Đức - Cơ sở Nguyễn Đình Chiểu, Quận 3",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Đình Chiểu",
+    "district": "Quận 3",
+    "location": {
+      "lat": 10.7829604,
+      "lon": 106.6937983
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non - Tiểu học Pathway Tuệ Đức -Cơ sở Bình Hưng, Bình Chánh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 16",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7289482,
+      "lon": 106.6524833
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trung tâm Dạy nghề quận Tân Bình",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Trường Chinh",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.8010404,
+      "lon": 106.6390207
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Thân Nhân Trung",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Đức Thuận",
+    "district": "Tân Bình",
+    "location": {
+      "lat": 10.8062502,
+      "lon": 106.6403801
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Lợi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Vườn Thơm",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7635186,
+      "lon": 106.4946717
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Pathway Academy - Cơ sở Thạnh Mỹ Lợi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 92-TML",
+    "district": "Phường Cát Lái",
+    "location": {
+      "lat": 10.7649412,
+      "lon": 106.7579976
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Công nghệ Thông tin",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Hàn Thuyên",
+    "district": "Phường Linh Xuân",
+    "location": {
+      "lat": 10.8699883,
+      "lon": 106.8034308
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Mở Thành phố Hồ Chí Minh - Nhơn Đức",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Hẻm 1734/30 Lê Văn Lương",
+    "district": "Huyện Nhà Bè",
+    "location": {
+      "lat": 10.676439,
+      "lon": 106.6904523
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phú Thuận",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Phạm Thị Ba",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7365894,
+      "lon": 106.7327703
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lê Anh Xuân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Phú Thuận",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7319837,
+      "lon": 106.7367313
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Song ngữ Quốc tế EMASI Nam Long",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 8",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7450177,
+      "lon": 106.734596
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Bình (Cơ sở 1)",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Bình",
+    "district": "Nhà Bè",
+    "location": {
+      "lat": 10.6752271,
+      "lon": 106.7417988
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Đinh Bộ Lĩnh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 53",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7376232,
+      "lon": 106.7085205
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Kim Đồng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường N2",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7482894,
+      "lon": 106.725465
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường tiểu học Nguyễn Trực",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Dương Bá Trạc",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7446642,
+      "lon": 106.6906419
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Giáo dục Chuyên biệt Hy Vọng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 702/63 Lê Đức Thọ",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8485133,
+      "lon": 106.671044
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Hồng Nhung",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Văn Bảo",
+    "district": "Quận Gò Vấp",
+    "location": {
+      "lat": 10.8216691,
+      "lon": 106.6864663
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lương Thế Vinh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 307 Đường Số 10",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8418099,
+      "lon": 106.650216
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Thị Định",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tân Thới Nhất 1",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.8305385,
+      "lon": 106.6157592
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Đinh Công Tráng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 945/31 Quốc lộ 1",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7203852,
+      "lon": 106.6029211
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung học cơ sở Bình Trị Đông B",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 827 Tỉnh lộ 10",
+    "district": "Bình Tân",
+    "location": {
+      "lat": 10.7563042,
+      "lon": 106.6082766
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Cao Vân",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Võ Văn Vân",
+    "district": "Quận Bình Tân",
+    "location": {
+      "lat": 10.7639162,
+      "lon": 106.5704707
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Công Trứ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 964 Hương lộ 2",
+    "district": "Quận Bình Tân",
+    "location": {
+      "lat": 10.7731116,
+      "lon": 106.5965915
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hoàng Văn Thụ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 6",
+    "district": "Quận Bình Tân",
+    "location": {
+      "lat": 10.7941563,
+      "lon": 106.5911316
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Huỳnh Thúc Kháng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hẻm 47 đường số 9",
+    "district": "Quận Bình Tân",
+    "location": {
+      "lat": 10.8017,
+      "lon": 106.6009825
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng số 21 - Chi nhánh phía Nam",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Dương Quảng Hàm",
+    "district": "Quận Gò Vấp",
+    "location": {
+      "lat": 10.8304416,
+      "lon": 106.687214
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn Thị Nuôi",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tô Ký",
+    "district": "Huyện Hóc Môn",
+    "location": {
+      "lat": 10.8859134,
+      "lon": 106.6055248
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Ấp Đình",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Tô Ký 12",
+    "district": "Huyện Hóc Môn",
+    "location": {
+      "lat": 10.8822871,
+      "lon": 106.6040494
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Quang Cơ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tân Chánh Hiệp 26",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.8681625,
+      "lon": 106.6179433
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trung tâm Giáo dục nghề nghiệp - Giáo dục thường xuyên Quận 12",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Ảnh Thủ",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.8678475,
+      "lon": 106.6174041
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Nguyễn An Ninh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Song Hành Quốc Lộ 22",
+    "district": "Huyện Hóc Môn",
+    "location": {
+      "lat": 10.8909611,
+      "lon": 106.5895742
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Quốc Toản",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Thị Kiêu",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.8752772,
+      "lon": 106.6504901
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Bình Lợi Trung - Cơ sở 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Bình Lợi",
+    "district": "Quận Bình Thạnh",
+    "location": {
+      "lat": 10.82571,
+      "lon": 106.7063531
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lý Chính Thắng 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Tân Thới Nhì 9",
+    "district": "Huyện Hóc Môn",
+    "location": {
+      "lat": 10.8925916,
+      "lon": 106.5768288
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Võ Văn Thặng",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Bùi Công Trừng",
+    "district": "Huyện Hóc Môn",
+    "location": {
+      "lat": 10.911909,
+      "lon": 106.6742354
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Tam Đông 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Thới Tứ 2",
+    "district": "Huyện Hóc Môn",
+    "location": {
+      "lat": 10.8950266,
+      "lon": 106.6086569
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Cao Đẳng Khoa học Công Nghệ Thành phố Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Đường Lương Minh Nguyệt",
+    "district": "Quận Tân Phú",
+    "location": {
+      "lat": 10.7607755,
+      "lon": 106.6313866
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Thái Hưng (cơ sở 2)",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Bến Ba Đình",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7487438,
+      "lon": 106.6703619
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Vàm Cỏ Đông",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phạm Thế Hiển",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7441709,
+      "lon": 106.6742784
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng GTVT Trung ương III",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Lê Thúc Hoạch",
+    "district": "Tân Phú",
+    "location": {
+      "lat": 10.7882051,
+      "lon": 106.6215612
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường mầm non Hoa thiên lý 2",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Số 6A",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7706244,
+      "lon": 106.5630469
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phú Mỹ",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phạm Hữu Lầu",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7052568,
+      "lon": 106.7355008
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Phan Văn Trị",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phan Văn Trị",
+    "district": "Phường Bình Lợi Trung",
+    "location": {
+      "lat": 10.8201788,
+      "lon": 106.6945135
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hòa Bình",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hòa Bình",
+    "district": "Quận 11",
+    "location": {
+      "lat": 10.7685442,
+      "lon": 106.6396294
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường mầm non Phong Lan",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Nguyễn Văn Long",
+    "district": null,
+    "location": {
+      "lat": 10.6446773,
+      "lon": 106.6492642
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Khoa học xã hội & Nhân văn",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hàn Thuyên",
+    "district": "Thủ Đức",
+    "location": {
+      "lat": 10.8702524,
+      "lon": 106.8009562
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Cao Đẳng Nghề Thủ Thiêm",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lê Văn Thịnh",
+    "district": "2",
+    "location": {
+      "lat": 10.7820745,
+      "lon": 106.7697684
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu Học Quốc Tế Hồ Chí Minh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Vo Truong Toan",
+    "district": "Thu Duc City",
+    "location": {
+      "lat": 10.8057797,
+      "lon": 106.7468714
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trung Tâm Học Tiếng Nhật",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Nguyễn Tri Phương",
+    "district": "Phường Diên Hồng",
+    "location": {
+      "lat": 10.7672307,
+      "lon": 106.6671167
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trung Tâm Đào Tạo Quản Trị Nhà Hàng Khách Sạn Á Âu",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Hai Bà Trưng",
+    "district": "District 3",
+    "location": {
+      "lat": 10.7873703,
+      "lon": 106.6923927
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Cao Đẳng Y Dược Sài Gòn",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Công viên phần mềm Quang Trung",
+    "district": "Quận 12",
+    "location": {
+      "lat": 10.8553727,
+      "lon": 106.6250488
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Kinh tế Tài chính Thành phố Hồ Chí Minh (UEF)",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Điện Biên Phủ",
+    "district": "Quận Bình Thạnh",
+    "location": {
+      "lat": 10.7970171,
+      "lon": 106.7031929
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Song Ngữ Quốc Tế EMASI Nam Long",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 8, KDC Nam Long",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7448751,
+      "lon": 106.734707
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Quản lý và Công nghệ Thành phố Hồ Chí Minh (UMT)",
+    "type": "School",
+    "detail_type": "university",
+    "street": "Đường 60 - CL",
+    "district": "Phường Cát Lái",
+    "location": {
+      "lat": 10.7740881,
+      "lon": 106.7980152
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Cao đẳng Bách Khoa Nam Sài Gòn",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Cao Lỗ",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.736027,
+      "lon": 106.6811972
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Đại học Fulbright Việt Nam",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Tôn Dật Tiên",
+    "district": "Quận 7",
+    "location": {
+      "lat": 10.7268338,
+      "lon": 106.7205839
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Fulbright University Vietnam",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Ton Dat Tien",
+    "district": "District 7",
+    "location": {
+      "lat": 10.7270847,
+      "lon": 106.7202112
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Vàm Cỏ Đông",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Phạm Thế Hiển",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7442983,
+      "lon": 106.6743412
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Lương Thế Vinh",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường số 13",
+    "district": "Gò Vấp",
+    "location": {
+      "lat": 10.8418079,
+      "lon": 106.6502555
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Hồng Đức",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Bình Đông",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7399824,
+      "lon": 106.6471956
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Inspire - Khai Nguyên - Cơ sở Quận 8",
+    "type": "School",
+    "detail_type": "school",
+    "street": "320 Phạm Hùng",
+    "district": "8",
+    "location": {
+      "lat": 10.7387313,
+      "lon": 106.6696696
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học - Trung học cơ sở Pathway Tuệ Đức - Cơ sở Lương Định Của, Thành phố Thủ Đức",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Lương Định Của",
+    "district": "Quan 2",
+    "location": {
+      "lat": 10.7880584,
+      "lon": 106.7352007
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Pathway Tuệ Đức - Cơ sở Phú Cường, Thành phố Thủ Đức",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Số 3",
+    "district": "Quan 2",
+    "location": {
+      "lat": 10.795478,
+      "lon": 106.7365254
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm non Pathway Tuệ Đức - Cơ sở Bông Sao, Quận 8",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Tạ Quang Bửu",
+    "district": "Quận 8",
+    "location": {
+      "lat": 10.7367374,
+      "lon": 106.6610655
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Mầm Non Anh Duy",
+    "type": "School",
+    "detail_type": "school",
+    "street": "An Hạ",
+    "district": "Bình Chánh",
+    "location": {
+      "lat": 10.7966803,
+      "lon": 106.5152942
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  },
+  {
+    "name": "Trường Trung cấp Âu Việt",
+    "type": "School",
+    "detail_type": "college",
+    "street": "Đường Lương Minh Nguyệt",
+    "district": "Quận Tân Phú",
+    "location": {
+      "lat": 10.7608509,
+      "lon": 106.6315181
+    },
+    "traffic_info": {
+      "cause": "High Student Volume",
+      "morning_peak": "06:30-07:30",
+      "afternoon_peak": "16:30-18:30"
+    }
+  },
+  {
+    "name": "Trường Tiểu học Trần Văn Mười",
+    "type": "School",
+    "detail_type": "school",
+    "street": "Đường Trần Văn Mười",
+    "district": null,
+    "location": {
+      "lat": 10.8656006,
+      "lon": 106.5899256
+    },
+    "traffic_info": {
+      "cause": "Parents Picking Up",
+      "morning_peak": "07:00-08:00",
+      "afternoon_peak": "16:00-17:30"
+    }
+  }
+]

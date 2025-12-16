@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Điểm đen Phạm Văn Đồng",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Phạm Văn Đồng",
+    "district": "Bình Thạnh",
+    "risk_info": {
+      "severity": "Critical"
+    }
+  },
+  {
+    "name": "Điểm đen Nguyễn Xí",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Nguyễn Xí",
+    "district": "Bình Thạnh",
+    "risk_info": {
+      "severity": "Critical"
+    }
+  },
+  {
+    "name": "Điểm đen Đặng Thùy Trâm",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Đặng Thùy Trâm",
+    "district": "Bình Thạnh",
+    "risk_info": {
+      "severity": "Critical"
+    }
+  },
+  {
+    "name": "Điểm đen Nguyễn Văn Linh",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Nguyễn Văn Linh",
+    "district": "Bình Chánh",
+    "risk_info": {
+      "severity": "Critical"
+    }
+  },
+  {
+    "name": "Điểm đen Nguyễn Văn Bứa",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Nguyễn Văn Bứa",
+    "district": "Hóc Môn",
+    "risk_info": {
+      "severity": "Critical"
+    }
+  },
+  {
+    "name": "Điểm đen Quốc lộ 50",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Quốc lộ 50",
+    "district": "Bình Chánh",
+    "risk_info": {
+      "severity": "High"
+    }
+  },
+  {
+    "name": "Điểm đen Văn Tiến Dũng",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Văn Tiến Dũng",
+    "district": "Bình Chánh",
+    "risk_info": {
+      "severity": "High"
+    }
+  },
+  {
+    "name": "Điểm đen Võ Chí Công",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Võ Chí Công",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High"
+    }
+  },
+  {
+    "name": "Điểm đen Nguyễn Thị Định",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Nguyễn Thị Định",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High"
+    }
+  },
+  {
+    "name": "Điểm đen Tỉnh Lộ 43",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Tỉnh Lộ 43",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High"
+    }
+  },
+  {
+    "name": "Điểm đen Quách Điêu",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Quách Điêu",
+    "district": "Bình Chánh",
+    "risk_info": {
+      "severity": "High"
+    }
+  },
+  {
+    "name": "Điểm đen Trần Văn Giàu",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Trần Văn Giàu",
+    "district": "Bình Tân",
+    "risk_info": {
+      "severity": "High"
+    }
+  },
+  {
+    "name": "Điểm đen Nguyễn Xiển",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Nguyễn Xiển",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "Medium"
+    }
+  },
+  {
+    "name": "Điểm đen Lý Thái Tổ",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Lý Thái Tổ",
+    "district": "Quận 10",
+    "risk_info": {
+      "severity": "Medium"
+    }
+  },
+  {
+    "name": "Điểm đen Đặng Thúc Vịnh",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Đặng Thúc Vịnh",
+    "district": "Hóc Môn",
+    "risk_info": {
+      "severity": "Medium"
+    }
+  },
+  {
+    "name": "Điểm đen Minh Phụng",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Minh Phụng",
+    "district": "Quận 6",
+    "risk_info": {
+      "severity": "Medium"
+    }
+  },
+  {
+    "name": "Điểm đen Nguyễn Thị Tú",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Nguyễn Thị Tú",
+    "district": "Bình Tân",
+    "risk_info": {
+      "severity": "Medium"
+    }
+  },
+  {
+    "name": "Điểm đen Võ Nguyên Giáp",
+    "type": "Hazard",
+    "detail_type": "accident_prone",
+    "street": "Võ Nguyên Giáp",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "Medium"
+    }
+  }
+]

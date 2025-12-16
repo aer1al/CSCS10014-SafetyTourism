@@ -1,0 +1,1106 @@
+[
+  {
+    "name": "Ngập nước Cô Giang (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Cô Giang",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hồ Hảo Hớn – Nguyễn Khắc Nhu"
+    }
+  },
+  {
+    "name": "Ngập nước Hồ Hảo Hớn (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Hồ Hảo Hớn",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Võ Văn Kiệt – Cô Bắc"
+    }
+  },
+  {
+    "name": "Ngập nước Calmette (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Calmette",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Lê Thị Hồng Gấm – Nguyễn Công Trứ"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Thái Bình (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Thái Bình",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Phó Đức Chính – Yersin"
+    }
+  },
+  {
+    "name": "Ngập nước Bùi Viện (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Bùi Viện",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Toàn tuyến"
+    }
+  },
+  {
+    "name": "Ngập nước Trần Hưng Đạo (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Trần Hưng Đạo",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Nhiều đoạn"
+    }
+  },
+  {
+    "name": "Ngập nước Ký Con (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Ký Con",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Nam Kỳ Khởi Nghĩa (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nam Kỳ Khởi Nghĩa",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Trước trung tâm thương mại Saigon Center"
+    }
+  },
+  {
+    "name": "Ngập nước Lê Lai (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Lê Lai",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Phạm Ngũ Lão (Quận 1)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Phạm Ngũ Lão",
+    "district": "Quận 1",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Quốc Hương (Quận 2)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Quốc Hương",
+    "district": "Quận 2",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Đường 47 – Số nhà 127"
+    }
+  },
+  {
+    "name": "Ngập nước Thảo Điền (Quận 2)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Thảo Điền",
+    "district": "Quận 2",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hẻm 95 – Cửa xả tám"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Duy Trinh (Quận 2)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Duy Trinh",
+    "district": "Quận 2",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Nguyễn Tuyển – Nguyễn Tư Nghiêm"
+    }
+  },
+  {
+    "name": "Ngập nước Lương Định Của (Quận 2)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Lương Định Của",
+    "district": "Quận 2",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Văn Hưởng (Quận 2)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Văn Hưởng",
+    "district": "Quận 2",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Kỳ Đồng (Quận 3)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Kỳ Đồng",
+    "district": "Quận 3",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Trần Quốc Thảo – Trương Định"
+    }
+  },
+  {
+    "name": "Ngập nước Hoàng Diệu (Quận 4)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Hoàng Diệu",
+    "district": "Quận 4",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Nguyễn Tất Thành – Vĩnh Khánh"
+    }
+  },
+  {
+    "name": "Ngập nước Đoàn Văn Bơ (Quận 4)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Đoàn Văn Bơ",
+    "district": "Quận 4",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hoàng Diệu – Bến Vân Đồn"
+    }
+  },
+  {
+    "name": "Ngập nước Vĩnh Khánh (Quận 4)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Vĩnh Khánh",
+    "district": "Quận 4",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hoàng Diệu – Tôn Đản"
+    }
+  },
+  {
+    "name": "Ngập nước Tôn Thất Thuyết (Quận 4)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Tôn Thất Thuyết",
+    "district": "Quận 4",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Gò Công (Quận 5)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Gò Công",
+    "district": "Quận 5",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hải Thượng Lãn Ông – Võ Văn Kiệt"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Văn Cừ (Quận 5)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Văn Cừ",
+    "district": "Quận 5",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ số nhà 99 – số nhà 149"
+    }
+  },
+  {
+    "name": "Ngập nước Trần Hưng Đạo (Quận 5)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Trần Hưng Đạo",
+    "district": "Quận 5",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Nguyễn Văn Cừ – Nguyễn Biểu"
+    }
+  },
+  {
+    "name": "Ngập nước Đỗ Ngọc Thạch (Quận 5)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Đỗ Ngọc Thạch",
+    "district": "Quận 5",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Trần Hưng Đạo – Trang Tử"
+    }
+  },
+  {
+    "name": "Ngập nước Dương Tử Giang (Quận 5)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Dương Tử Giang",
+    "district": "Quận 5",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Trang Tử – Trần Hưng Đạo"
+    }
+  },
+  {
+    "name": "Ngập nước Trần Hưng Đạo (Quận 5)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Trần Hưng Đạo",
+    "district": "Quận 5",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Dương Tử Giang – Học Lạc"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Biểu (Quận 5)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Biểu",
+    "district": "Quận 5",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Trần Hưng Đạo – Phan Văn Trị"
+    }
+  },
+  {
+    "name": "Ngập nước Phạm Phú Thứ (Quận 6)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Phạm Phú Thứ",
+    "district": "Quận 6",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Võ Văn Kiệt – Bình Tiên"
+    }
+  },
+  {
+    "name": "Ngập nước Mai Xuân Thưởng (Quận 6)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Mai Xuân Thưởng",
+    "district": "Quận 6",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Lê Quang Sung – Hậu Giang"
+    }
+  },
+  {
+    "name": "Ngập nước Bình Tiên (Quận 6)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Bình Tiên",
+    "district": "Quận 6",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Võ Văn Kiệt – Phạm Phú Thứ"
+    }
+  },
+  {
+    "name": "Ngập nước Văn Thân (Quận 6)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Văn Thân",
+    "district": "Quận 6",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Bà Lài – Lò Gốm"
+    }
+  },
+  {
+    "name": "Ngập nước An Dương Vương (Quận 6)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "An Dương Vương",
+    "district": "Quận 6",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Tân Hòa Đông – Bà Hom"
+    }
+  },
+  {
+    "name": "Ngập nước Tân Hóa (Quận 6)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Tân Hóa",
+    "district": "Quận 6",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hồng Bàng – Cầu Tân Hóa"
+    }
+  },
+  {
+    "name": "Ngập nước Lê Quang Sung (Quận 6)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Lê Quang Sung",
+    "district": "Quận 6",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Trang Tử – Mai Xuân Thưởng"
+    }
+  },
+  {
+    "name": "Ngập nước Huỳnh Tấn Phát (Quận 7)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Huỳnh Tấn Phát",
+    "district": "Quận 7",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Gò Ô Môi – Hẻm 1333"
+    }
+  },
+  {
+    "name": "Ngập nước Trần Xuân Soạn (Quận 7)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Trần Xuân Soạn",
+    "district": "Quận 7",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Lê Văn Lương (Quận 7)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Lê Văn Lương",
+    "district": "Quận 7",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Thị Thập (Quận 7)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Thị Thập",
+    "district": "Quận 7",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Hồ Ngọc Lãm (Quận 8)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Hồ Ngọc Lãm",
+    "district": "Quận 8",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Bến Phú Định – Rạch Bà Lựu"
+    }
+  },
+  {
+    "name": "Ngập nước An Dương Vương (Quận 8)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "An Dương Vương",
+    "district": "Quận 8",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Bến Phú Định – Cầu Mỹ Thuận"
+    }
+  },
+  {
+    "name": "Ngập nước số 41 (Quận 8)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "số 41",
+    "district": "Quận 8",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ An Dương Vương – Cầu số 41"
+    }
+  },
+  {
+    "name": "Ngập nước Bến Phú Định (Quận 8)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Bến Phú Định",
+    "district": "Quận 8",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hồ Ngọc Lãm – Cầu Phú Định"
+    }
+  },
+  {
+    "name": "Ngập nước Xa Lộ Hà Nội (Quận 9)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Xa Lộ Hà Nội",
+    "district": "Quận 9",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Đoạn dưới chân cầu Rạch Chiếc"
+    }
+  },
+  {
+    "name": "Ngập nước Lê Văn Việt (Quận 9)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Lê Văn Việt",
+    "district": "Quận 9",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Đình Phong Phú – Hẻm 201"
+    }
+  },
+  {
+    "name": "Ngập nước Đỗ Xuân Hợp (Quận 9)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Đỗ Xuân Hợp",
+    "district": "Quận 9",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Trước trường TH Kỹ Nghệ và UBND Phường Phước Bình"
+    }
+  },
+  {
+    "name": "Ngập nước Trần Nhân Tông (Quận 10)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Trần Nhân Tông",
+    "district": "Quận 10",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hòa Hảo – Hùng Vương"
+    }
+  },
+  {
+    "name": "Ngập nước Tuệ Tĩnh (Quận 11)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Tuệ Tĩnh",
+    "district": "Quận 11",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Số nhà 01 – Số nhà 199"
+    }
+  },
+  {
+    "name": "Ngập nước 3 Tháng 2 (Quận 11)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "3 Tháng 2",
+    "district": "Quận 11",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hàn Hải Nguyên – Tôn Thất Hiệp"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Chí Thanh (Quận 11)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Chí Thanh",
+    "district": "Quận 11",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Nguyễn Thị Nhỏ – Hà Tôn Quyền"
+    }
+  },
+  {
+    "name": "Ngập nước Hồng Bàng (Quận 11)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Hồng Bàng",
+    "district": "Quận 11",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Lò Siêu – Minh Phụng"
+    }
+  },
+  {
+    "name": "Ngập nước Hòa Bình (Quận 11)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Hòa Bình",
+    "district": "Quận 11",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Kênh Tân Hóa – VX Lạc Long Quân"
+    }
+  },
+  {
+    "name": "Ngập nước Tân Hóa (Quận 11)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Tân Hóa",
+    "district": "Quận 11",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Hồng Bàng – Cầu Tân Hóa"
+    }
+  },
+  {
+    "name": "Ngập nước Tôn Thất Hiệp (Quận 11)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Tôn Thất Hiệp",
+    "district": "Quận 11",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Tuệ Tĩnh- 3 Tháng 2"
+    }
+  },
+  {
+    "name": "Ngập nước Lãnh Binh Thăng (Quận 11)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Lãnh Binh Thăng",
+    "district": "Quận 11",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Tuệ Tĩnh – Lò Siêu"
+    }
+  },
+  {
+    "name": "Ngập nước Phan Văn Hớn (Quận 12)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Phan Văn Hớn",
+    "district": "Quận 12",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Quốc lộ 1A – Tân Thới Nhất 08"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Văn Quá (Quận 12)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Văn Quá",
+    "district": "Quận 12",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Trường Chinh – Tô Ký"
+    }
+  },
+  {
+    "name": "Ngập nước Quốc lộ 1A (Quận 12)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Quốc lộ 1A",
+    "district": "Quận 12",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Nguyễn Văn Quá – Lê Thị Riêng"
+    }
+  },
+  {
+    "name": "Ngập nước Song Hành (Quận 12)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Song Hành",
+    "district": "Quận 12",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước DN5 (Quận 12)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "DN5",
+    "district": "Quận 12",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Quang Trung (Gò Vấp)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Quang Trung",
+    "district": "Gò Vấp",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Phan Huy Ích – Cầu Chợ Cầu 2"
+    }
+  },
+  {
+    "name": "Ngập nước Lê Đức Thọ (Gò Vấp)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Lê Đức Thọ",
+    "district": "Gò Vấp",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Trường Tây Sơn – UBND P.13"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Văn Khối (Gò Vấp)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Văn Khối",
+    "district": "Gò Vấp",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Đường Cây Trâm cũ"
+    }
+  },
+  {
+    "name": "Ngập nước Phạm Văn Chiêu (Gò Vấp)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Phạm Văn Chiêu",
+    "district": "Gò Vấp",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Văn Thọ (Gò Vấp)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Văn Thọ",
+    "district": "Gò Vấp",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Lê Văn Tách (Thủ Đức)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Lê Văn Tách",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ số nhà 3 – Dương Văn Cam"
+    }
+  },
+  {
+    "name": "Ngập nước Đặng Thị Rành (Thủ Đức)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Đặng Thị Rành",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Tô Ngọc Vân – Dương Văn Cam"
+    }
+  },
+  {
+    "name": "Ngập nước Gò Dưa (Thủ Đức)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Gò Dưa",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ QL1A Cầu vượt Bình Phước – Tô Ngọc Vân"
+    }
+  },
+  {
+    "name": "Ngập nước Nút giao thông Gò Dưa (Thủ Đức)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nút giao thông Gò Dưa",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Kha Vạn Cân (Thủ Đức)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Kha Vạn Cân",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Tỉnh lộ 43 (Thủ Đức)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Tỉnh lộ 43",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Quốc lộ 1A – Bình Chiểu"
+    }
+  },
+  {
+    "name": "Ngập nước Dương Văn Cam (Thủ Đức)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Dương Văn Cam",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Kha Vạn Cân – Lê Văn Tách"
+    }
+  },
+  {
+    "name": "Ngập nước Hồ Văn Tư (Thủ Đức)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Hồ Văn Tư",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ số nhà 118 – CX Cầu Ngang"
+    }
+  },
+  {
+    "name": "Ngập nước 38 (Thủ Đức)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "38",
+    "district": "Thủ Đức",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Phường Hiệp Bình Chánh"
+    }
+  },
+  {
+    "name": "Ngập nước Kinh Dương Vương (Bình Tân)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Kinh Dương Vương",
+    "district": "Bình Tân",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Vòng xoay Mũi Tàu – Hồ Học Lãm"
+    }
+  },
+  {
+    "name": "Ngập nước Gò Dầu (Tân Phú)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Gò Dầu",
+    "district": "Tân Phú",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Cầu Xéo – Tân Sơn Nhì"
+    }
+  },
+  {
+    "name": "Ngập nước Phan Anh (Tân Phú)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Phan Anh",
+    "district": "Tân Phú",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Tân Hòa Đông – Rạch Bàu Trâu"
+    }
+  },
+  {
+    "name": "Ngập nước Trương Vĩnh Ký (Tân Phú)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Trương Vĩnh Ký",
+    "district": "Tân Phú",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Tân Sơn Nhì – Nguyễn Văn Tố"
+    }
+  },
+  {
+    "name": "Ngập nước Trần Đại Nghĩa (Tân Bình)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Trần Đại Nghĩa",
+    "district": "Tân Bình",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Quốc lộ 1A – Cầu Cái Trung"
+    }
+  },
+  {
+    "name": "Ngập nước Hồ Học Lãm (Tân Bình)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Hồ Học Lãm",
+    "district": "Tân Bình",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ số nhà 520 – Số nhà 588"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Hồng Đào (Tân Bình)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Hồng Đào",
+    "district": "Tân Bình",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Âu Cơ – Bàu Cát 2"
+    }
+  },
+  {
+    "name": "Ngập nước Âu Cơ (Tân Bình)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Âu Cơ",
+    "district": "Tân Bình",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Ba Vân – Trương Công Định"
+    }
+  },
+  {
+    "name": "Ngập nước Đồng Đen (Tân Bình)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Đồng Đen",
+    "district": "Tân Bình",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Bàu Cát 2 – Phạm Phú Thứ"
+    }
+  },
+  {
+    "name": "Ngập nước Bạch Đằng (Tân Bình)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Bạch Đằng",
+    "district": "Tân Bình",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Nguyễn Xí (Bình Thạnh)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Nguyễn Xí",
+    "district": "Bình Thạnh",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Ngã tư Nguyễn Xí – Ung Văn Khiêm"
+    }
+  },
+  {
+    "name": "Ngập nước Ung Văn Khiêm (Bình Thạnh)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Ung Văn Khiêm",
+    "district": "Bình Thạnh",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Ngã tư Nguyễn Xí – Ung Văn Khiêm"
+    }
+  },
+  {
+    "name": "Ngập nước Bình Quới (Bình Thạnh)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Bình Quới",
+    "district": "Bình Thạnh",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Khách sạn Nhật Nguyệt – Bến Đò"
+    }
+  },
+  {
+    "name": "Ngập nước Huỳnh Tấn Phát (Nhà Bè)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Huỳnh Tấn Phát",
+    "district": "Nhà Bè",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Đào Tông Nguyên – Nguyễn Bình"
+    }
+  },
+  {
+    "name": "Ngập nước Đào Sư Tích (Nhà Bè)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Đào Sư Tích",
+    "district": "Nhà Bè",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Lê Văn Lương (Nhà Bè)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Lê Văn Lương",
+    "district": "Nhà Bè",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Quốc lộ 1A (Bình Chánh)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Quốc lộ 1A",
+    "district": "Bình Chánh",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Từ Cầu Bình Điền – Nguyễn Văn Linh"
+    }
+  },
+  {
+    "name": "Ngập nước Trịnh Quang Nghị (Bình Chánh)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Trịnh Quang Nghị",
+    "district": "Bình Chánh",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  },
+  {
+    "name": "Ngập nước Quốc lộ 50 (Bình Chánh)",
+    "type": "Hazard",
+    "detail_type": "flood",
+    "street": "Quốc lộ 50",
+    "district": "Bình Chánh",
+    "risk_info": {
+      "severity": "High",
+      "cause": "High Tide",
+      "description": "Thường xuyên ngập khi mưa lớn"
+    }
+  }
+]
