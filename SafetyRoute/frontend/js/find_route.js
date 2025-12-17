@@ -238,15 +238,33 @@ function displayRouteInfo(data, container, routeLabel) {
   const summary = data.summary || {};
   const risks = data.risk_summary || {};
   
-  let badgeClass = "safe-badge"; let icon = "✅";
-  if (summary.safety_color === "red") { badgeClass = "danger-badge"; icon = "⛔"; }
-  else if (summary.safety_color === "yellow") { badgeClass = "warning-badge"; icon = "⚠️"; }
+  // 1. Mặc định là Xanh (An toàn)
+  let badgeClass = "safe-badge"; 
+  let icon = "✅";
 
+  // 2. Kiểm tra màu từ Backend gửi về
+  // Chú ý: Backend gửi "red", "yellow", "orange" hoặc "green"
+  if (summary.safety_color === "red") { 
+      badgeClass = "danger-badge"; 
+      icon = "⛔"; 
+  }
+  else if (summary.safety_color === "yellow") { 
+      badgeClass = "warning-badge"; 
+      icon = "⚠️"; 
+  }
+  else if (summary.safety_color === "orange") { 
+      // Đây là trường hợp Kẹt xe nghiêm trọng
+      badgeClass = "warning-badge"; // Dùng khung màu vàng cam
+      icon = ""; // Xóa icon mặc định đi, vì trong text backend đã có sẵn icon 🟠 rồi
+  }
+
+  // 3. Hàm lấy text hiển thị badge nhỏ (High/Medium/Low)
   const getBadgeInfo = (level) => {
-      if (level === "High") return { class: "bad", text: "Cao" };
-      if (level === "Medium") return { class: "medium", text: "Vừa" };
+      if (level === "High" || level === "Cao") return { class: "bad", text: "Cao" };
+      if (level === "Medium" || level === "Trung bình") return { class: "medium", text: "Vừa" };
       return { class: "good", text: "Thấp" };
   };
+  
   const trafficInfo = getBadgeInfo(risks.traffic_level);
   const crowdInfo = getBadgeInfo(risks.crowd_level);
 
@@ -255,6 +273,7 @@ function displayRouteInfo(data, container, routeLabel) {
         🛡️ ${summary.avoidance_proof}
        </div>` : "";
 
+  // 4. Render HTML
   container.innerHTML = `
     <div class="result-card">
         <div style="margin-bottom:10px; font-weight:bold; color:#00509d; border-bottom:1px solid #eee; padding-bottom:5px;">
