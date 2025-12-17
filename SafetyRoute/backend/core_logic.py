@@ -190,19 +190,35 @@ class RoutingEngine:
 
         for i, data in enumerate(edge_pointers):
             penalty = float(max(0.0, preds[i]))
-            s_d, s_w, s_c = data['scores_real']
             
-            # Tính lại ETA với traffic thật
+            # 1. Lấy lại các điểm số đã tính ở vòng lặp trước
+            s_d, s_w, s_c = data['scores_real'] 
+            
+            # 2. Tính Traffic Score (ĐÂY LÀ DÒNG BẠN BỊ THIẾU)
+            # Phải tính ngay tại đây thì biến raw_traffic_score mới tồn tại
+            raw_traffic_score = standardization.calculate_traffic_score(curr_hour, is_weekend, s_w)
+
+            # 3. Tính lại ETA với traffic thật
             real_speed = standardization.calculate_segment_speed(data, curr_hour, is_weekend, s_w, vehicle_mode)
             eta = data.get('length', 10) / (real_speed / 3.6)
             
-            # Trọng số cuối cùng
+            # 4. Gán trọng số cuối cùng
             data['final_weight'] = eta * (1.0 + penalty)
+            
+            # 5. Lưu Meta Info (để hàm audit dùng tính High/Medium/Low)
             data['meta_info'] = {
-                'eta': eta, 'penalty': penalty,
-                'risk_flags': {'disaster': s_d>0, 'weather': s_w>0, 'crowd': s_c>0.7}
+                'eta': eta, 
+                'penalty': penalty,
+                'risk_flags': {'disaster': s_d > 0, 'weather': s_w > 0, 'crowd': s_c > 0.7},
+                
+                # Giờ biến này đã được define ở bước 2 nên sẽ không lỗi nữa
+                'raw_traffic': raw_traffic_score, 
+                'raw_crowd': s_c
             }
-            del data['scores_real']
+            
+            # Xóa biến tạm cho nhẹ memory
+            if 'scores_real' in data:
+                del data['scores_real']
 
     def _process_routing(self, sub_G, orig_node, dest_node, bbox, curr_hour, is_weekend, vehicle_mode, preferences):
         # 1. Quét môi trường (Lấy data minh chứng)
@@ -270,16 +286,18 @@ class RoutingEngine:
         }
 
     def _audit_route(self, G, route_nodes, env_data, route_name="Route"):
-        # (Hàm này giữ nguyên như cũ, chỉ trả về JSON thống kê)
-        # ... Copy nội dung hàm _audit_route cũ vào đây ...
-        # (Mình viết gọn lại phần return để bạn dễ hình dung)
-        
         total_dist = 0
         total_eta = 0
         total_risk = 0
         path_coords = []
+        
         hit_disasters = set()
         hit_weathers = set()
+        hit_traffic = set()
+        
+        # Biến tích lũy để tính trung bình
+        sum_traffic_score = 0
+        sum_crowd_score = 0
         
         for i in range(len(route_nodes) - 1):
             u, v = route_nodes[i], route_nodes[i+1]
@@ -291,23 +309,57 @@ class RoutingEngine:
             total_eta += meta.get('eta', 0)
             total_risk += (meta.get('penalty',0) * length)
             
+            # Tích lũy điểm (Weighted by length)
+            # Lấy điểm từ meta_info vừa lưu ở bước 1
+            t_score = meta.get('raw_traffic', 0.1)
+            c_score = meta.get('raw_crowd', 0.0)
+            
+            sum_traffic_score += (t_score * length)
+            sum_crowd_score += (c_score * length)
+
             path_coords.append([G.nodes[u]['y'], G.nodes[u]['x']])
             
             flags = meta.get('risk_flags', {})
             if flags.get('disaster'): hit_disasters.add("Vùng nguy hiểm")
             if flags.get('weather'): hit_weathers.add("Mưa/Gió")
+            if t_score > 0.6: hit_traffic.add("Kẹt xe") # Logic tự định nghĩa
 
         path_coords.append([G.nodes[route_nodes[-1]]['y'], G.nodes[route_nodes[-1]]['x']])
         
-        # Logic gán nhãn màu sắc
+        # --- TÍNH TOÁN LEVEL (LOW/MEDIUM/HIGH) ---
+        avg_traffic = sum_traffic_score / total_dist if total_dist > 0 else 0
+        avg_crowd = sum_crowd_score / total_dist if total_dist > 0 else 0
+        
+        def get_level_label(score):
+            if score >= 0.7: return "High"
+            if score >= 0.4: return "Medium"
+            return "Low"
+
+        risk_summary = {
+            "traffic_level": get_level_label(avg_traffic),
+            "crowd_level": get_level_label(avg_crowd)
+        }
+        
+        # 2. Tạo từ điển dịch sang tiếng Việt cho câu mô tả
+        vn_map = {
+            "High": "Cao",
+            "Medium": "Trung bình",
+            "Low": "Thấp"
+        }
+        # -----------------------------------------
+
         safety_label = "🟢 An toàn"
         safety_color = "green"
+        
         if len(hit_disasters) > 0: 
             safety_label = "🔴 NGUY HIỂM"
             safety_color = "red"
         elif len(hit_weathers) > 0:
-            safety_label = "🟡 Cẩn trọng"
+            safety_label = "🟡 Mưa/Thời tiết xấu"
             safety_color = "yellow"
+        elif risk_summary["traffic_level"] == "High": 
+            safety_label = "🟠 Kẹt xe nghiêm trọng"
+            safety_color = "orange"
 
         return {
             "name": route_name,
@@ -317,14 +369,18 @@ class RoutingEngine:
             "summary": {
                 "safety_label": safety_label,
                 "safety_color": safety_color,
-                "description": f"Đi qua {len(hit_weathers)} vùng mưa, {len(hit_disasters)} điểm nguy hiểm."
+                "description": f"Lộ trình {risk_summary['traffic_level']} kẹt xe, {risk_summary['crowd_level']} đông đúc.",
+                "avoidance_proof": f"Đã né {len(hit_disasters)} điểm thiên tai" if hit_disasters else "",
+                "description": f"Kẹt xe mức {vn_map[risk_summary['traffic_level']]}, đám đông mức {vn_map[risk_summary['crowd_level']]}."
             },
+            # GỬI CỤC NÀY VỀ ĐỂ FRONTEND HIỂN THỊ BADGE
+            "risk_summary": risk_summary, 
             "hit_details": {
                 "disasters": list(hit_disasters),
-                "weathers": list(hit_weathers)
+                "weathers": list(hit_weathers),
+                "traffic": list(hit_traffic)
             }
         }
-
 engine = RoutingEngine()
 def get_optimal_routes(start, end, vehicle_mode="walking", preferences=None):
     return engine.get_optimal_routes(start, end, vehicle_mode, preferences)
