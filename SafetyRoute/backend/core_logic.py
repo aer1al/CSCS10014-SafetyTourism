@@ -7,7 +7,7 @@ import json
 import os
 import pickle
 
-# Import các module vệ tinh
+# Import các module vệ tinh và chuẩn hóa dữ liệu
 import traffic
 import weather
 import disasters
@@ -16,7 +16,7 @@ from standardization import CROWD_ZONES
 
 warnings.filterwarnings("ignore")
 
-# Load Risk Model
+# Khởi tạo mô hình đánh giá rủi ro từ file binary (Pickle)
 RISK_MODEL_PATH = os.path.join(os.path.dirname(__file__), 'risk_model.pkl')
 risk_model = None
 try:
@@ -38,14 +38,14 @@ class RoutingEngine:
         curr_hour = now.hour + (now.minute / 60)
         is_weekend = now.weekday() >= 5
         
-        # 1. Chuẩn bị Graph & BBox
+        # 1. Khởi tạo đồ thị và giới hạn không gian tìm kiếm (Bounding Box)
         graph_data = self._prepare_graph(start_coords, end_coords, vehicle_mode)
         if not graph_data:
             return {"status": "error", "message": "Không tải được bản đồ hoặc điểm đi/đến quá xa."}
             
         sub_G, orig_node, dest_node, bbox = graph_data
         
-        # 2. Xử lý chính (Scan -> Weight -> Route)
+        # 2. Thực thi quy trình định tuyến (Scan Environment -> Weighting -> Pathfinding)
         return self._process_routing(sub_G, orig_node, dest_node, bbox, curr_hour, is_weekend, vehicle_mode, preferences)
 
     def _prepare_graph(self, start, end, mode):
@@ -62,12 +62,12 @@ class RoutingEngine:
             print(f"⚠️ Lỗi tìm node: {e}")
             return None
 
-        # Tính khoảng cách Manhattan sơ bộ để ước lượng độ xa
+        # Tính khoảng cách Manhattan để ước lượng vùng đệm
         dist_lat = abs(orig_point['y'] - dest_point['y'])
         dist_lon = abs(orig_point['x'] - dest_point['x'])
         
-        # Buffer động: Tối thiểu 0.005 (500m) cho đường cực ngắn, tối đa 0.03 (3km) cho đường xa
-        # Công thức: Lấy khoảng cách lớn nhất giữa 2 điểm * 1.5 để có không gian thở
+        # Thiết lập Buffer động: Tối thiểu 500m, tối đa 3km tùy độ dài quãng đường
+        # Hệ số 0.5 đảm bảo không gian tìm kiếm đủ rộng cho các đường vòng
         raw_buffer = max(dist_lat, dist_lon) * 0.5
         buffer = max(0.003, min(0.03, raw_buffer))
         
@@ -83,6 +83,7 @@ class RoutingEngine:
                 n for n, d in G_full.nodes(data=True) 
                 if south < d['y'] < north and west < d['x'] < east
             ]
+            # Tạo Subgraph để tối ưu hóa hiệu năng tính toán
             sub_G = G_full.subgraph(nodes_in_bbox).copy()
             if orig_node not in sub_G.nodes or dest_node not in sub_G.nodes:
                 return G_full, orig_node, dest_node, bbox
@@ -92,38 +93,38 @@ class RoutingEngine:
 
     def _scan_environment(self, bbox):
         """
-        Quét dữ liệu môi trường CHỈ TRONG HỘP (BBox).
-        Đây chính là dữ liệu 'Minh Chứng' mà Frontend sẽ vẽ.
+        Thu thập dữ liệu môi trường không gian trong vùng BBox.
+        Phục vụ tính toán trọng số và hiển thị minh chứng trên Frontend.
         """
         south, west, north, east = bbox
         
-        # --- 1. THIÊN TAI (Disasters) ---
+        # 1. Thu thập dữ liệu Thiên tai
         raw_disasters = []
         
-        # Bước A: Cố gắng lấy data từ nguồn (File thật hoặc Mock)
+        # Ưu tiên nạp dữ liệu từ Local Cache
         if os.path.exists('real_disasters.json'):
             try:
                 with open('real_disasters.json', 'r', encoding='utf-8') as f:
                     raw_disasters = json.load(f)
             except: pass
             
-        # Nếu không có file thật, gọi hàm lấy Mock (Lấy rộng ra 50km để chắc chắn không sót)
+        # Fallback sang Mock API nếu không có cache (bán kính 50km)
         if not raw_disasters:
             mid_lat, mid_lng = (south+north)/2, (west+east)/2
-            # Lưu ý: Hàm này trả về mọi thứ trong bán kính 50km
+            # Lưu ý: Hàm trả về toàn bộ dữ liệu trong bán kính quét
             raw_disasters = disasters.get_natural_disasters(mid_lat, mid_lng, max_distance_km=50)
 
-        # Bước B: [QUAN TRỌNG] CẮT GỌT THEO HỘP (CLIPPING)
-        # Bất kể data đến từ đâu, nếu không nằm trong hộp BBox thì loại bỏ thẳng tay
+        # Lọc dữ liệu theo tọa độ hình chữ nhật (Spatial Filtering/Clipping)
+        # Chỉ giữ lại các điểm rủi ro nằm trong BBox
         disaster_zones = [
             d for d in raw_disasters
             if south <= d['lat'] <= north and west <= d['lng'] <= east
         ]
 
-        # 2. Thời tiết (Realtime Grid Scan)
-        weather_zones = weather.get_weather_zones(bbox) # Hàm này đã có logic grid
+        # 2. Truy xuất lưới dữ liệu Thời tiết (Realtime Grid)
+        weather_zones = weather.get_weather_zones(bbox) 
 
-        # 3. Đám đông (Lọc từ global list)
+        # 3. Truy xuất dữ liệu Mật độ đám đông
         crowd_zones = [
             c for c in CROWD_ZONES 
             if south < c['lat'] < north and west < c['lng'] < east
@@ -138,13 +139,11 @@ class RoutingEngine:
         }
 
     def _calculate_weights(self, sub_G, env_data, curr_hour, is_weekend, vehicle_mode, preferences):
-        # ... (Giữ nguyên logic tính toán trọng số y hệt file cũ) ...
-        # Để tiết kiệm dung lượng hiển thị, mình xin phép tóm tắt phần này
-        # Logic: Duyệt cạnh -> Check cắt Disaster/Weather -> Gọi AI Model -> Gán final_weight
-        # (Copy nguyên hàm _calculate_weights từ file cũ vào đây nhé, không thay đổi gì)
+        # Giữ nguyên logic tính toán trọng số
         
         print(f"⚖️ Đang tính trọng số cho {sub_G.number_of_edges()} cạnh...")
         base_traffic_score = standardization.calculate_traffic_score(curr_hour, is_weekend, weather_score=0.0)
+        # Tạo Spatial Index (R-tree) để tăng tốc độ truy vấn va chạm
         disaster_idx = standardization.create_spatial_index(env_data['disasters'])
         weather_idx  = standardization.create_spatial_index(env_data['weather'])
         
@@ -172,7 +171,7 @@ class RoutingEngine:
             mid_lat, mid_lon = (node_u['y'] + node_v['y']) / 2, (node_u['x'] + node_v['x']) / 2
             s_crowd = standardization.calculate_crowd_score(mid_lat, mid_lon, curr_hour)
 
-            # Phạt xe lớn vào đường nhỏ
+            # Luật phạt: Phương tiện lớn đi vào đường hẹp (Residential/Living street)
             hw = data.get('highway', '')
             if vehicle_mode in ['car', 'bus', 'truck'] and hw in ['residential', 'living_street']:
                 s_crowd += 5.0
@@ -181,7 +180,7 @@ class RoutingEngine:
             edge_pointers.append(data)
             data['scores_real'] = (s_disaster, s_weather, s_crowd)
 
-        # Predict
+        # Dự đoán rủi ro (Risk Prediction)
         preds = []
         if risk_model and ai_inputs:
             try: preds = risk_model.predict(ai_inputs)
@@ -191,97 +190,89 @@ class RoutingEngine:
         for i, data in enumerate(edge_pointers):
             penalty = float(max(0.0, preds[i]))
             
-            # 1. Lấy lại các điểm số đã tính ở vòng lặp trước
+            # Truy xuất các điểm số thành phần
             s_d, s_w, s_c = data['scores_real'] 
             
-            # 2. Tính Traffic Score (ĐÂY LÀ DÒNG BẠN BỊ THIẾU)
-            # Phải tính ngay tại đây thì biến raw_traffic_score mới tồn tại
+            # Tính điểm giao thông (Traffic Score) ngay tại thời điểm xử lý
             raw_traffic_score = standardization.calculate_traffic_score(curr_hour, is_weekend, s_w)
 
-            # 3. Tính lại ETA với traffic thật
+            # Tính lại ETA dựa trên vận tốc thực tế (đã giảm do rủi ro)
             real_speed = standardization.calculate_segment_speed(data, curr_hour, is_weekend, s_w, vehicle_mode)
             eta = data.get('length', 10) / (real_speed / 3.6)
             
-            # 4. Gán trọng số cuối cùng
+            # Gán trọng số cuối cùng dùng cho thuật toán Dijkstra
             data['final_weight'] = eta * (1.0 + penalty)
             
-            # 5. Lưu Meta Info (để hàm audit dùng tính High/Medium/Low)
+            # Lưu Metadata phục vụ quá trình Audit tuyến đường
             data['meta_info'] = {
                 'eta': eta, 
                 'penalty': penalty,
                 'risk_flags': {'disaster': s_d > 0, 'weather': s_w > 0, 'crowd': s_c > 0.7},
-                
-                # Giờ biến này đã được define ở bước 2 nên sẽ không lỗi nữa
                 'raw_traffic': raw_traffic_score, 
                 'raw_crowd': s_c
             }
             
-            # Xóa biến tạm cho nhẹ memory
+            # Giải phóng bộ nhớ biến tạm
             if 'scores_real' in data:
                 del data['scores_real']
 
     def _process_routing(self, sub_G, orig_node, dest_node, bbox, curr_hour, is_weekend, vehicle_mode, preferences):
-        # 1. Quét môi trường (Lấy data minh chứng)
+        # 1. Quét môi trường lấy dữ liệu minh chứng
         env_data = self._scan_environment(bbox)
         
-        # 2. Tính trọng số
+        # 2. Tính toán trọng số cho toàn bộ đồ thị
         self._calculate_weights(sub_G, env_data, curr_hour, is_weekend, vehicle_mode, preferences)
         
-        # 3. Tìm 3 Tuyến Đường (Loop 3 lần)
+        # 3. Tìm Top-K lộ trình tối ưu (K=3)
         routes_found = []
-        labels = ["Best Route", "Alternative 1", "Alternative 2"] # 1 Chính, 2 Phụ
+        labels = ["Best Route", "Alternative 1", "Alternative 2"] # Định danh tuyến đường
         
-        for i in range(3): # Lặp 3 lần
+        for i in range(3): 
             try:
-                # Tìm đường ngắn nhất theo trọng số đã tính
+                # Tìm đường ngắn nhất trên đồ thị có trọng số
                 path = nx.shortest_path(sub_G, orig_node, dest_node, weight='final_weight')
                 
-                # Kiểm tra trùng lặp: Nếu đường này giống y hệt đường trước thì bỏ qua
+                # Kiểm tra trùng lặp lộ trình dựa trên độ dài và node trung gian
                 is_duplicate = False
                 for existing in routes_found:
-                    # So sánh độ dài path (số node) và node đầu/cuối/giữa cho nhanh
                     if len(path) == len(existing['geometry']) and path[len(path)//2] == existing['_mid_node']:
                         is_duplicate = True
                         break
                 
                 if not is_duplicate:
-                    # Audit lộ trình (Tính tổng risk, gắn nhãn)
+                    # Audit lộ trình: Tính tổng rủi ro và gán nhãn
                     route_info = self._audit_route(sub_G, path, env_data, labels[len(routes_found)])
                     route_info['_mid_node'] = path[len(path)//2] # Lưu node giữa để check trùng
                     routes_found.append(route_info)
                 
-                # --- PHẠT TRỌNG SỐ (PENALTY) ĐỂ TÌM ĐƯỜNG KHÁC ---
-                # Nhân trọng số các cạnh của đường vừa tìm được lên X lần
-                # Để lần lặp sau thuật toán Dijkstra buộc phải né đường này ra
+                # Cơ chế phạt trọng số (Penalty) để tìm các đường thay thế
+                # Tăng trọng số các cạnh đã đi qua lên 300% để ép thuật toán tìm hướng khác
                 for k in range(len(path) - 1):
                     u, v = path[k], path[k+1]
                     if sub_G.has_edge(u, v):
                         for key in sub_G[u][v]:
-                            # Nhân 3.0 để phạt nặng -> Ép đi đường khác hẳn
                             sub_G[u][v][key]['final_weight'] *= 3.0 
                             
             except nx.NetworkXNoPath:
-                break # Hết đường rồi
+                break 
             except Exception as e:
                 print(f"Lỗi tìm đường phụ {i}: {e}")
                 break
                 
-            # Nếu tìm đủ 3 đường rồi thì dừng sớm
             if len(routes_found) >= 3: break
 
         if not routes_found:
              return {"status": "error", "message": "Không tìm thấy đường đi an toàn."}
              
-        # 4. Trả kết quả kèm Map Data (Minh chứng)
-        # Frontend sẽ dùng cục "map_data" này để vẽ vòng tròn
+        # 4. Đóng gói kết quả trả về kèm dữ liệu bản đồ
         return {
-            **routes_found[0], # Bung thông tin đường chính ra (Best Route)
-            "alternatives": routes_found[1:], # Các đường phụ
-            "map_data": { # <--- CHÍNH LÀ CÁI HỘP DỮ LIỆU BẠN CẦN
+            **routes_found[0], # Thông tin đường tối ưu nhất
+            "alternatives": routes_found[1:], # Danh sách đường phụ
+            "map_data": { # Dữ liệu minh chứng cho Frontend vẽ lớp phủ
                 "disasters": env_data['disasters'],
                 "weather": env_data['weather'],
                 "crowd": env_data['crowd'],
-                "bbox": bbox # Gửi luôn tọa độ hộp về cho chắc
+                "bbox": bbox 
             }
         }
 
@@ -295,7 +286,7 @@ class RoutingEngine:
         hit_weathers = set()
         hit_traffic = set()
         
-        # Biến tích lũy để tính trung bình
+        # Biến tích lũy dùng tính trung bình trọng số
         sum_traffic_score = 0
         sum_crowd_score = 0
         
@@ -309,8 +300,7 @@ class RoutingEngine:
             total_eta += meta.get('eta', 0)
             total_risk += (meta.get('penalty',0) * length)
             
-            # Tích lũy điểm (Weighted by length)
-            # Lấy điểm từ meta_info vừa lưu ở bước 1
+            # Tích lũy điểm số theo độ dài đoạn đường
             t_score = meta.get('raw_traffic', 0.1)
             c_score = meta.get('raw_crowd', 0.0)
             
@@ -322,11 +312,11 @@ class RoutingEngine:
             flags = meta.get('risk_flags', {})
             if flags.get('disaster'): hit_disasters.add("Vùng nguy hiểm")
             if flags.get('weather'): hit_weathers.add("Mưa/Gió")
-            if t_score > 0.6: hit_traffic.add("Kẹt xe") # Logic tự định nghĩa
+            if t_score > 0.6: hit_traffic.add("Kẹt xe") 
 
         path_coords.append([G.nodes[route_nodes[-1]]['y'], G.nodes[route_nodes[-1]]['x']])
         
-        # --- TÍNH TOÁN LEVEL (LOW/MEDIUM/HIGH) ---
+        # Phân loại mức độ (Classification: Low/Medium/High)
         avg_traffic = sum_traffic_score / total_dist if total_dist > 0 else 0
         avg_crowd = sum_crowd_score / total_dist if total_dist > 0 else 0
         
@@ -340,13 +330,12 @@ class RoutingEngine:
             "crowd_level": get_level_label(avg_crowd)
         }
         
-        # 2. Tạo từ điển dịch sang tiếng Việt cho câu mô tả
+        # Bản đồ ánh xạ nhãn hiển thị tiếng Việt
         vn_map = {
             "High": "Cao",
             "Medium": "Trung bình",
             "Low": "Thấp"
         }
-        # -----------------------------------------
 
         safety_label = "🟢 An toàn"
         safety_color = "green"
@@ -373,7 +362,7 @@ class RoutingEngine:
                 "avoidance_proof": f"Đã né {len(hit_disasters)} điểm thiên tai" if hit_disasters else "",
                 "description": f"Kẹt xe mức {vn_map[risk_summary['traffic_level']]}, đám đông mức {vn_map[risk_summary['crowd_level']]}."
             },
-            # GỬI CỤC NÀY VỀ ĐỂ FRONTEND HIỂN THỊ BADGE
+            # Dữ liệu phục vụ hiển thị Badge UI
             "risk_summary": risk_summary, 
             "hit_details": {
                 "disasters": list(hit_disasters),
