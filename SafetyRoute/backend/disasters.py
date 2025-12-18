@@ -1,12 +1,12 @@
 import requests
 import json
 import os
-from utils import haversine # Import hàm chung
+from utils import haversine # Import module tiện ích tính toán khoảng cách địa lý
 
-DEMO_MODE = False # <--- CÔNG TẮC DEMO
+DEMO_MODE = False # Cờ cấu hình chế độ chạy: True (Simulation), False (Realtime API)
 
 def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
-    # 1. Chọn nguồn dữ liệu
+    # Lựa chọn nguồn dữ liệu đầu vào (Data Ingestion Strategy)
     raw_events = []
     if DEMO_MODE:
         try:
@@ -18,7 +18,7 @@ def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
             print(f"Lỗi đọc Mock: {e}")
             return []
     else:
-        # API NASA thật
+        # Truy vấn dữ liệu thời gian thực từ NASA EONET API (Filter BBox Vietnam)
         bbox = "102.14,8.18,109.46,23.39"
         url = f"https://eonet.gsfc.nasa.gov/api/v3/events?status=open&bbox={bbox}"
         try:
@@ -26,7 +26,7 @@ def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
             if resp.status_code == 200: raw_events = resp.json().get("events", [])
         except: return []
 
-    # 2. Xử lý & Lọc
+    # Xử lý chuẩn hóa dữ liệu và lọc không gian (Spatial Filtering)
     formatted_list = []
     for event in raw_events:
         geo = event.get("geometry", [])
@@ -36,6 +36,7 @@ def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
         coords = latest.get("coordinates")
         etype = latest.get("type")
         
+        # Phân tích cấu trúc hình học (Geometry Parsing) để lấy tọa độ tâm
         e_lat, e_lon = None, None
         if etype == "Point":
             e_lon, e_lat = coords
@@ -48,8 +49,8 @@ def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
             if dist <= max_distance_km:
                 cats = event.get("categories", [])
                 
-                # [FIX] Thêm dòng này: Lấy radius từ Mock, nếu không có (API thật) thì gán 10km
-                # Nếu là Polygon của NASA, có thể gán mặc định to hơn (ví dụ 20km)
+                # Xác định bán kính ảnh hưởng (Radius Estimation)
+                # Fallback giá trị mặc định theo loại hình học nếu API thiếu dữ liệu
                 default_radius = 20.0 if etype == 'Polygon' else 10.0
                 event_radius = event.get("radius", default_radius)
 
@@ -57,12 +58,12 @@ def get_natural_disasters(user_lat, user_lon, max_distance_km=500):
                     'lat': e_lat, 'lng': e_lon,
                     'name': event.get("title"),
                     'type': etype,
-                    'radius': event_radius,  # <--- QUAN TRỌNG: Thêm cái này vào output
+                    'radius': event_radius,  # Metadata quan trọng cho visualization trên bản đồ
                     'categories_raw': [c.get("id") for c in cats] 
                 })
     return formatted_list
 
-# --- HÀM SETTER ĐỂ APP GỌI (ĐỒNG BỘ VỚI WEATHER) ---
+# Phương thức Setter cập nhật trạng thái Runtime (Dependency Injection Pattern)
 def set_demo_mode(status: bool):
     global DEMO_MODE
     DEMO_MODE = status
