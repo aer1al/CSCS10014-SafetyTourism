@@ -6,42 +6,33 @@ import sys
 from dotenv import load_dotenv
 
 
-# Import Class Chatbot "Nhạc trưởng" mới mà chúng ta vừa xây dựng
-# Lưu ý: file này nằm ở rag_engine/chatbot.py
+# Import class TrafficChatbot từ module rag_engine để xử lý logic hội thoại
 from rag_engine.chatbot import TrafficChatbot
 
-# --- IMPORT MODULE VỆ TINH (GIỮ NGUYÊN CỦA BẠN) ---
-# (Giả định bạn vẫn giữ các file này ở thư mục gốc để phục vụ bản đồ)
+# Import các module vệ tinh (Logic tìm đường, Thời tiết, Thiên tai) có xử lý ngoại lệ
 try:
-    import core_logic      # Xử lý tìm đường
-    import weather         # Module thời tiết
-    import disasters       # Module thiên tai
+    import core_logic       # Xử lý thuật toán tìm đường
+    import weather          # Xử lý dữ liệu thời tiết
+    import disasters        # Xử lý dữ liệu thiên tai
 except ImportError:
     print("⚠️ Cảnh báo: Không tìm thấy các module vệ tinh (core_logic, weather...). Chế độ API Map có thể lỗi.")
 
-# ==========================================
-# CẤU HÌNH APP
-# ==========================================
+# Cấu hình Flask App, nạp biến môi trường và kích hoạt CORS
 load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# ==========================================
-# KHỞI TẠO CHATBOT ENGINE
-# ==========================================
+# Khởi tạo instance Chatbot và kết nối cơ sở dữ liệu
 print("⏳ Đang khởi động hệ thống Safety Tourism AI...")
 try:
-    # Khởi tạo instance của Chatbot mới
-    # Nó sẽ tự động kết nối Neo4j và Ollama theo config bên trong rag_engine
+    # Khởi tạo Chatbot, tự động kết nối Neo4j và Ollama theo cấu hình
     traffic_bot = TrafficChatbot()
     print("✅ Chatbot Engine đã sẵn sàng nhận lệnh!")
 except Exception as e:
     print(f"❌ Lỗi khởi tạo Chatbot: {e}")
     traffic_bot = None
 
-# ==========================================
-# 1. HEALTH CHECK
-# ==========================================
+# API Health Check kiểm tra trạng thái hoạt động của hệ thống
 @app.route('/', methods=['GET'])
 def health_check():
     return jsonify({
@@ -50,13 +41,11 @@ def health_check():
         "version": "4.0 (Integrated)"
     }), 200
 
-# ==========================================
-# 2. API CHATBOT (ĐÃ NÂNG CẤP)
-# ==========================================
+# API Chatbot xử lý tin nhắn người dùng qua RAG Engine
 @app.route('/api/chat', methods=['POST'])
 def chat_with_ai():
     """
-    Endpoint nhận tin nhắn từ Web/App -> Gửi vào RAG Engine -> Trả lời
+    Endpoint nhận tin nhắn từ client -> Gửi vào RAG Engine -> Trả về phản hồi
     """
     try:
         if not traffic_bot:
@@ -68,8 +57,7 @@ def chat_with_ai():
         if not user_message:
             return jsonify({"reply": "Bạn chưa nhập nội dung tin nhắn."})
 
-        # --- GỌI VÀO RAG ENGINE MỚI ---
-        # Engine sẽ tự động: Router -> Search Neo4j -> Generate Answer
+        # Truyền tin nhắn vào pipeline xử lý của Chatbot (Router -> Search -> Generate)
         print(f"📩 User: {user_message}")
         reply = traffic_bot.chat(user_message)
         print(f"🤖 Bot: {reply}")
@@ -81,9 +69,7 @@ def chat_with_ai():
         return jsonify({"reply": "Xin lỗi, hệ thống đang gặp sự cố xử lý tin nhắn."}), 500
 
 
-# ==========================================
-# 3. API TÌM ĐƯỜNG (GIỮ NGUYÊN)
-# ==========================================
+# API tìm đường tối ưu dựa trên tiêu chí an toàn và phương tiện
 @app.route('/api/find-routes', methods=['POST'])
 def find_routes_api():
     try:
@@ -112,12 +98,10 @@ def find_routes_api():
         print(f"🔥 Lỗi Server (Find Route): {e}", file=sys.stderr)
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# ==========================================
-# 4. API DỮ LIỆU BẢN ĐỒ (GIỮ NGUYÊN)
-# ==========================================
+# API cung cấp dữ liệu lớp phủ bản đồ (Thiên tai, Thời tiết) theo vùng hiển thị
 @app.route('/api/map-data', methods=['GET'])
 def get_map_layers():
-    # Logic cũ của bạn để lấy dữ liệu vẽ lên bản đồ
+    # Parse tham số viewport từ request để lọc dữ liệu
     try:
         min_lat = float(request.args.get('min_lat', -90))
         max_lat = float(request.args.get('max_lat', 90))
@@ -129,10 +113,10 @@ def get_map_layers():
         has_filter = False
 
     try:
-        # A. THIÊN TAI (Disasters)
+        # Truy xuất dữ liệu thiên tai
         disaster_data = [] 
         if 'disasters' in sys.modules:
-            # Fallback logic cũ của bạn
+            # Ưu tiên load từ file cache local nếu tồn tại
             if os.path.exists('real_disasters.json'):
                 try:
                     with open('real_disasters.json', 'r', encoding='utf-8') as f:
@@ -143,7 +127,7 @@ def get_map_layers():
             if not disaster_data and has_filter:
                 disaster_data = disasters.get_natural_disasters(min_lat, min_lng, 50)
 
-        # B. THỜI TIẾT
+        # Truy xuất dữ liệu thời tiết theo khu vực
         weather_data = []
         if 'weather' in sys.modules and has_filter:
             weather_data = weather.get_weather_zones((min_lat, min_lng, max_lat, max_lng))
@@ -153,7 +137,7 @@ def get_map_layers():
             "data": {
                 "disasters": disaster_data,
                 "weather": weather_data,
-                "crowd": [] # Giữ placeholder
+                "crowd": [] # Placeholder cho dữ liệu đám đông
             }
         })
 
@@ -161,9 +145,7 @@ def get_map_layers():
         print(f"🔥 Lỗi Server (Map Data): {e}", file=sys.stderr)
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# ==========================================
-# 5. API SETTING (GIỮ NGUYÊN)
-# ==========================================
+# API chuyển đổi chế độ Demo cho mục đích kiểm thử
 @app.route('/api/toggle-demo', methods=['POST'])
 def toggle_demo_mode():
     try:
@@ -177,11 +159,9 @@ def toggle_demo_mode():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# ==========================================
-# MAIN
-# ==========================================
+# Điểm chạy chính của chương trình và quản lý tài nguyên
 if __name__ == '__main__':
-    # Khi tắt app thì đóng kết nối Neo4j/Chatbot
+    # Đảm bảo đóng kết nối Chatbot khi ứng dụng dừng
     try:
         print("\n🚀 SERVER READY (Port 5000)...")
         app.run(debug=True, port=5000, host='0.0.0.0')
