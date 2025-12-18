@@ -7,19 +7,11 @@ def fetch_hcm_hotspots():
     
     overpass_url = "http://overpass-api.de/api/interpreter"
     
-    # Bounding Box của TP.HCM (Nam, Tây, Bắc, Đông)
+    # Định nghĩa giới hạn không gian (Bounding Box) khu vực TP.HCM
     bbox = "10.37,106.33,11.16,107.02"
     
-    # Query: Lấy tất cả Mall, Market, Attraction, Pedestrian
-    # [out:json];
-    # (
-    #   node["amenity"="marketplace"](10.37,106.33,11.16,107.02);
-    #   way["amenity"="marketplace"](10.37,106.33,11.16,107.02);
-    #   node["tourism"="attraction"](10.37,106.33,11.16,107.02);
-    #   node["shop"="mall"](10.37,106.33,11.16,107.02);
-    # );
-    # out center;
-    
+    # Xây dựng truy vấn Overpass QL để thu thập dữ liệu POI (Point of Interest)
+    # Mục tiêu: Chợ, Phố đi bộ, Điểm tham quan, Trung tâm thương mại
     query = f"""
     [out:json][timeout:25];
     (
@@ -33,19 +25,20 @@ def fetch_hcm_hotspots():
     """
     
     try:
+        # Thực hiện HTTP Request đến Overpass API
         response = requests.get(overpass_url, params={'data': query})
         data = response.json()
         
         hotspots = []
         for el in data.get('elements', []):
-            # Lấy tọa độ (nếu là way thì lấy center)
+            # Xử lý chuẩn hóa tọa độ (Lấy tâm hình học nếu đối tượng là Way/Polygon)
             lat = el.get('lat') or el.get('center', {}).get('lat')
             lon = el.get('lon') or el.get('center', {}).get('lon')
             
             tags = el.get('tags', {})
             name = tags.get('name', 'Unknown Spot')
             
-            # Phân loại để tính giờ cao điểm
+            # Phân loại đối tượng để áp dụng heuristic tính mật độ theo giờ
             h_type = "tourism"
             if tags.get('amenity') == 'marketplace': h_type = 'market'
             elif tags.get('shop') == 'mall': h_type = 'mall'
@@ -57,10 +50,10 @@ def fetch_hcm_hotspots():
                     "lat": lat,
                     "lng": lon,
                     "type": h_type,
-                    "radius": 0.3 # Mặc định bán kính ảnh hưởng 300m
+                    "radius": 0.3 # Bán kính ảnh hưởng mặc định (300m) cho Spatial Indexing
                 })
                 
-        # Lưu vào file
+        # Tuần tự hóa dữ liệu và lưu trữ xuống file JSON cục bộ (Persistence)
         with open('crowd_zones.json', 'w', encoding='utf-8') as f:
             json.dump(hotspots, f, ensure_ascii=False, indent=2)
             
