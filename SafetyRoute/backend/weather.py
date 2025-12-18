@@ -4,38 +4,37 @@ import os
 import json
 import random
 
-DEMO_MODE = False  # <--- CÔNG TẮC: True = Đọc file json, False = Quét API thật
+DEMO_MODE = False  # Cờ cấu hình nguồn dữ liệu: True (Simulation), False (Live API)
 
 def get_weather_zones(bbox):
     """
-    Hàm duy nhất lấy dữ liệu thời tiết (Mưa/Gió).
-    Tự động switch giữa Mock File và API Realtime.
+    Truy xuất dữ liệu thời tiết theo vùng hiển thị (Viewport-based Data Fetching).
+    Hỗ trợ chuyển đổi linh hoạt giữa dữ liệu giả lập và API thực tế.
     """
     south, west, north, east = bbox
     zones = []
 
-    # --- [MỚI] TÍNH BÁN KÍNH ĐỘNG THEO HỘP ---
-    # 1. Tính kích thước hộp (lấy cạnh lớn nhất) theo độ
+    # Tính toán bán kính hiển thị động (Dynamic Radius Calculation) dựa trên mức độ zoom
+    # 1. Xác định kích thước bao phủ lớn nhất theo độ
     box_span_deg = max(north - south, east - west)
     
-    # 2. Đổi ra km (1 độ vĩ ~ 111km)
+    # 2. Chuyển đổi sang đơn vị km (Xấp xỉ: 1 độ vĩ ~ 111km)
     box_span_km = box_span_deg * 111.0
     
-    # 3. Công thức: Radius = 1/4 kích thước hộp
-    # (Để các vòng tròn nằm rải rác đẹp mắt, không đè chồng lên nhau quá nhiều)
-    # Kẹp giá trị: Tối thiểu 0.3km (để còn nhìn thấy), Tối đa 5.0km
+    # 3. Heuristic: Thiết lập bán kính bằng 1/15 kích thước vùng để tối ưu mật độ hiển thị
+    # Áp dụng kẹp giá trị (Clamping) trong khoảng [0.1km, 3.0km]
     raw_radius = box_span_km / 15.0
     base_radius = max(0.1, min(3.0, raw_radius))
 
-    # --- CASE 1: CHẠY DEMO (Đọc từ file mock_weather.json) ---
+    # Chế độ Mô phỏng (Simulation Mode)
     if DEMO_MODE:
-        # Logic: Vẫn chia lưới như thật, nhưng fake dữ liệu
-        lat_steps = np.linspace(south, north, 4) # Chia lưới 4x4
+        # Khởi tạo lưới tọa độ lấy mẫu 4x4 (Grid Sampling)
+        lat_steps = np.linspace(south, north, 4) 
         lon_steps = np.linspace(west, east, 4)
         
         for lat in lat_steps:
             for lon in lon_steps:
-                # Random 30% là có mưa
+                # Giả lập xác suất xuất hiện thời tiết xấu (30%)
                 if random.random() < 0.3: 
                     zones.append({
                         "lat": lat, "lng": lon, 
@@ -45,23 +44,23 @@ def get_weather_zones(bbox):
                         "description": "Mock Grid Rain"
                     })
 
-    # --- CASE 2: CHẠY REAL (Quét lưới Open-Meteo) ---
+    # Chế độ Thực tế (Realtime Mode) - Tích hợp Open-Meteo API
     else:
-        # 1. Tạo lưới quét
+        # Tạo lưới quét thưa hơn (3x3) để giảm tải Request API
         lat_steps = np.linspace(south, north, 3)
         lon_steps = np.linspace(west, east, 3)
 
         for lat in lat_steps:
             for lon in lon_steps:
-                # Gọi hàm helper bên dưới
+                # Gọi hàm helper để lấy dữ liệu thô
                 cond, wind = _fetch_open_meteo(lat, lon)
                 
-                # Logic lọc xấu
+                # Bộ lọc điều kiện bất lợi (Adverse Weather Filter)
                 is_bad = False
                 radius = base_radius
                 if cond in ["Rain", "Thunderstorm", "Drizzle", "Fog"]:
                     is_bad = True
-                    if cond == "Thunderstorm": radius = 4.0
+                    if cond == "Thunderstorm": radius = 4.0 # Tăng bán kính cảnh báo nếu có bão
                 if wind >= 10.0: is_bad = True
 
                 if is_bad:
@@ -73,7 +72,7 @@ def get_weather_zones(bbox):
     
     return zones
 
-# --- HÀM HỖ TRỢ (PRIVATE) ---
+# Các hàm tiện ích (Utility Functions)
 def _fetch_open_meteo(lat, lon):
     try:
         url = "https://api.open-meteo.com/v1/forecast"
@@ -86,13 +85,14 @@ def _fetch_open_meteo(lat, lon):
     return "Clear", 0.0
 
 def _wmo_to_str(code):
+    # Chuẩn hóa mã WMO (World Meteorological Organization) sang nhãn định danh
     if code in [51, 53, 55, 56, 57]: return "Drizzle"
     if code in [61, 63, 65, 66, 67, 80, 81, 82]: return "Rain"
     if code in [95, 96, 99]: return "Thunderstorm"
     if code in [45, 48]: return "Fog"
-    return "Clear" # Bao gồm cả Clouds (An toàn)
+    return "Clear" 
 
-# --- HÀM SETTER ĐỂ APP GỌI ---
+# Phương thức Setter cập nhật cấu hình Runtime
 def set_demo_mode(status: bool):
     global DEMO_MODE
     DEMO_MODE = status
