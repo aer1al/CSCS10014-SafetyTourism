@@ -2,7 +2,7 @@
 
 import unicodedata
 from neo4j import GraphDatabase
-from .config import NEO4J_URI, NEO4J_AUTH  # Import từ config
+from .config import NEO4J_URI, NEO4J_AUTH
 
 class GraphSearcher:
     def __init__(self):
@@ -59,7 +59,7 @@ class GraphSearcher:
                 print(f"Error: {e}")
                 return None, None
 
-            # 2. Hậu kiểm (Post-Validation)
+            # 2. Post-Validation
             search_keywords = self._normalize_string(cleaned_term).split()
             
             for record in results:
@@ -79,4 +79,5 @@ class GraphSearcher:
                 if match_ratio >= 0.6:
                     return node, list(node.labels)
             
+
             return None, None
