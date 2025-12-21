@@ -22,7 +22,7 @@ class TrafficReportFormatter:
         # 2. THỜI TIẾT (Weather)
         report += TrafficReportFormatter._format_weather(data.get('current_weather'))
 
-        # 3. RỦI RO (Hazards) - Chỉ dành cho Street Info
+        # 3. RỦI RO (Hazards)
         if 'hazards' in data:
             report += TrafficReportFormatter._format_hazards(data['hazards'])
 
@@ -98,7 +98,7 @@ class TrafficReportFormatter:
             impact = p.get('traffic_impact', {})
             text += f"[*] {p.get('name')}\n"
             text += f"    - Giờ cao điểm: {impact.get('time', 'N/A')} ({impact.get('days', '')})\n"
-            # Giữ nguyên tiếng Anh (Nguyên nhân gốc) để LLM tự dịch
             text += f"    - Nguyên nhân gốc: {impact.get('cause', 'N/A')}\n"
         
+
         return text
