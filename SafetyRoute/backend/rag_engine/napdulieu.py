@@ -7,10 +7,10 @@ from neo4j import GraphDatabase
 URI = "neo4j://localhost:7687"
 AUTH = ("neo4j", "12345678") # <--- ĐỔI PASSWORD CỦA BẠN
 FILES = {
-    "school": "schools.json",
-    "tourist": "tourism.json",
-    "accident": "accident.json",
-    "flood": "flood_points.json"
+    "school": "data/schools.json",
+    "tourist": "data/tourism.json",
+    "accident": "data/accident.json",
+    "flood": "data/flood_points.json"
 }
 
 def normalize_name(name):
@@ -180,4 +180,5 @@ def run():
         builder.close()
 
 if __name__ == "__main__":
+
     run()
