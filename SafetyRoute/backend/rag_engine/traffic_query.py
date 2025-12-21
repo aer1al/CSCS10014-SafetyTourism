@@ -15,14 +15,13 @@ class TrafficService:
         self.driver.close()
         self.searcher.close()
 
-    # --- HÀM 1: KIỂM TRA ĐƯỜNG (SỬA LỖI LOGIC TRUY VẤN) ---
+    # 1: KIỂM TRA ĐƯỜNG
     def get_street_status(self, user_input):
         found_node, labels = self.searcher.find_node_by_name(user_input)
         if not found_node or 'Street' not in labels: return None 
 
         street_name = found_node['name']
 
-        # LOGIC MỚI:
         # 1. Hazard: Lấy name, severity (để fill vào desc nếu desc rỗng)
         # 2. Place: JOIN sang TrafficPattern để lấy time_range, days, session ngay lập tức
         cypher_query = """
@@ -63,11 +62,11 @@ class TrafficService:
             result = session.run(cypher_query, street_name=street_name).single()
             if not result: return None
 
-            # XỬ LÝ DỮ LIỆU HAZARD (FIX LỖI DESC RỖNG)
+            # XỬ LÝ DỮ LIỆU HAZARD
             clean_hazards = []
             for h in result['hazards']:
                 if h['type']: 
-                    # Logic sửa lỗi: Nếu desc rỗng, lấy name làm desc
+                    # Nếu desc rỗng, lấy name làm desc
                     description = h['desc']
                     if not description or description.strip() == "":
                         description = h['name'] # Fallback: "Điểm đen Tỉnh Lộ 43"
@@ -109,7 +108,7 @@ class TrafficService:
                 "current_weather": realtime_weather
             }
 
-    # --- HÀM 2: KIỂM TRA ĐỊA ĐIỂM (CŨNG CẬP NHẬT LOGIC TƯƠNG TỰ) ---
+    # HÀM 2: KIỂM TRA ĐỊA ĐIỂM
     def get_place_info(self, user_input):
         found_node, labels = self.searcher.find_node_by_name(user_input)
         if not found_node or 'Place' not in labels: return None
@@ -157,4 +156,5 @@ class TrafficService:
                 "address": f"{result['street']}, {result['district']}" if result['street'] else "Chưa rõ",
                 "traffic_info": patterns,
                 "current_weather": realtime_weather
+
             }
