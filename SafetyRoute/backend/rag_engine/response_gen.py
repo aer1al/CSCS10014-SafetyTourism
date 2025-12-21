@@ -1,6 +1,6 @@
 # rag_engine/response_gen.py
 from .llm_client import LLMClient
-from .json_to_text import TrafficReportFormatter  # <--- Import class mới
+from .json_to_text import TrafficReportFormatter
 
 class ResponseGenerator:
     def __init__(self):
@@ -10,7 +10,7 @@ class ResponseGenerator:
         if not context_data:
             return "Xin lỗi, tôi không tìm thấy thông tin về địa điểm này trong hệ thống dữ liệu."
 
-        # BƯỚC 1: CHUYỂN JSON -> TEXT BÁO CÁO (Dùng module riêng)
+        # BƯỚC 1: CHUYỂN JSON -> TEXT BÁO CÁO
         structured_text = TrafficReportFormatter.format(context_data)
         
         # BƯỚC 2: GỬI CHO LLM
@@ -38,4 +38,5 @@ class ResponseGenerator:
         return self.llm.send_prompt(prompt)
 
     def chat_casual(self, user_input):
+
         return self.llm.send_prompt(f"User: '{user_input}'. Trả lời xã giao, thân thiện, ngắn gọn.")
