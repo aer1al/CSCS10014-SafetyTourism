@@ -43,6 +43,8 @@ Hệ thống đã được kiểm thử với bộ **100 test cases** bao gồm 
 | **Độ chính xác** | ~93% | **60%** |
 | **Tốc độ xử lý** | 1,59/req | **75ms** |
 | **Tài nguyên RAM** | ~2GB | **Rất thấp** |
+
+
 Dùng LLM để xác định 'Intent' của user khi, phân loại và dán nhãn thành 3 loại: 'STREET, 'PLACE', 'CHAT'
 Dùng Fuzzy search để tìm đúng entities xuất hiện trong DB graph.
 Có thể chạy các file trong folder test_engine để tìm hiểu test cases rõ hơn.
